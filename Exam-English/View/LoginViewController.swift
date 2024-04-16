@@ -8,9 +8,15 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+// MARK: - Outlet
+    
+// MARK: - Variable
+    
+}
+// MARK: Life Cycle
+extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }
+
