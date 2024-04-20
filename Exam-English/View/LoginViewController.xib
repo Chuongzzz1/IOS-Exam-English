@@ -2,19 +2,34 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Black.ttf">
+            <string>Roboto-Black</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Exam_English" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Exam_English">
             <connections>
+                <outlet property="accountTextField" destination="bei-Ub-96U" id="V2v-KJ-AvS"/>
+                <outlet property="hideShowButton" destination="L8x-Va-2ia" id="hES-zO-B4T"/>
+                <outlet property="loginButton" destination="wes-Eq-nQ8" id="3hM-Zt-sAW"/>
+                <outlet property="logoImage" destination="XKB-QC-a7H" id="w4m-Q1-q5z"/>
+                <outlet property="passwordTextField" destination="xno-CH-mjn" id="srl-Ub-ztn"/>
+                <outlet property="scrollView" destination="fiN-R9-od6" id="Hcs-xU-Bx8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="LoginViewController" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -24,7 +39,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBi-qU-FyA" userLabel="Content View">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="800"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XKB-QC-a7H">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="XKB-QC-a7H">
                                     <rect key="frame" x="16" y="50" width="361" height="124"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="124" id="pvJ-kd-gbt"/>
@@ -38,8 +53,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Ucb-hf-Epr"/>
                                             </constraints>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xno-CH-mjn" userLabel="Password">
@@ -47,19 +62,35 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="g3z-61-W4I"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8x-Va-2ia">
+                                            <rect key="frame" x="311" y="66" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="cUJ-Yg-jEf"/>
+                                                <constraint firstAttribute="height" constant="50" id="t1a-XZ-MRe"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="close-eye"/>
+                                            <connections>
+                                                <action selector="hideShowPass:" destination="-1" eventType="touchUpInside" id="K5O-M2-rfU"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="bei-Ub-96U" secondAttribute="trailing" id="5rl-LC-yqB"/>
                                         <constraint firstItem="xno-CH-mjn" firstAttribute="leading" secondItem="ZbB-5P-Rzk" secondAttribute="leading" id="6F7-jD-nqP"/>
+                                        <constraint firstAttribute="bottom" secondItem="L8x-Va-2ia" secondAttribute="bottom" id="LsA-Xe-WoN"/>
                                         <constraint firstItem="bei-Ub-96U" firstAttribute="leading" secondItem="ZbB-5P-Rzk" secondAttribute="leading" id="YLm-F1-qwL"/>
                                         <constraint firstAttribute="bottom" secondItem="xno-CH-mjn" secondAttribute="bottom" id="b3h-1y-ciR"/>
                                         <constraint firstItem="bei-Ub-96U" firstAttribute="top" secondItem="ZbB-5P-Rzk" secondAttribute="top" id="mG4-oE-4f6"/>
                                         <constraint firstAttribute="trailing" secondItem="xno-CH-mjn" secondAttribute="trailing" id="nt2-DZ-0dL"/>
+                                        <constraint firstAttribute="trailing" secondItem="L8x-Va-2ia" secondAttribute="trailing" id="r9E-uy-6nB"/>
                                         <constraint firstAttribute="height" constant="116" id="vNu-rY-OVy"/>
+                                        <constraint firstItem="L8x-Va-2ia" firstAttribute="top" secondItem="bei-Ub-96U" secondAttribute="bottom" constant="16" id="ys8-aP-fPr"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-4h-S2N" userLabel="Button View">
@@ -71,29 +102,20 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="R5j-Kg-wSO"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="24"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Log In">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3H-oC-Kfj">
-                                            <rect key="frame" x="102" y="45" width="157" height="30"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="Forgot your password?">
-                                                <color key="titleColor" systemColor="systemGreenColor"/>
-                                            </state>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="wes-Eq-nQ8" firstAttribute="top" secondItem="ZYB-4h-S2N" secondAttribute="top" id="4x9-li-0YU"/>
-                                        <constraint firstItem="g3H-oC-Kfj" firstAttribute="centerX" secondItem="ZYB-4h-S2N" secondAttribute="centerX" id="PE6-zS-H4P"/>
                                         <constraint firstAttribute="height" constant="75" id="VaQ-EO-Pc7"/>
                                         <constraint firstItem="wes-Eq-nQ8" firstAttribute="leading" secondItem="ZYB-4h-S2N" secondAttribute="leading" id="YUk-yc-uya"/>
                                         <constraint firstAttribute="trailing" secondItem="wes-Eq-nQ8" secondAttribute="trailing" id="YlO-U7-uCi"/>
-                                        <constraint firstAttribute="bottom" secondItem="g3H-oC-Kfj" secondAttribute="bottom" id="tfv-Dc-I7R"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -135,6 +157,7 @@
         </view>
     </objects>
     <resources>
+        <image name="close-eye" width="24" height="24"/>
         <image name="logo" width="1101" height="365"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
