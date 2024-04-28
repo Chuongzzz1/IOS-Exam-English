@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    
 // MARK: - Outlet
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var logoImage: UIImageView!
@@ -17,11 +18,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var hideShowButton: UIButton!
     
 
-    // MARK: - Variable
+    
+// MARK: - Variable
     private var tempHideShow = true
     private var customView = CustomView()
-    
+    private let apiService = APIService.shared
 }
+
 // MARK: Life Cycle
 extension LoginViewController {
     override func viewDidLoad() {
@@ -43,7 +46,32 @@ extension LoginViewController {
             tempHideShow = true
         }
     }
+    
+    @IBAction func logginButton(_ sender: UIButton) {
+        guard let username = accountTextField.text, !username.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            // Xử lý trường hợp username hoặc password trống
+            return
+        }
+        
+        // Gọi API đăng nhập
+        apiService.postLogin(username: username, password: password) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    // Xử lý đăng nhập thành công
+                    // Ví dụ: Lưu token và chuyển hướng đến màn hình tiếp theo
+                    self?.handleLoginSuccess(data: data)
+                    
+                case .failure(let error):
+                    // Xử lý đăng nhập thất bại
+                    self?.handleLoginFailure(error: error)
+                }
+            }
+        }
+    }
 }
+
 // MARK: Func
 extension LoginViewController {
     func setupView() {
@@ -67,6 +95,7 @@ extension LoginViewController {
         passwordTextField.delegate = self
     }
 }
+
 // MARK: - Delegate TextField
 extension LoginViewController {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -84,4 +113,23 @@ extension LoginViewController {
         return true
     }
 }
+
+// MARK: - Helper Methods
+extension LoginViewController {
+    private func handleLoginSuccess(data: Data) {
+        // Xử lý đăng nhập thành công (ví dụ: lưu token, chuyển hướng đến màn hình tiếp theo)
+        let loginSuccessVC = LoginSuccessViewController(nibName: "LoginSuccessViewController", bundle: nil)
+        self.navigationController?.pushViewController(loginSuccessVC, animated: true)
+        print("Đăng nhập thành công với dữ liệu phản hồi: \(data)")
+        // Ví dụ: Lưu token và chuyển hướng đến màn hình tiếp theo
+        // self?.saveTokenAndNavigate(data: data)
+    }
+
+    private func handleLoginFailure(error: Error) {
+        // Xử lý đăng nhập thất bại (hiển thị cảnh báo, ghi log lỗi, vv.)
+        print("Đăng nhập thất bại với lỗi: \(error.localizedDescription)")
+        // Ví dụ: Hiển thị cảnh báo hoặc thông báo lỗi cho người dùng
+    }
+}
+
 

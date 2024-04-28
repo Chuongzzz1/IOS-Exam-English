@@ -12,10 +12,13 @@
 		9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF592BCC3790002B077C /* Assets.xcassets */; };
 		9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF5B2BCC3790002B077C /* LaunchScreen.storyboard */; };
 		9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EAF702BCC44F7002B077C /* LoginViewController.swift */; };
+		9D3C95542BD5D02C00F5190D /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95532BD5D02C00F5190D /* LoginAPI.swift */; };
+		9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */; };
+		9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */; };
 		9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF722BCC44F9002B077C /* LoginViewController.xib */; };
 		9D5E8D902BCE60070095441C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E8D8F2BCE60070095441C /* CustomView.swift */; };
+		9D7B4E352BD8C16000DA34A4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4E342BD8C16000DA34A4 /* APIService.swift */; };
 		9DD0B38E2BD3A95500F3E745 /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = 9DD0B38D2BD3A95500F3E745 /* Roboto */; };
-		9DD0B3912BD3AD0A00F3E745 /* Constains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD0B3902BD3AD0A00F3E745 /* Constains.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +30,12 @@
 		9D2EAF5E2BCC3790002B077C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D2EAF702BCC44F7002B077C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D2EAF722BCC44F9002B077C /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9D3C95532BD5D02C00F5190D /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSuccessViewController.swift; sourceTree = "<group>"; };
+		9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSuccessViewController.xib; sourceTree = "<group>"; };
 		9D5E8D8F2BCE60070095441C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		9D7B4E342BD8C16000DA34A4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		9DD0B38D2BD3A95500F3E745 /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Roboto; path = ../../../../../../../Downloads/Roboto; sourceTree = "<group>"; };
-		9DD0B3902BD3AD0A00F3E745 /* Constains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constains.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,8 @@
 		9D2EAF642BCC37BC002B077C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D3C95532BD5D02C00F5190D /* LoginAPI.swift */,
+				9D7B4E342BD8C16000DA34A4 /* APIService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +109,8 @@
 		9D2EAF732BCC44FF002B077C /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */,
+				9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -135,7 +145,6 @@
 		9DD0B38F2BD3ACC100F3E745 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				9DD0B3902BD3AD0A00F3E745 /* Constains.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -199,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DD0B38E2BD3A95500F3E745 /* Roboto in Resources */,
+				9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */,
 				9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */,
 				9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */,
 				9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */,
@@ -212,10 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */,
+				9D7B4E352BD8C16000DA34A4 /* APIService.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
 				9D5E8D902BCE60070095441C /* CustomView.swift in Sources */,
 				9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */,
-				9DD0B3912BD3AD0A00F3E745 /* Constains.swift in Sources */,
+				9D3C95542BD5D02C00F5190D /* LoginAPI.swift in Sources */,
 				9D2EAF532BCC3790002B077C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
