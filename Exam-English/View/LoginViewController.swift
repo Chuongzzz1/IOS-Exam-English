@@ -16,11 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var hideShowButton: UIButton!
-    
+    @IBOutlet weak var warningAccountLabel: UILabel!
+    @IBOutlet weak var warningPasswordLabel: UILabel!
 
-    
 // MARK: - Variable
     private var tempHideShow = true
+    private var defaultPasswordWarning: String = ""
     private var customView = CustomView()
     private let apiService = APIService.shared
 }
@@ -29,7 +30,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 extension LoginViewController {
     override func viewDidLoad() {
         setupView()
-
     }
 }
 
@@ -48,23 +48,24 @@ extension LoginViewController {
     }
     
     @IBAction func logginButton(_ sender: UIButton) {
-        guard let username = accountTextField.text, !username.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty else {
-            // Xử lý trường hợp username hoặc password trống
+        guard let username = accountTextField.text, !username.isEmpty else {
+            customView.errorTextField(accountTextField)
+            warningAccountLabel.isHidden = false
             return
         }
         
-        // Gọi API đăng nhập
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            customView.errorTextField(passwordTextField)
+            warningPasswordLabel.isHidden = false
+            return
+        }
         apiService.postLogin(username: username, password: password) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    // Xử lý đăng nhập thành công
-                    // Ví dụ: Lưu token và chuyển hướng đến màn hình tiếp theo
                     self?.handleLoginSuccess(data: data)
                     
                 case .failure(let error):
-                    // Xử lý đăng nhập thất bại
                     self?.handleLoginFailure(error: error)
                 }
             }
@@ -78,6 +79,7 @@ extension LoginViewController {
         setupTextField()
         setupButton()
         delegateTextField()
+        getDefaulTextField()
     }
     
     func setupTextField() {
@@ -94,6 +96,10 @@ extension LoginViewController {
         accountTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
+    func getDefaulTextField() {
+        defaultPasswordWarning = warningPasswordLabel.text ?? ""
+    }
 }
 
 // MARK: - Delegate TextField
@@ -102,9 +108,12 @@ extension LoginViewController {
         if textField == accountTextField {
             customView.handleTapTextField(accountTextField)
             customView.customTextField(passwordTextField)
+            warningAccountLabel.isHidden = true
         } else if textField == passwordTextField {
             customView.handleTapTextField(passwordTextField)
             customView.customTextField(accountTextField)
+            warningPasswordLabel.isHidden = true
+            warningPasswordLabel.text = defaultPasswordWarning
         }
     }
 
@@ -117,18 +126,34 @@ extension LoginViewController {
 // MARK: - Helper Methods
 extension LoginViewController {
     private func handleLoginSuccess(data: Data) {
-        // Xử lý đăng nhập thành công (ví dụ: lưu token, chuyển hướng đến màn hình tiếp theo)
-        let loginSuccessVC = LoginSuccessViewController(nibName: "LoginSuccessViewController", bundle: nil)
-        self.navigationController?.pushViewController(loginSuccessVC, animated: true)
-        print("Đăng nhập thành công với dữ liệu phản hồi: \(data)")
-        // Ví dụ: Lưu token và chuyển hướng đến màn hình tiếp theo
-        // self?.saveTokenAndNavigate(data: data)
+        do {
+            // Decode JSON data to retrieve the access token
+            let tokenResponse = try JSONDecoder().decode(AccessTokenResponse.self, from: data)
+            
+            // Extract the access token
+            let accessToken = tokenResponse.result?.token
+            
+            // Save the access token to UserDefaults
+            UserDefaults.standard.set(accessToken, forKey: "accessToken")
+//            print("\(String(describing: accessToken))")
+            
+            // Schedule refresh token
+            apiService.scheduleRefreshAccessToken(accessToken: accessToken!)
+            
+            // Navigate to the next screen or perform any other necessary actions
+            let loginSuccessVC = LoginSuccessViewController(nibName: "LoginSuccessViewController", bundle: nil)
+//            self.navigationController?.pushViewController(loginSuccessVC, animated: true)
+            UIApplication.shared.windows.first?.rootViewController = loginSuccessVC
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        } catch {
+            print("Error decoding token response: \(error)")
+        }
     }
 
     private func handleLoginFailure(error: Error) {
-        // Xử lý đăng nhập thất bại (hiển thị cảnh báo, ghi log lỗi, vv.)
-        print("Đăng nhập thất bại với lỗi: \(error.localizedDescription)")
-        // Ví dụ: Hiển thị cảnh báo hoặc thông báo lỗi cho người dùng
+            warningPasswordLabel.text = "User account or password incorrect"
+            warningPasswordLabel.isHidden = false
+        print("Login fail with error: \(error.localizedDescription)")
     }
 }
 

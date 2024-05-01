@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginSuccessViewController" customModule="Exam_English" customModuleProvider="target">
             <connections>
+                <outlet property="logoutButton" destination="1or-bU-GN3" id="pkP-TA-edF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,13 +41,30 @@
                             <color key="textColor" name="008000"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1or-bU-GN3">
+                            <rect key="frame" x="151.66666666666666" y="369.66666666666669" width="90" height="20"/>
+                            <color key="backgroundColor" name="008000"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="TQ1-6J-AmK"/>
+                                <constraint firstAttribute="height" constant="20" id="fsy-4T-1Vm"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Log Out">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="tapToLogout:" destination="-1" eventType="touchUpInside" id="KDA-Gc-gcj"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="kwO-7f-Iwo" firstAttribute="top" secondItem="Lu5-QO-Dlc" secondAttribute="top" id="HCq-j1-3Ao"/>
                         <constraint firstAttribute="trailing" secondItem="Ku2-c4-h7j" secondAttribute="trailing" constant="10" id="P7J-PQ-SSs"/>
+                        <constraint firstItem="1or-bU-GN3" firstAttribute="centerY" secondItem="Lu5-QO-Dlc" secondAttribute="centerY" id="XfV-04-zq1"/>
                         <constraint firstItem="Ku2-c4-h7j" firstAttribute="top" secondItem="kwO-7f-Iwo" secondAttribute="bottom" constant="100" id="dy7-NT-kJF"/>
                         <constraint firstItem="kwO-7f-Iwo" firstAttribute="leading" secondItem="Lu5-QO-Dlc" secondAttribute="leading" id="mqb-Cd-JtW"/>
+                        <constraint firstItem="1or-bU-GN3" firstAttribute="centerX" secondItem="Lu5-QO-Dlc" secondAttribute="centerX" id="qK1-NT-iFG"/>
                         <constraint firstAttribute="trailing" secondItem="kwO-7f-Iwo" secondAttribute="trailing" id="uvh-iB-gv1"/>
                         <constraint firstItem="Ku2-c4-h7j" firstAttribute="leading" secondItem="Lu5-QO-Dlc" secondAttribute="leading" constant="10" id="wHd-z1-2Yw"/>
                     </constraints>

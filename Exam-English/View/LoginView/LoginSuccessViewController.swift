@@ -8,8 +8,22 @@
 import UIKit
 
 class LoginSuccessViewController: UIViewController {
+    private let apiService = APIService.shared
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    @IBAction func tapToLogout(_ sender: UIButton) {
+        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+            return
+        }
+        print("debug -- \(String(describing: accessToken))")
+        apiService.postLogout(navigationController: self.navigationController, accessToken: accessToken)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        guard let accessToken = UserDefaults.standard.string(forKey: "accessToken") else {
+//            return
+//        }
+//        print("debug -- \(String(describing: accessToken))")
     }
 }

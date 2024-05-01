@@ -24,7 +24,6 @@ class CustomView {
         nameTextField.layer.borderColor = UIColor.systemRed.cgColor
         nameTextField.layer.cornerRadius = 10.0
         nameTextField.layer.masksToBounds = true
-
     }
     
     func customButton(_ nameButton: UIButton) {
