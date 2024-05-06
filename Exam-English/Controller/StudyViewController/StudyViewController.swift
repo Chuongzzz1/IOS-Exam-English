@@ -98,3 +98,4 @@ extension StudyViewController {
         collectionView.showsHorizontalScrollIndicator = false
     }
 }
+// test issue ticket #3
