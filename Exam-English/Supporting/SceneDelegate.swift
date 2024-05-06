@@ -17,8 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         
-        let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: loginViewController)
+//        let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
+//        let navigationController = UINavigationController(rootViewController: loginViewController)
+        let studyViewController = StudyViewController(nibName: "StudyViewController", bundle: nil)
+        let navigationController = UINavigationController(rootViewController: studyViewController)
         window.rootViewController = navigationController
         
         self.window = window
