@@ -1,0 +1,187 @@
+    [
+        {
+            "nameFruit": "Apple",
+            "imageFruit": "apple.jpeg",
+            "priceFruit": 1,
+            "isChecked": false,
+            "description": "Apples are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Banana",
+            "imageFruit": "banana.jpeg",
+            "priceFruit": 2,
+            "isChecked": false,
+            "description": "Banana are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+
+        },
+        {
+            "nameFruit": "Bell Pepper",
+            "imageFruit": "bell-pepper.jpeg",
+            "priceFruit": 3,
+            "isChecked": false,
+            "description": "Bell Pepper are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Carrot",
+            "imageFruit": "carrot.jpeg",
+            "priceFruit": 4,
+            "isChecked": false,
+            "description": "Carrot are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Cherry",
+            "imageFruit": "cherry.jpeg",
+            "priceFruit": 5,
+            "isChecked": false,
+            "description": "Cherry are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Coconut",
+            "imageFruit": "coconut.jpeg",
+            "priceFruit": 6,
+            "isChecked": false,
+            "description": "Coconut are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Eggplant",
+            "imageFruit": "eggplant.jpeg",
+            "priceFruit": 7,
+            "isChecked": false,
+            "description": "Eggplant are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Orange",
+            "imageFruit": "orange.jpeg",
+            "priceFruit": 8,
+            "isChecked": false,
+            "description": "Orange are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Peach",
+            "imageFruit": "peach.jpeg",
+            "priceFruit": 9,
+            "isChecked": false,
+            "description": "Peach are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pear",
+            "imageFruit": "pear.jpeg",
+            "priceFruit": 10,
+            "isChecked": false,
+            "description": "Pear are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pineapple",
+            "imageFruit": "pineapple.jpeg",
+            "priceFruit": 11,
+            "isChecked": false,
+            "description": "Pineapple are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pomegranate",
+            "imageFruit": "pomegranate.jpeg",
+            "priceFruit": 12,
+            "isChecked": false,
+            "description": "Pomegranate are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Water Melon",
+            "imageFruit": "watermelon.jpeg",
+            "priceFruit": 13,
+            "isChecked": false,
+            "description": "Water Melon are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Apple 2",
+            "imageFruit": "apple.jpeg",
+            "priceFruit": 14,
+            "isChecked": false,
+            "description": "Apple 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Banana 2",
+            "imageFruit": "banana.jpeg",
+            "priceFruit": 15,
+            "isChecked": false,
+            "description": "Banana 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+
+        },
+        {
+            "nameFruit": "Bell Pepper 2",
+            "imageFruit": "bell-pepper.jpeg",
+            "priceFruit": 16,
+            "isChecked": false,
+            "description": "Bell Pepper 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Carrot 2",
+            "imageFruit": "carrot.jpeg",
+            "priceFruit": 17,
+            "isChecked": false,
+            "description": "Carrot 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Cherry 2",
+            "imageFruit": "cherry.jpeg",
+            "priceFruit": 18,
+            "isChecked": false,
+            "description": "Cherry 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Coconut 2",
+            "imageFruit": "coconut.jpeg",
+            "priceFruit": 19,
+            "isChecked": false,
+            "description": "Coconut 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Eggplant 2",
+            "imageFruit": "eggplant.jpeg",
+            "priceFruit": 20,
+            "isChecked": false,
+            "description": "Eggplant 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Orange 2",
+            "imageFruit": "orange.jpeg",
+            "priceFruit": 21,
+            "isChecked": false,
+            "description": "Orange 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Peach 2",
+            "imageFruit": "peach.jpeg",
+            "priceFruit": 22,
+            "isChecked": false,
+            "description": "Peach 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pear 2",
+            "imageFruit": "pear.jpeg",
+            "priceFruit": 23,
+            "isChecked": false,
+            "description": "Pear 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pineapple 2",
+            "imageFruit": "pineapple.jpeg",
+            "priceFruit": 24,
+            "isChecked": false,
+            "description": "Pineapple 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Pomegranate 2",
+            "imageFruit": "pomegranate.jpeg",
+            "priceFruit": 25,
+            "isChecked": false,
+            "description": "Pomegranate 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        },
+        {
+            "nameFruit": "Water Melon 2",
+            "imageFruit": "watermelon.jpeg",
+            "priceFruit": 26,
+            "isChecked": false,
+            "description": "Water Melon 2 are round or slightly oblong fruits with smooth, glossy skin that comes in various colors like red, green, and yellow."
+        }
+    ]
+
