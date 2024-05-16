@@ -9,21 +9,27 @@ import UIKit
 
 class StudyViewCell: UICollectionViewCell {
     // MARK: - Outlet
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var backgroudView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    // MARK: - Variable
+    private var custom = CustomView()
 }
 
 // MARK: - Awake
-//extension StudyViewCell {
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//}
+extension StudyViewCell {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        customIem()
+    }
+}
 
 // MARK: - Func
 extension StudyViewCell {
     func updatesView(study: FruitModel) {
-        imageView.image = UIImage(named: study.imageFruit)
         titleLabel.text = study.nameFruit
+    }
+    
+    func customIem() {
+        custom.customItemSubject(backgroudView)
     }
 }

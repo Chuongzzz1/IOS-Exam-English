@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private var tempHideShow = true
     private var defaultPasswordWarning: String = ""
     private var customView = CustomView()
-    private let apiService = APIService.shared
+    private let apiService = Authentication.shared
 }
 
 // MARK: Life Cycle

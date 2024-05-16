@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
 //        let navigationController = UINavigationController(rootViewController: loginViewController)
-        let studyViewController = StudyQuestionSetViewController(nibName: "StudyQuestionSetViewController", bundle: nil)
+        let studyViewController = StudyViewController(nibName: "StudyViewController", bundle: nil)
         let navigationController = UINavigationController(rootViewController: studyViewController)
         window.rootViewController = navigationController
         

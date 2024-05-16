@@ -1,5 +1,5 @@
 //
-//  StudyDetailViewController.swift
+//  StudyQuestionSetViewController.swift
 //  Exam-English
 //
 //  Created by Trần Văn Chương on 06/05/2024.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-class StudyDetailViewController: UIViewController {
-// MARK: - Outlet
+class StudyQuestionSetViewController: UIViewController {
+    // MARK: - Outlet
     @IBOutlet weak var tableView: UITableView!
     
-// MARK: - Variable
+    // MARK: - Variable
     var fruits = [FruitModel]()
-
 }
- // MARK: Life Cycle
-extension StudyDetailViewController {
+
+// MARK: - Life Cycle
+extension StudyQuestionSetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fruits = LoadData.share.loadData() ?? [FruitModel]()
@@ -25,36 +25,35 @@ extension StudyDetailViewController {
 }
 
 // MARK: - DataSource
-extension StudyDetailViewController: UITableViewDataSource {
+extension StudyQuestionSetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fruits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "StudyDetailCell", for: indexPath) as? StudyDetailCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "StudyQuestionSetCell", for: indexPath) as? StudyQuestionSetCell {
             let category = fruits[indexPath.row]
             cell.updatesView(category: category)
             return cell
         } else {
-            return StudyDetailCell()
+            return StudyQuestionSetCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 50
     }
 }
 
 // MARK: - Delegate
-extension StudyDetailViewController: UITableViewDelegate {
+extension StudyQuestionSetViewController: UITableViewDelegate {
 }
 
 // MARK: - Func
-extension StudyDetailViewController {
-    
+extension StudyQuestionSetViewController {
     func registerCell(){
-        let studyDetailNib = UINib(nibName: "StudyDetailCell", bundle: nil)
-        tableView.register(studyDetailNib, forCellReuseIdentifier: "StudyDetailCell")
+        let studyQuestionSetNib = UINib(nibName: "StudyQuestionSetCell", bundle: nil)
+        tableView.register(studyQuestionSetNib, forCellReuseIdentifier: "StudyQuestionSetCell")
     }
     
     func setupStudyDetailView(){
@@ -62,4 +61,8 @@ extension StudyDetailViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+
 }
+
+
+

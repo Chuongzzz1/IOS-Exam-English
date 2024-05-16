@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class CustomView {
+    // MARK: - Text Field
     func customTextField(_ nameTextField: UITextField) {
         nameTextField.layer.borderWidth = 1.0
         nameTextField.layer.borderColor = UIColor.systemGray.cgColor
@@ -26,6 +27,7 @@ class CustomView {
         nameTextField.layer.masksToBounds = true
     }
     
+    // MARK: - Button
     func customButton(_ nameButton: UIButton) {
         if let customColor = UIColor(named: "008000") {
              nameButton.backgroundColor = customColor
@@ -38,6 +40,13 @@ class CustomView {
     
     func setHollowButton(_ nameButton: UIButton) {
         nameButton.setTitle("", for: .normal)
+    }
+    
+    // MARK: - Item
+    func customItemSubject(_ nameItem: UIView) {
+        nameItem.layer.cornerRadius = 8.0
+        nameItem.layer.backgroundColor = UIColor.systemRed.cgColor
+//        nameItem.layer.masksToBounds = true
     }
     
 }

@@ -7,13 +7,18 @@
 
 import UIKit
 
-class StudyViewController: UIViewController {
+class StudyViewController: UIViewController, StudyViewSectionDelegate {
+    func didSelectItem() {
+             let studyVC = StudyDetailViewController(nibName: "StudyDetailViewController", bundle: nil)
+             self.navigationController?.pushViewController(studyVC, animated: true)
+        }
+    
     // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    private var studyCates = [Study]()
     private var fruits = [FruitModel]()
+    private let sturyService = StudyService.shared
 }
 
 // MARK: - Life Cycle
@@ -22,7 +27,30 @@ extension StudyViewController {
         super.viewDidLoad()
         setupCollectionView()
         fruits = LoadData.share.loadData() ?? [FruitModel]()
-    }
+        StudyService.shared.fetchSubject { result in
+            switch result {
+            case .success(let subjectResponse):
+                // Xử lý dữ liệu môn học ở đây
+                print("Danh sách môn học:", subjectResponse.result ?? "Không có dữ liệu")
+                
+                // Lặp qua từng môn học để lấy danh mục tương ứng
+                if let subjects = subjectResponse.result {
+                    for subject in subjects {
+                        StudyService.shared.fetchCategory(for: subject.subjectID) { categoryResult in
+                            switch categoryResult {
+                            case .success(let categoryResponse):
+                                // Xử lý dữ liệu danh mục ở đây
+                                print("Danh sách danh mục cho môn \(subject.subjectName):", categoryResponse.result ?? "Không có dữ liệu")
+                            case .failure(let error):
+                                print("Lỗi khi lấy danh mục cho môn \(subject.subjectName):", error)
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Lỗi khi lấy dữ liệu môn học:", error)
+            }
+        }    }
 }
 
 // MARK: - DataSource
@@ -37,6 +65,7 @@ extension StudyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyViewSection", for: indexPath) as! StudyViewSection
+        cell.delegate = self
         return cell
     }
     
@@ -62,8 +91,9 @@ extension StudyViewController: UICollectionViewDataSource {
 extension StudyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.size.width
-        let height: CGFloat = 200
+        let height: CGFloat = 150
         return CGSize(width: width, height: height)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -71,7 +101,7 @@ extension StudyViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let sectionInsets = UIEdgeInsets(top: 24, left: 0, bottom: 24, right: 0)
+        let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
         return sectionInsets
     }
 }
@@ -95,7 +125,7 @@ extension StudyViewController {
         registerSection()
         registerHeaderSection()
         hideScrollBar()
-//        setupNavigation()
+        setupNavigation()
     }
     
     func hideScrollBar() {
@@ -104,6 +134,10 @@ extension StudyViewController {
     }
     
     func setupNavigation() {
+        let studyViewController = StudyViewController()
+        let navigationController = UINavigationController(rootViewController: studyViewController)
+//        present(navigationController, animated: true, completion: nil)
+        let studyViewSection = StudyViewSection()
+        studyViewSection.delegate = self
     }
-
 }

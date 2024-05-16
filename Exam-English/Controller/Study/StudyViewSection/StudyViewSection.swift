@@ -7,15 +7,17 @@
 
 import UIKit
 
+protocol StudyViewSectionDelegate: AnyObject {
+    func didSelectItem()
+}
+
 class StudyViewSection: UICollectionViewCell {
     // MARK: - OutLet
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    private var studyCates = [Study]()
     private var fruits = [FruitModel]()
-
-
+    weak var delegate: StudyViewSectionDelegate?
 }
 
 // MARK: - Awake Nib
@@ -46,25 +48,21 @@ extension StudyViewSection: UICollectionViewDataSource {
 
 // MARK: - Delegate
 extension StudyViewSection: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudyDetailViewController") as? StudyDetailViewController {
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItem()
+        }
 }
 
 // MARK: - FlowLayout Delegate
 extension StudyViewSection: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // lấy chiều rộng màn hình
         let screenWidth = collectionView.bounds.size.width
         let numberOfColumns: CGFloat = 3
-        let numberOfRows: CGFloat = 1
-        // Tính toán kích thước của mỗi item
-        let totalHorizontalSpacing: CGFloat = 0
-        let totalVerticalSpacing: CGFloat = 12
+//        let numberOfRows: CGFloat = 1
+        let totalHorizontalSpacing: CGFloat = 12
+//        let totalVerticalSpacing: CGFloat = 12
         let itemWidth = (screenWidth - totalHorizontalSpacing) / numberOfColumns
-        let itemHeight = (collectionView.bounds.height - totalVerticalSpacing) / numberOfRows
+        let itemHeight = itemWidth
             return CGSize(width: floor(itemWidth), height: itemHeight)
     }
 }
@@ -81,13 +79,15 @@ extension StudyViewSection {
         collectionView.delegate = self
         registerCell()
         hideScrollBar()
+        setupFlowLayout()
     }
     
     func setupFlowLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
     }
     
@@ -95,5 +95,4 @@ extension StudyViewSection {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
     }
-
 }

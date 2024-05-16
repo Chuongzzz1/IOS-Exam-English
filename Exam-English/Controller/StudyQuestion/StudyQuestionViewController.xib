@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudyViewController" customModule="Exam_English" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudyQuestionViewController" customModule="Exam_English" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="ffH-jh-pAO" id="sg5-ww-fQ4"/>
+                <outlet property="collectionView" destination="RF6-LV-58P" id="cel-UI-uMD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,10 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-jh-pAO">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RF6-LV-58P">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OiX-y0-aeK">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jNx-do-hhO">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -34,12 +34,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="ffH-jh-pAO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0o9-kG-KbS"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ffH-jh-pAO" secondAttribute="bottom" id="Cvh-rP-7YV"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ffH-jh-pAO" secondAttribute="trailing" id="RpO-av-syh"/>
-                <constraint firstItem="ffH-jh-pAO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fZR-wO-90m"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RF6-LV-58P" secondAttribute="trailing" id="CI5-TE-pU4"/>
+                <constraint firstItem="RF6-LV-58P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uxn-Qv-zuf"/>
+                <constraint firstItem="RF6-LV-58P" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="V8L-sg-hxH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RF6-LV-58P" secondAttribute="bottom" id="hWy-R9-qkN"/>
             </constraints>
-            <point key="canvasLocation" x="27" y="-1"/>
+            <point key="canvasLocation" x="118" y="0.0"/>
         </view>
     </objects>
     <resources>

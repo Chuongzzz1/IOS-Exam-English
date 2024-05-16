@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,30 +18,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="174" height="165"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMd-DL-dBB">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMd-DL-dBB" userLabel="ContentView">
                         <rect key="frame" x="0.0" y="0.0" width="174" height="165"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-vK-Wc3">
-                                <rect key="frame" x="0.0" y="0.0" width="174" height="110"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwG-uZ-7PA" userLabel="Backgound">
+                                <rect key="frame" x="0.0" y="0.0" width="174" height="165"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-OA-0pG">
+                                        <rect key="frame" x="70.666666666666671" y="72.333333333333329" width="33" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="oMK-nl-UGT"/>
+                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="centerX" secondItem="PwG-uZ-7PA" secondAttribute="centerX" id="aFO-2c-zDA"/>
+                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="centerY" secondItem="PwG-uZ-7PA" secondAttribute="centerY" id="vGg-02-kVY"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-OA-0pG">
-                                <rect key="frame" x="0.0" y="144" width="174" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KgE-vK-Wc3" firstAttribute="leading" secondItem="LMd-DL-dBB" secondAttribute="leading" id="5UH-jB-icl"/>
-                            <constraint firstItem="KgE-vK-Wc3" firstAttribute="top" secondItem="LMd-DL-dBB" secondAttribute="top" id="9rg-Jq-iZc"/>
-                            <constraint firstItem="gJQ-OA-0pG" firstAttribute="leading" secondItem="LMd-DL-dBB" secondAttribute="leading" id="gvM-bR-IdM"/>
-                            <constraint firstAttribute="bottom" secondItem="gJQ-OA-0pG" secondAttribute="bottom" id="ouM-2B-GRM"/>
-                            <constraint firstAttribute="trailing" secondItem="gJQ-OA-0pG" secondAttribute="trailing" id="td0-f1-sf7"/>
-                            <constraint firstAttribute="trailing" secondItem="KgE-vK-Wc3" secondAttribute="trailing" id="uzk-qW-usT"/>
+                            <constraint firstAttribute="bottom" secondItem="PwG-uZ-7PA" secondAttribute="bottom" id="7gv-QU-TAs"/>
+                            <constraint firstItem="PwG-uZ-7PA" firstAttribute="leading" secondItem="LMd-DL-dBB" secondAttribute="leading" id="EqX-Hc-s6k"/>
+                            <constraint firstItem="PwG-uZ-7PA" firstAttribute="top" secondItem="LMd-DL-dBB" secondAttribute="top" id="Y1R-3l-cJ1"/>
+                            <constraint firstAttribute="trailing" secondItem="PwG-uZ-7PA" secondAttribute="trailing" id="e96-xw-HHe"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,13 +57,15 @@
             </constraints>
             <size key="customSize" width="174" height="165"/>
             <connections>
-                <outlet property="imageView" destination="KgE-vK-Wc3" id="rHV-kv-M0G"/>
+                <outlet property="backgroudView" destination="PwG-uZ-7PA" id="MXX-cp-eSz"/>
                 <outlet property="titleLabel" destination="gJQ-OA-0pG" id="epb-ed-b9C"/>
             </connections>
-            <point key="canvasLocation" x="120.61068702290076" y="39.08450704225352"/>
+            <point key="canvasLocation" x="120.61068702290076" y="38.380281690140848"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="logo" width="1101" height="365"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

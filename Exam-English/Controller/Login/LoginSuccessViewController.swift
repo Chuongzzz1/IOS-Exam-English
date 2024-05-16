@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginSuccessViewController: UIViewController {
-    private let apiService = APIService.shared
+    private let apiService = Authentication.shared
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func tapToLogout(_ sender: UIButton) {
@@ -16,7 +16,7 @@ class LoginSuccessViewController: UIViewController {
             return
         }
         print("debug -- \(String(describing: accessToken))")
-        apiService.postLogout(navigationController: self.navigationController, accessToken: accessToken)
+        apiService.postLogout(navigationController: self.navigationController, accessToken: accessToken) // running in backgound
     }
 
     override func viewDidLoad() {

@@ -12,7 +12,6 @@ class StudyDetailCell: UITableViewCell {
 //        super.setSelected(selected, animated: animated)
 //    }
     // MARK: - Outlet
-    @IBOutlet weak var imageImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -30,7 +29,6 @@ extension StudyDetailCell {
 // MARK: - Func
 extension StudyDetailCell {
     func updatesView(category: FruitModel) {
-        imageImageView.image = UIImage(named: category.imageFruit)
         titleLabel.text = category.nameFruit
         descriptionLabel.text = category.description
     }

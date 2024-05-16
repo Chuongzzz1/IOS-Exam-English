@@ -21,8 +21,8 @@ enum TokenValidity {
     case unknown
 }
 
-class APIService {
-    static let shared = APIService()
+class Authentication {
+    static let shared = Authentication()
     private init() {}
 
     func postLogin(username: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
@@ -106,7 +106,7 @@ class APIService {
             UserDefaults.standard.removeObject(forKey: "accessToken")
 
             DispatchQueue.main.async {
-                let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+                let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil) // nibNameString
                 UIApplication.shared.windows.first?.rootViewController = loginVC
                 UIApplication.shared.windows.first?.makeKeyAndVisible()
             }

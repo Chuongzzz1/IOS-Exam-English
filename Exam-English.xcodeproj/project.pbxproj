@@ -15,6 +15,9 @@
 		9D3C95542BD5D02C00F5190D /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95532BD5D02C00F5190D /* TokenModel.swift */; };
 		9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */; };
 		9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */; };
+		9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44A3292BEDBFF800D20521 /* StudyService.swift */; };
+		9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44A32C2BEDC7AA00D20521 /* StudyQuestionSetCell.swift */; };
+		9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */; };
 		9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C4D2BE8512E007BF06F /* StudyViewSection.swift */; };
 		9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C4E2BE8512E007BF06F /* StudyViewSection.xib */; };
 		9D4A9C542BE85975007BF06F /* HeaderStudySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C522BE85975007BF06F /* HeaderStudySection.swift */; };
@@ -22,14 +25,18 @@
 		9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C582BE86A35007BF06F /* StudyDetailViewController.swift */; };
 		9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C592BE86A35007BF06F /* StudyDetailViewController.xib */; };
 		9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C5F2BE874F2007BF06F /* StudyDetailCell.swift */; };
-		9D4A9C622BE874F2007BF06F /* StudyDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C602BE874F2007BF06F /* StudyDetailCell.xib */; };
 		9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */; };
 		9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */; };
-		9D4A9C6B2BE8B200007BF06F /* StudyQuestionSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C692BE8B200007BF06F /* StudyQuestionSetCell.swift */; };
-		9D4A9C6C2BE8B200007BF06F /* StudyQuestionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C6A2BE8B200007BF06F /* StudyQuestionSetCell.xib */; };
 		9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF722BCC44F9002B077C /* LoginViewController.xib */; };
 		9D5E8D902BCE60070095441C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E8D8F2BCE60070095441C /* CustomView.swift */; };
-		9D7B4E352BD8C16000DA34A4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4E342BD8C16000DA34A4 /* APIService.swift */; };
+		9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */; };
+		9D7AEE752BF1A6B200DFA97E /* StudyQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */; };
+		9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AEE772BF1AAF100DFA97E /* QuestionPhotoCell.swift */; };
+		9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */; };
+		9D7AEE832BF1EB2A00DFA97E /* SingleQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AEE812BF1EB2A00DFA97E /* SingleQuestionCell.swift */; };
+		9D7AEE842BF1EB2A00DFA97E /* SingleQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE822BF1EB2A00DFA97E /* SingleQuestionCell.xib */; };
+		9D7AEE862BF3264F00DFA97E /* StudyDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */; };
+		9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4E342BD8C16000DA34A4 /* Authentication.swift */; };
 		9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */; };
 		9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */; };
 		9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */; };
@@ -53,6 +60,9 @@
 		9D3C95532BD5D02C00F5190D /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSuccessViewController.swift; sourceTree = "<group>"; };
 		9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSuccessViewController.xib; sourceTree = "<group>"; };
+		9D44A3292BEDBFF800D20521 /* StudyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyService.swift; sourceTree = "<group>"; };
+		9D44A32C2BEDC7AA00D20521 /* StudyQuestionSetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyQuestionSetCell.swift; sourceTree = "<group>"; };
+		9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyQuestionSetCell.xib; sourceTree = "<group>"; };
 		9D4A9C4D2BE8512E007BF06F /* StudyViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewSection.swift; sourceTree = "<group>"; };
 		9D4A9C4E2BE8512E007BF06F /* StudyViewSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyViewSection.xib; sourceTree = "<group>"; };
 		9D4A9C522BE85975007BF06F /* HeaderStudySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStudySection.swift; sourceTree = "<group>"; };
@@ -60,13 +70,17 @@
 		9D4A9C582BE86A35007BF06F /* StudyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
 		9D4A9C592BE86A35007BF06F /* StudyDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyDetailViewController.xib; sourceTree = "<group>"; };
 		9D4A9C5F2BE874F2007BF06F /* StudyDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailCell.swift; sourceTree = "<group>"; };
-		9D4A9C602BE874F2007BF06F /* StudyDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyDetailCell.xib; sourceTree = "<group>"; };
 		9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyQuestionSetViewController.swift; sourceTree = "<group>"; };
 		9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyQuestionSetViewController.xib; sourceTree = "<group>"; };
-		9D4A9C692BE8B200007BF06F /* StudyQuestionSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyQuestionSetCell.swift; sourceTree = "<group>"; };
-		9D4A9C6A2BE8B200007BF06F /* StudyQuestionSetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyQuestionSetCell.xib; sourceTree = "<group>"; };
 		9D5E8D8F2BCE60070095441C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		9D7B4E342BD8C16000DA34A4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyQuestionViewController.swift; sourceTree = "<group>"; };
+		9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyQuestionViewController.xib; sourceTree = "<group>"; };
+		9D7AEE772BF1AAF100DFA97E /* QuestionPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPhotoCell.swift; sourceTree = "<group>"; };
+		9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionPhotoCell.xib; sourceTree = "<group>"; };
+		9D7AEE812BF1EB2A00DFA97E /* SingleQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQuestionCell.swift; sourceTree = "<group>"; };
+		9D7AEE822BF1EB2A00DFA97E /* SingleQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleQuestionCell.xib; sourceTree = "<group>"; };
+		9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyDetailCell.xib; sourceTree = "<group>"; };
+		9D7B4E342BD8C16000DA34A4 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 		9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyViewController.xib; sourceTree = "<group>"; };
 		9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +122,8 @@
 		9D2EAF4F2BCC3790002B077C /* Exam-English */ = {
 			isa = PBXGroup;
 			children = (
+				9D4A9C6E2BEB7269007BF06F /* NetworkServices */,
+				9D4A9C6F2BEB7305007BF06F /* Constants */,
 				9DD0B38F2BD3ACC100F3E745 /* Common */,
 				9DD0B38A2BD3A77600F3E745 /* Fonts */,
 				9D2EAF662BCC37C8002B077C /* Controller */,
@@ -124,9 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8FC3422BE47F8E00FCEBF6 /* FruitModel.swift */,
-				9D8FC3432BE47F8E00FCEBF6 /* LoadData.swift */,
 				9D3C95532BD5D02C00F5190D /* TokenModel.swift */,
-				9D7B4E342BD8C16000DA34A4 /* APIService.swift */,
 				9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */,
 			);
 			path = Model;
@@ -145,12 +159,22 @@
 		9D2EAF662BCC37C8002B077C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9D8FC3352BE3774500FCEBF6 /* LoginViewController */,
-				9D8FC3362BE3776100FCEBF6 /* StudyViewController */,
-				9D4A9C562BE865AF007BF06F /* StudyDetailViewController */,
-				9D4A9C632BE899E0007BF06F /* StudyQuestionSetController */,
+				9D8FC3352BE3774500FCEBF6 /* Login */,
+				9D8FC3362BE3776100FCEBF6 /* Study */,
+				9D4A9C562BE865AF007BF06F /* StudyDetail */,
+				9D4A9C632BE899E0007BF06F /* StudyQuestionSet */,
+				9D4A9C6D2BEA0721007BF06F /* StudyQuestion */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D44A32C2BEDC7AA00D20521 /* StudyQuestionSetCell.swift */,
+				9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */,
+			);
+			path = StudyQuestionSetCell;
 			sourceTree = "<group>";
 		};
 		9D4A9C512BE8592B007BF06F /* HeaderStudySection */ = {
@@ -162,20 +186,20 @@
 			path = HeaderStudySection;
 			sourceTree = "<group>";
 		};
-		9D4A9C562BE865AF007BF06F /* StudyDetailViewController */ = {
+		9D4A9C562BE865AF007BF06F /* StudyDetail */ = {
 			isa = PBXGroup;
 			children = (
 				9D4A9C582BE86A35007BF06F /* StudyDetailViewController.swift */,
 				9D4A9C592BE86A35007BF06F /* StudyDetailViewController.xib */,
 			);
-			path = StudyDetailViewController;
+			path = StudyDetail;
 			sourceTree = "<group>";
 		};
 		9D4A9C5C2BE8742C007BF06F /* StudyDetailCell */ = {
 			isa = PBXGroup;
 			children = (
 				9D4A9C5F2BE874F2007BF06F /* StudyDetailCell.swift */,
-				9D4A9C602BE874F2007BF06F /* StudyDetailCell.xib */,
+				9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */,
 			);
 			path = StudyDetailCell;
 			sourceTree = "<group>";
@@ -185,7 +209,8 @@
 			children = (
 				9D8FC32F2BE373A800FCEBF6 /* StudyCell */,
 				9D4A9C5C2BE8742C007BF06F /* StudyDetailCell */,
-				9D4A9C682BE8B17B007BF06F /* StudyQuestionSetCell */,
+				9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */,
+				9D7AEE762BF1A81C00DFA97E /* StudyQuestionCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -198,22 +223,39 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		9D4A9C632BE899E0007BF06F /* StudyQuestionSetController */ = {
+		9D4A9C632BE899E0007BF06F /* StudyQuestionSet */ = {
 			isa = PBXGroup;
 			children = (
 				9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */,
 				9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */,
 			);
-			path = StudyQuestionSetController;
+			path = StudyQuestionSet;
 			sourceTree = "<group>";
 		};
-		9D4A9C682BE8B17B007BF06F /* StudyQuestionSetCell */ = {
+		9D4A9C6D2BEA0721007BF06F /* StudyQuestion */ = {
 			isa = PBXGroup;
 			children = (
-				9D4A9C692BE8B200007BF06F /* StudyQuestionSetCell.swift */,
-				9D4A9C6A2BE8B200007BF06F /* StudyQuestionSetCell.xib */,
+				9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */,
+				9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */,
 			);
-			path = StudyQuestionSetCell;
+			path = StudyQuestion;
+			sourceTree = "<group>";
+		};
+		9D4A9C6E2BEB7269007BF06F /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				9D7B4E342BD8C16000DA34A4 /* Authentication.swift */,
+				9D8FC3432BE47F8E00FCEBF6 /* LoadData.swift */,
+				9D44A3292BEDBFF800D20521 /* StudyService.swift */,
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		9D4A9C6F2BEB7305007BF06F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		9D5E8D8C2BCE31720095441C /* Supporting */ = {
@@ -235,6 +277,49 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		9D7AEE762BF1A81C00DFA97E /* StudyQuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D7AEE7E2BF1D0A100DFA97E /* ListQuestionWithTextCell */,
+				9D7AEE7D2BF1CFF500DFA97E /* ListQuestionWithPhotoCell */,
+				9D7AEE7C2BF1CE7900DFA97E /* SingleQuestionCell */,
+				9D7AEE7B2BF1CE6100DFA97E /* PhotoQuestionCell */,
+			);
+			path = StudyQuestionCell;
+			sourceTree = "<group>";
+		};
+		9D7AEE7B2BF1CE6100DFA97E /* PhotoQuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D7AEE772BF1AAF100DFA97E /* QuestionPhotoCell.swift */,
+				9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */,
+			);
+			path = PhotoQuestionCell;
+			sourceTree = "<group>";
+		};
+		9D7AEE7C2BF1CE7900DFA97E /* SingleQuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D7AEE812BF1EB2A00DFA97E /* SingleQuestionCell.swift */,
+				9D7AEE822BF1EB2A00DFA97E /* SingleQuestionCell.xib */,
+			);
+			path = SingleQuestionCell;
+			sourceTree = "<group>";
+		};
+		9D7AEE7D2BF1CFF500DFA97E /* ListQuestionWithPhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ListQuestionWithPhotoCell;
+			sourceTree = "<group>";
+		};
+		9D7AEE7E2BF1D0A100DFA97E /* ListQuestionWithTextCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ListQuestionWithTextCell;
+			sourceTree = "<group>";
+		};
 		9D8FC32F2BE373A800FCEBF6 /* StudyCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +329,7 @@
 			path = StudyCell;
 			sourceTree = "<group>";
 		};
-		9D8FC3352BE3774500FCEBF6 /* LoginViewController */ = {
+		9D8FC3352BE3774500FCEBF6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				9D2EAF702BCC44F7002B077C /* LoginViewController.swift */,
@@ -252,17 +337,17 @@
 				9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */,
 				9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */,
 			);
-			path = LoginViewController;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		9D8FC3362BE3776100FCEBF6 /* StudyViewController */ = {
+		9D8FC3362BE3776100FCEBF6 /* Study */ = {
 			isa = PBXGroup;
 			children = (
 				9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */,
 				9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */,
 				9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */,
 			);
-			path = StudyViewController;
+			path = Study;
 			sourceTree = "<group>";
 		};
 		9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */ = {
@@ -347,17 +432,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7AEE752BF1A6B200DFA97E /* StudyQuestionViewController.xib in Resources */,
 				9D8FC3462BE4823800FCEBF6 /* StudyViewController.xib in Resources */,
+				9D7AEE862BF3264F00DFA97E /* StudyDetailCell.xib in Resources */,
 				9DD0B38E2BD3A95500F3E745 /* Roboto in Resources */,
+				9D7AEE842BF1EB2A00DFA97E /* SingleQuestionCell.xib in Resources */,
 				9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */,
 				9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */,
-				9D4A9C622BE874F2007BF06F /* StudyDetailCell.xib in Resources */,
 				9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */,
 				9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */,
+				9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */,
 				9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */,
 				9D8FC33F2BE47F3C00FCEBF6 /* data.json in Resources */,
 				9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */,
-				9D4A9C6C2BE8B200007BF06F /* StudyQuestionSetCell.xib in Resources */,
+				9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */,
 				9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */,
 				9D4A9C552BE85975007BF06F /* HeaderStudySection.xib in Resources */,
 				9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */,
@@ -373,21 +461,25 @@
 			files = (
 				9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */,
 				9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */,
-				9D7B4E352BD8C16000DA34A4 /* APIService.swift in Sources */,
+				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
+				9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */,
+				9D7AEE832BF1EB2A00DFA97E /* SingleQuestionCell.swift in Sources */,
 				9D5E8D902BCE60070095441C /* CustomView.swift in Sources */,
 				9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */,
 				9D8FC3442BE47F8E00FCEBF6 /* FruitModel.swift in Sources */,
 				9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */,
 				9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */,
 				9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */,
+				9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */,
+				9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */,
 				9D4A9C542BE85975007BF06F /* HeaderStudySection.swift in Sources */,
+				9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */,
 				9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */,
 				9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */,
 				9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */,
 				9D3C95542BD5D02C00F5190D /* TokenModel.swift in Sources */,
 				9D2EAF532BCC3790002B077C /* SceneDelegate.swift in Sources */,
-				9D4A9C6B2BE8B200007BF06F /* StudyQuestionSetCell.swift in Sources */,
 				9D8FC3452BE47F8E00FCEBF6 /* LoadData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
