@@ -68,7 +68,6 @@
         }
     }
 
-
     struct StudyCategory {
         let categoryID: Int
         let categoryName: String

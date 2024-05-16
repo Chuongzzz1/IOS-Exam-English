@@ -21,6 +21,11 @@ class StudyViewSection: UICollectionViewCell {
             collectionView.reloadData()
         }
     }
+    var subjects = [StudyCategory]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     weak var delegate: StudyViewSectionDelegate?
 }
 

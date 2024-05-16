@@ -45,12 +45,12 @@ class CustomView {
     // MARK: - Item
     func customItemSubject(_ nameItem: UIView) {
         nameItem.layer.cornerRadius = 8.0
-        nameItem.layer.backgroundColor = UIColor.systemRed.cgColor
+        nameItem.layer.backgroundColor = UIColor.systemGreen.cgColor
 //        nameItem.layer.masksToBounds = true
     }
     
     func customItemCategory(_ nameItem: UIView) {
         nameItem.layer.cornerRadius = 10.0
-        nameItem.layer.backgroundColor = UIColor.systemRed.cgColor
+        nameItem.layer.backgroundColor = UIColor.systemGreen.cgColor
     }
 }

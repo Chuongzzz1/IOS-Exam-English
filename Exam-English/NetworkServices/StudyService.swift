@@ -51,8 +51,8 @@ class StudyService {
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         let task = URLSession.shared.dataTask(with: request) { data, reponse, error in
-            if error != nil {
-                print("debug error: category")
+            if let error = error {
+                print("There was an error: \(error.localizedDescription)")
                 return
             }
             

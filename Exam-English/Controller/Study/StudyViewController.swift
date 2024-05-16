@@ -18,6 +18,7 @@ class StudyViewController: UIViewController, StudyViewSectionDelegate {
     
     // MARK: - Variable
     private var subjects = [StudySubject]()
+    private var subjectCategoriesDict = [Int: [StudyCategory]]()
     private var categories = [StudyCategory]()
     private let studyService = StudyService.shared
 }
@@ -27,35 +28,7 @@ extension StudyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        StudyService.shared.fetchSubject { [weak self] result in
-            switch result {
-            case .success(let subjectResponse):
-                if let subjects = subjectResponse.result {
-                    DispatchQueue.main.async {
-                        self?.subjects = subjects
-                        self?.collectionView.reloadData()
-                    }
-                    for subject in subjects {
-                        StudyService.shared.fetchCategory(for: subject.subjectID) { categoryResult in
-                            switch categoryResult {
-                            case .success(let categoryResponse):
-                                if let categories = categoryResponse.result {
-                                    DispatchQueue.main.async {
-                                        self?.categories.append(contentsOf: categories)
-                                        self?.collectionView.reloadData()
-//                                        print("Danh sách danh mục cho môn \(subject.subjectName):", self?.categories ?? "Không có dữ liệu")
-                                    }
-                                }
-                            case .failure(let error):
-                                print("Error get data category", error)
-                            }
-                        }
-                    }
-                }
-            case .failure(let error):
-                print("Error when retrieving subject data", error)
-            }
-        }
+        handleAPI()
     }
 }
 
@@ -66,14 +39,25 @@ extension StudyViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        let subject = subjects[section]
+        if let categories = subjectCategoriesDict[subject.subjectID] {
+            return categories.count // Add 1 for the subject cell
+        } else {
+            return 1 // Only the subject cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyViewSection", for: indexPath) as! StudyViewSection
-        
-        cell.categories = self.categories
-        cell.delegate = self
+        let subject = subjects[indexPath.section] // Lấy môn học ứng với section
+        if let categories = subjectCategoriesDict[subject.subjectID] {
+            // Truyền danh mục tương ứng với môn học vào cell
+            cell.categories = categories
+        } else {
+            // Nếu không có danh mục nào cho môn học này, gán một mảng rỗng cho thuộc tính categories của cell
+            cell.categories = []
+        }
+                cell.delegate = self
         return cell
     }
     
@@ -144,25 +128,56 @@ extension StudyViewController {
     }
     
     func setupNavigation() {
-        let studyViewController = StudyViewController()
-        let navigationController = UINavigationController(rootViewController: studyViewController)
+//        let studyViewController = StudyViewController()
+//        let navigationController = UINavigationController(rootViewController: studyViewController)
 //        present(navigationController, animated: true, completion: nil)
         let studyViewSection = StudyViewSection()
         studyViewSection.delegate = self
     }
     
-    func updateCollectionView(with categoryDict: [Int: [StudyCategory]]) {
-        // Đảm bảo rằng subjects và categories đã được cập nhật trong fetchSubject
-        // Dựa trên categoryDict, cập nhật categories cho mỗi môn học
-        for subject in subjects {
-            if let categories = categoryDict[subject.subjectID] {
-                // Lọc các danh mục tương ứng với mỗi môn học
-                let filteredCategories = categories.filter { $0.subjectID == subject.subjectID }
-                // Cập nhật danh mục cho môn học
-                
+    func handleAPI() {
+        StudyService.shared.fetchSubject { [weak self] result in
+            switch result {
+            case .success(let subjectResponse):
+                if let subjects = subjectResponse.result {
+                    DispatchQueue.main.async {
+                        self?.subjects = subjects
+                        self?.collectionView.reloadData()
+                    }
+                    for subject in subjects {
+                        StudyService.shared.fetchCategory(for: subject.subjectID) { categoryResult in
+                            switch categoryResult {
+                            case .success(let categoryResponse):
+                                if let categories = categoryResponse.result {
+                                    DispatchQueue.main.async {
+//                                        self?.categories.append(contentsOf: categories)
+                                        self?.subjectCategoriesDict[subject.subjectID] = categories
+                                        self?.collectionView.reloadData()
+                                    }
+                                }
+                            case .failure(let error):
+                                print("Error get data category", error)
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("Error when retrieving subject data", error)
             }
         }
-        // Cập nhật collectionView sau khi đã cập nhật danh mục cho mỗi môn học
-        collectionView.reloadData()
     }
+    //    func updateCollectionView(with categoryDict: [Int: [StudyCategory]]) {
+//        // Đảm bảo rằng subjects và categories đã được cập nhật trong fetchSubject
+//        // Dựa trên categoryDict, cập nhật categories cho mỗi môn học
+//        for subject in subjects {
+//            if let categories = categoryDict[subject.subjectID] {
+//                // Lọc các danh mục tương ứng với mỗi môn học
+//                let filteredCategories = categories.filter { $0.subjectID == subject.subjectID }
+//                // Cập nhật danh mục cho môn học
+//                
+//            }
+//        }
+//        // Cập nhật collectionView sau khi đã cập nhật danh mục cho mỗi môn học
+//        collectionView.reloadData()
+//    }
 }
