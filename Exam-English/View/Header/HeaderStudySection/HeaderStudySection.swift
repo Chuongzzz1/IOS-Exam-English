@@ -18,3 +18,10 @@ extension HeaderStudySection {
         super.awakeFromNib()
     }
 }
+
+//MARK: - Func
+extension HeaderStudySection {
+    func updatesView(study: StudySubject) {
+        nameSectionLabel.text = study.subjectName
+    }
+}

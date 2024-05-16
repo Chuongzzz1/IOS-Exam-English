@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwG-uZ-7PA" userLabel="Backgound">
                                 <rect key="frame" x="0.0" y="0.0" width="174" height="165"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-OA-0pG">
-                                        <rect key="frame" x="70.666666666666671" y="72.333333333333329" width="33" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-OA-0pG">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="165"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -33,8 +33,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
-                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="centerX" secondItem="PwG-uZ-7PA" secondAttribute="centerX" id="aFO-2c-zDA"/>
-                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="centerY" secondItem="PwG-uZ-7PA" secondAttribute="centerY" id="vGg-02-kVY"/>
+                                    <constraint firstAttribute="bottom" secondItem="gJQ-OA-0pG" secondAttribute="bottom" id="8o5-Ef-7eh"/>
+                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="leading" secondItem="PwG-uZ-7PA" secondAttribute="leading" id="CTE-Wx-Lyu"/>
+                                    <constraint firstAttribute="trailing" secondItem="gJQ-OA-0pG" secondAttribute="trailing" id="Kvk-WJ-Wb2"/>
+                                    <constraint firstItem="gJQ-OA-0pG" firstAttribute="top" secondItem="PwG-uZ-7PA" secondAttribute="top" id="SkO-Sp-Vwg"/>
                                 </constraints>
                             </view>
                         </subviews>

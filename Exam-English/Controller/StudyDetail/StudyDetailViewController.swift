@@ -49,11 +49,8 @@ extension StudyDetailViewController: UITableViewDataSource {
 extension StudyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let studyVC = StudyQuestionSetViewController(nibName: "StudyQuestionSetViewController", bundle: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(studyVC, animated: true)
-    
     }
-    
 }
 
 // MARK: - Func

@@ -17,8 +17,9 @@ class StudyViewController: UIViewController, StudyViewSectionDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    private var fruits = [FruitModel]()
-    private let sturyService = StudyService.shared
+    private var subjects = [StudySubject]()
+    private var categories = [StudyCategory]()
+    private let studyService = StudyService.shared
 }
 
 // MARK: - Life Cycle
@@ -26,37 +27,42 @@ extension StudyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        fruits = LoadData.share.loadData() ?? [FruitModel]()
-        StudyService.shared.fetchSubject { result in
+        StudyService.shared.fetchSubject { [weak self] result in
             switch result {
             case .success(let subjectResponse):
-                // Xử lý dữ liệu môn học ở đây
-                print("Danh sách môn học:", subjectResponse.result ?? "Không có dữ liệu")
-                
-                // Lặp qua từng môn học để lấy danh mục tương ứng
                 if let subjects = subjectResponse.result {
+                    DispatchQueue.main.async {
+                        self?.subjects = subjects
+                        self?.collectionView.reloadData()
+                    }
                     for subject in subjects {
                         StudyService.shared.fetchCategory(for: subject.subjectID) { categoryResult in
                             switch categoryResult {
                             case .success(let categoryResponse):
-                                // Xử lý dữ liệu danh mục ở đây
-                                print("Danh sách danh mục cho môn \(subject.subjectName):", categoryResponse.result ?? "Không có dữ liệu")
+                                if let categories = categoryResponse.result {
+                                    DispatchQueue.main.async {
+                                        self?.categories.append(contentsOf: categories)
+                                        self?.collectionView.reloadData()
+//                                        print("Danh sách danh mục cho môn \(subject.subjectName):", self?.categories ?? "Không có dữ liệu")
+                                    }
+                                }
                             case .failure(let error):
-                                print("Lỗi khi lấy danh mục cho môn \(subject.subjectName):", error)
+                                print("Error get data category", error)
                             }
                         }
                     }
                 }
             case .failure(let error):
-                print("Lỗi khi lấy dữ liệu môn học:", error)
+                print("Error when retrieving subject data", error)
             }
-        }    }
+        }
+    }
 }
 
 // MARK: - DataSource
 extension StudyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return subjects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,6 +71,8 @@ extension StudyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyViewSection", for: indexPath) as! StudyViewSection
+        
+        cell.categories = self.categories
         cell.delegate = self
         return cell
     }
@@ -74,6 +82,8 @@ extension StudyViewController: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         let headerSectionView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderStudySection", for: indexPath) as! HeaderStudySection
+        let subject = subjects[indexPath.section]
+        headerSectionView.updatesView(study: subject)
         return headerSectionView
     }
 }
@@ -83,7 +93,7 @@ extension StudyViewController: UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudyDetailViewController") as? StudyDetailViewController {
 //                    navigationController?.pushViewController(vc, animated: true)
-//                }   
+//                }
 //    }
 //}
 
@@ -139,5 +149,20 @@ extension StudyViewController {
 //        present(navigationController, animated: true, completion: nil)
         let studyViewSection = StudyViewSection()
         studyViewSection.delegate = self
+    }
+    
+    func updateCollectionView(with categoryDict: [Int: [StudyCategory]]) {
+        // Đảm bảo rằng subjects và categories đã được cập nhật trong fetchSubject
+        // Dựa trên categoryDict, cập nhật categories cho mỗi môn học
+        for subject in subjects {
+            if let categories = categoryDict[subject.subjectID] {
+                // Lọc các danh mục tương ứng với mỗi môn học
+                let filteredCategories = categories.filter { $0.subjectID == subject.subjectID }
+                // Cập nhật danh mục cho môn học
+                
+            }
+        }
+        // Cập nhật collectionView sau khi đã cập nhật danh mục cho mỗi môn học
+        collectionView.reloadData()
     }
 }

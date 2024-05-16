@@ -54,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="TZs-T8-jlL" id="zJu-Y4-gYR"/>
+                <outlet property="subView" destination="M0Z-SL-xVb" id="bLR-XH-SXd"/>
                 <outlet property="titleLabel" destination="GU5-Xv-h2D" id="aWs-yU-552"/>
             </connections>
             <point key="canvasLocation" x="-70.992366412213741" y="52.464788732394368"/>

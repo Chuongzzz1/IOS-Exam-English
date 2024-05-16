@@ -49,4 +49,8 @@ class CustomView {
 //        nameItem.layer.masksToBounds = true
     }
     
+    func customItemCategory(_ nameItem: UIView) {
+        nameItem.layer.cornerRadius = 10.0
+        nameItem.layer.backgroundColor = UIColor.systemRed.cgColor
+    }
 }

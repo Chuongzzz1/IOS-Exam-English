@@ -16,7 +16,11 @@ class StudyViewSection: UICollectionViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    private var fruits = [FruitModel]()
+    var categories = [StudyCategory]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     weak var delegate: StudyViewSectionDelegate?
 }
 
@@ -25,20 +29,19 @@ extension StudyViewSection {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
-        fruits = LoadData.share.loadData() ?? [FruitModel]()
     }
 }
 
 // MARK: - DataSource
 extension StudyViewSection: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fruits.count
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyViewCell", for: indexPath) as? StudyViewCell {
-            let studyCates = fruits[indexPath.item]
-            cell.updatesView(study: studyCates)
+            let studyCategories = categories[indexPath.item]
+            cell.updatesView(study: studyCategories)
             return cell
         } else {
             return StudyViewCell()

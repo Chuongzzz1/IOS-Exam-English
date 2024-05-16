@@ -25,8 +25,8 @@ extension StudyViewCell {
 
 // MARK: - Func
 extension StudyViewCell {
-    func updatesView(study: FruitModel) {
-        titleLabel.text = study.nameFruit
+    func updatesView(study: StudyCategory) {
+        titleLabel.text = study.categoryName
     }
     
     func customIem() {
