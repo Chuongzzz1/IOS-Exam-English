@@ -30,9 +30,9 @@ extension StudyDetailCell {
 
 // MARK: - Func
 extension StudyDetailCell {
-    func updatesView(category: FruitModel) {
-        titleLabel.text = category.nameFruit
-        descriptionLabel.text = category.description
+    func updatesView(mainSection: StudyMainSection) {
+        titleLabel.text = mainSection.mainSectionName
+        descriptionLabel.text = mainSection.mainSectionName
     }
     
     func customIem() {

@@ -8,8 +8,9 @@
 import UIKit
 
 class StudyViewController: UIViewController, StudyViewSectionDelegate {
-    func didSelectItem() {
+    func didSelectItem(mainSections: [StudyMainSection]) {
              let studyVC = StudyDetailViewController(nibName: "StudyDetailViewController", bundle: nil)
+             studyVC.mainSections = mainSections
              self.navigationController?.pushViewController(studyVC, animated: true)
         }
     
@@ -18,8 +19,10 @@ class StudyViewController: UIViewController, StudyViewSectionDelegate {
     
     // MARK: - Variable
     private var subjects = [StudySubject]()
-    private var subjectCategoriesDict = [Int: [StudyCategory]]()
     private var categories = [StudyCategory]()
+    private var categorieDict = [Int: [StudyCategory]]()
+    private var mainSections = [StudyMainSection]()
+    private var mainSectionDict = [Int : [StudyMainSection]]()
     private let studyService = StudyService.shared
 }
 
@@ -28,7 +31,6 @@ extension StudyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        handleAPI()
     }
 }
 
@@ -40,7 +42,7 @@ extension StudyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let subject = subjects[section]
-        if let categories = subjectCategoriesDict[subject.subjectID] {
+        if let categories = categorieDict[subject.subjectID] {
             return categories.count // Add 1 for the subject cell
         } else {
             return 1 // Only the subject cell
@@ -49,15 +51,20 @@ extension StudyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StudyViewSection", for: indexPath) as! StudyViewSection
-        let subject = subjects[indexPath.section] // Lấy môn học ứng với section
-        if let categories = subjectCategoriesDict[subject.subjectID] {
-            // Truyền danh mục tương ứng với môn học vào cell
+        let subject = subjects[indexPath.section]
+        if let categories = categorieDict[subject.subjectID] {
             cell.categories = categories
+            var mainSectionDictForCell = [Int: [StudyMainSection]]()
+            for category in categories {
+                if let mainSections = mainSectionDict[category.categoryID] {
+                    mainSectionDictForCell[category.categoryID] = mainSections
+                }
+            }
+            cell.mainSectionDict = mainSectionDictForCell
         } else {
-            // Nếu không có danh mục nào cho môn học này, gán một mảng rỗng cho thuộc tính categories của cell
             cell.categories = []
         }
-                cell.delegate = self
+            cell.delegate = self
         return cell
     }
     
@@ -120,6 +127,8 @@ extension StudyViewController {
         registerHeaderSection()
         hideScrollBar()
         setupNavigation()
+        handleSubjectCategory()
+//        handleMainSection()
     }
     
     func hideScrollBar() {
@@ -135,8 +144,8 @@ extension StudyViewController {
         studyViewSection.delegate = self
     }
     
-    func handleAPI() {
-        StudyService.shared.fetchSubject { [weak self] result in
+    func handleSubjectCategory() {
+        studyService.fetchSubject { [weak self] result in
             switch result {
             case .success(let subjectResponse):
                 if let subjects = subjectResponse.result {
@@ -144,21 +153,27 @@ extension StudyViewController {
                         self?.subjects = subjects
                         self?.collectionView.reloadData()
                     }
+                    let dispatchGroup = DispatchGroup()
                     for subject in subjects {
-                        StudyService.shared.fetchCategory(for: subject.subjectID) { categoryResult in
+                        dispatchGroup.enter()
+                        StudyService.shared.fetchCategory(for: subject.subjectID) { [weak self] categoryResult in
                             switch categoryResult {
                             case .success(let categoryResponse):
                                 if let categories = categoryResponse.result {
                                     DispatchQueue.main.async {
-//                                        self?.categories.append(contentsOf: categories)
-                                        self?.subjectCategoriesDict[subject.subjectID] = categories
+                                        self?.categories.append(contentsOf: categories)
+                                        self?.categorieDict[subject.subjectID] = categories
                                         self?.collectionView.reloadData()
                                     }
                                 }
                             case .failure(let error):
                                 print("Error get data category", error)
                             }
+                            dispatchGroup.leave()
                         }
+                    }
+                    dispatchGroup.notify(queue: .main) {
+                        self?.handleMainSection()
                     }
                 }
             case .failure(let error):
@@ -166,18 +181,27 @@ extension StudyViewController {
             }
         }
     }
-    //    func updateCollectionView(with categoryDict: [Int: [StudyCategory]]) {
-//        // Đảm bảo rằng subjects và categories đã được cập nhật trong fetchSubject
-//        // Dựa trên categoryDict, cập nhật categories cho mỗi môn học
-//        for subject in subjects {
-//            if let categories = categoryDict[subject.subjectID] {
-//                // Lọc các danh mục tương ứng với mỗi môn học
-//                let filteredCategories = categories.filter { $0.subjectID == subject.subjectID }
-//                // Cập nhật danh mục cho môn học
-//                
-//            }
-//        }
-//        // Cập nhật collectionView sau khi đã cập nhật danh mục cho mỗi môn học
-//        collectionView.reloadData()
-//    }
+    
+    func handleMainSection() {
+        guard !categories.isEmpty else {
+            print("Categories array is empty.")
+            return
+        }
+        for category in categories {
+            StudyService.shared.fetchMainSection(for: category.categoryID) { [weak self] mainSectionResult in
+                switch mainSectionResult {
+                case .success(let mainSectionResult):
+                    if let mainSections = mainSectionResult.result {
+                        DispatchQueue.main.async {
+                            self?.mainSections.append(contentsOf: mainSections)
+                            self?.mainSectionDict[category.categoryID] = mainSections
+                            self?.collectionView.reloadData()
+                        }
+                    }
+                case .failure(let error):
+                    print("Error get data category", error)
+                }
+            }
+        }
+    }
 }

@@ -12,14 +12,12 @@ class StudyDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
 // MARK: - Variable
-    var fruits = [FruitModel]()
-
+    var mainSections = [StudyMainSection]()
 }
  // MARK: Life Cycle
 extension StudyDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        fruits = LoadData.share.loadData() ?? [FruitModel]()
         setupStudyDetailView()
     }
 }
@@ -27,13 +25,13 @@ extension StudyDetailViewController {
 // MARK: - DataSource
 extension StudyDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fruits.count
+        return mainSections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "StudyDetailCell", for: indexPath) as? StudyDetailCell {
-            let category = fruits[indexPath.row]
-            cell.updatesView(category: category)
+            let mainSection = mainSections[indexPath.row]
+            cell.updatesView(mainSection: mainSection)
             return cell
         } else {
             return StudyDetailCell()

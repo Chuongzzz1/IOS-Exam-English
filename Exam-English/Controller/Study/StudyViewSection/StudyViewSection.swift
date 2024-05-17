@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StudyViewSectionDelegate: AnyObject {
-    func didSelectItem()
+    func didSelectItem(mainSections: [StudyMainSection])
 }
 
 class StudyViewSection: UICollectionViewCell {
@@ -21,11 +21,7 @@ class StudyViewSection: UICollectionViewCell {
             collectionView.reloadData()
         }
     }
-    var subjects = [StudyCategory]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var mainSectionDict = [Int: [StudyMainSection]]()
     weak var delegate: StudyViewSectionDelegate?
 }
 
@@ -57,8 +53,13 @@ extension StudyViewSection: UICollectionViewDataSource {
 // MARK: - Delegate
 extension StudyViewSection: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectItem()
+        let categoryID = categories[indexPath.row].categoryID
+        if let mainSections = mainSectionDict[categoryID] {
+            delegate?.didSelectItem(mainSections: mainSections)
+        } else {
+            delegate?.didSelectItem(mainSections: [])
         }
+    }
 }
 
 // MARK: - FlowLayout Delegate
@@ -103,4 +104,6 @@ extension StudyViewSection {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
     }
+    
+
 }
