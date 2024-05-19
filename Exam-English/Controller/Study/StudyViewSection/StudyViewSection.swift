@@ -9,6 +9,7 @@ import UIKit
 
 protocol StudyViewSectionDelegate: AnyObject {
     func didSelectItem(mainSections: [StudyMainSection])
+    func handleMainSection(categoryID: Int)
 }
 
 class StudyViewSection: UICollectionViewCell {
@@ -21,7 +22,8 @@ class StudyViewSection: UICollectionViewCell {
             collectionView.reloadData()
         }
     }
-    var mainSectionDict = [Int: [StudyMainSection]]()
+//    var mainSectionDict = [Int: [StudyMainSection]]()
+//    var mainSections = [StudyMainSection]()
     weak var delegate: StudyViewSectionDelegate?
 }
 
@@ -54,11 +56,8 @@ extension StudyViewSection: UICollectionViewDataSource {
 extension StudyViewSection: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let categoryID = categories[indexPath.row].categoryID
-        if let mainSections = mainSectionDict[categoryID] {
-            delegate?.didSelectItem(mainSections: mainSections)
-        } else {
-            delegate?.didSelectItem(mainSections: [])
-        }
+//        delegate?.didSelectItem(mainSections: mainSectionDict[categoryID] ?? [])
+        delegate?.handleMainSection(categoryID: categoryID)
     }
 }
 

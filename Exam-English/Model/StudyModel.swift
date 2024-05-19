@@ -110,13 +110,13 @@ struct StudySubSectionResponse {
         message = dictionary["message"] as? String ?? ""
         if let value = dictionary["result"] as? [[String: Any]] {
             var subSections: [StudySubSection] = []
-            for subSectionsDict in value {
-                let studySubSection = StudySubSection(dictionary: subSectionsDict)
+            for subSectionDict in value {
+                let studySubSection = StudySubSection(dictionary: subSectionDict)
                 subSections.append(studySubSection)
             }
             self.result = subSections
         } else {
-            self.result = nil
+            self.result = []
         }
     }
 }
@@ -126,7 +126,7 @@ struct StudySubSection {
     let subSectionName: String
     let mainSectionID: Int
     init(dictionary: [String: Any]) {
-        self.subSectionID = dictionary["SubSectionID"] as? Int ?? 0
+        self.subSectionID = dictionary["SubSectionId"] as? Int ?? 0
         self.subSectionName = dictionary["SubSectionName"] as? String ?? ""
         self.mainSectionID = dictionary["MainSectionId"] as? Int ?? 0
         

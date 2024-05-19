@@ -13,6 +13,7 @@ class StudyDetailViewController: UIViewController {
     
 // MARK: - Variable
     var mainSections = [StudyMainSection]()
+    var subSections = [StudySubSection]()
 }
  // MARK: Life Cycle
 extension StudyDetailViewController {
@@ -46,8 +47,8 @@ extension StudyDetailViewController: UITableViewDataSource {
 // MARK: - Delegate
 extension StudyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let studyVC = StudyQuestionSetViewController(nibName: "StudyQuestionSetViewController", bundle: nil)
-        self.navigationController?.pushViewController(studyVC, animated: true)
+        let mainSection = mainSections[indexPath.row]
+        handleSubSection(subSectionID: mainSection.mainSectionID)
     }
 }
 
@@ -63,5 +64,32 @@ extension StudyDetailViewController {
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func navigateToStudyQuestionSetViewController() {
+        let studyDetailVC = StudyQuestionSetViewController(nibName: "StudyQuestionSetViewController", bundle: nil)
+        studyDetailVC.subSections = self.subSections
+        self.navigationController?.pushViewController(studyDetailVC, animated: true)
+    }
+}
+
+// MARK: - Handle API
+extension StudyDetailViewController {
+    func handleSubSection(subSectionID: Int) {
+        print("Fetching sub sections for mainSectionID: \(subSectionID)")
+        StudyService.shared.fetchSubSection(for: subSectionID) { [weak self] result in
+            switch result {
+            case .success(let studySubSectionResponse):
+                if let subSections = studySubSectionResponse.result {
+                    DispatchQueue.main.async {
+//                        self?.subSections.append(contentsOf: subSections)
+                        self?.subSections = subSections
+                        self?.navigateToStudyQuestionSetViewController()
+                    }
+                }
+            case .failure(let error):
+                print("Failed to fetch sub sections: \(error.localizedDescription)")
+            }
+        }
     }
 }

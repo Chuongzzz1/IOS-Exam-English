@@ -21,7 +21,7 @@ extension StudyQuestionSetCell {
 
 // MARK: - Func
 extension StudyQuestionSetCell {
-    func updatesView(category: FruitModel) {
-        titleLabel.text = category.nameFruit
+    func updatesView(subSection: StudySubSection) {
+        titleLabel.text = subSection.subSectionName
     }
 }

@@ -8,6 +8,24 @@
 import UIKit
 
 class StudyViewController: UIViewController, StudyViewSectionDelegate {
+    func handleMainSection(categoryID: Int) {
+        StudyService.shared.fetchMainSection(for: categoryID) { [weak self] mainSectionResult in
+            switch mainSectionResult {
+            case .success(let mainSectionResult):
+                if let mainSections = mainSectionResult.result {
+                    DispatchQueue.main.async {
+//                        self?.mainSections.append(contentsOf: mainSections)
+                        self?.mainSections = mainSections
+//                        self?.mainSectionDict[categoryID] = mainSections
+                        self?.collectionView.reloadData()
+                        self?.didSelectItem(mainSections: mainSections)                    }
+                }
+            case .failure(let error):
+                print("Error fetching main section:", error)
+            }
+        }
+    }
+
     func didSelectItem(mainSections: [StudyMainSection]) {
              let studyVC = StudyDetailViewController(nibName: "StudyDetailViewController", bundle: nil)
              studyVC.mainSections = mainSections
@@ -43,9 +61,9 @@ extension StudyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let subject = subjects[section]
         if let categories = categorieDict[subject.subjectID] {
-            return categories.count // Add 1 for the subject cell
+            return categories.count
         } else {
-            return 1 // Only the subject cell
+            return 1
         }
     }
     
@@ -54,13 +72,13 @@ extension StudyViewController: UICollectionViewDataSource {
         let subject = subjects[indexPath.section]
         if let categories = categorieDict[subject.subjectID] {
             cell.categories = categories
-            var mainSectionDictForCell = [Int: [StudyMainSection]]()
-            for category in categories {
-                if let mainSections = mainSectionDict[category.categoryID] {
-                    mainSectionDictForCell[category.categoryID] = mainSections
-                }
-            }
-            cell.mainSectionDict = mainSectionDictForCell
+//            var mainSectionDictForCell = [Int: [StudyMainSection]]()
+//            for category in categories {
+//                if let mainSections = mainSectionDict[category.categoryID] {
+//                    mainSectionDictForCell[category.categoryID] = mainSections
+//                }
+//            }
+//            cell.mainSectionDict = mainSectionDictForCell
         } else {
             cell.categories = []
         }
@@ -161,7 +179,8 @@ extension StudyViewController {
                             case .success(let categoryResponse):
                                 if let categories = categoryResponse.result {
                                     DispatchQueue.main.async {
-                                        self?.categories.append(contentsOf: categories)
+//                                        self?.categories.append(contentsOf: categories)
+                                        self?.categories = categories
                                         self?.categorieDict[subject.subjectID] = categories
                                         self?.collectionView.reloadData()
                                     }
@@ -172,35 +191,9 @@ extension StudyViewController {
                             dispatchGroup.leave()
                         }
                     }
-                    dispatchGroup.notify(queue: .main) {
-                        self?.handleMainSection()
-                    }
                 }
             case .failure(let error):
                 print("Error when retrieving subject data", error)
-            }
-        }
-    }
-    
-    func handleMainSection() {
-        guard !categories.isEmpty else {
-            print("Categories array is empty.")
-            return
-        }
-        for category in categories {
-            StudyService.shared.fetchMainSection(for: category.categoryID) { [weak self] mainSectionResult in
-                switch mainSectionResult {
-                case .success(let mainSectionResult):
-                    if let mainSections = mainSectionResult.result {
-                        DispatchQueue.main.async {
-                            self?.mainSections.append(contentsOf: mainSections)
-                            self?.mainSectionDict[category.categoryID] = mainSections
-                            self?.collectionView.reloadData()
-                        }
-                    }
-                case .failure(let error):
-                    print("Error get data category", error)
-                }
             }
         }
     }
