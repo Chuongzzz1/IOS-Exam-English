@@ -1,19 +1,18 @@
 //
-//  QuestionPhotoCell.swift
+//  ListQuestionWithTextCell.swift
 //  Exam-English
 //
-//  Created by Trần Văn Chương on 13/05/2024.
+//  Created by Trần Văn Chương on 24/05/2024.
 //
 
 import UIKit
-protocol QuestionPhotoCellDelegate: AnyObject {
+protocol ListQuestionWithTextCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
 }
-
-class QuestionPhotoCell: UICollectionViewCell {
-// MARK: - Outlet
-    @IBOutlet weak var imageQuestionView: UIImageView!
+class ListQuestionWithTextCell: UICollectionViewCell {
+    // MARK: - Outlet
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerAButton: UIButton!
     @IBOutlet weak var answerALabel: UILabel!
     @IBOutlet weak var answerAImage: UIImageView!
@@ -26,33 +25,27 @@ class QuestionPhotoCell: UICollectionViewCell {
     @IBOutlet weak var answerDButton: UIButton!
     @IBOutlet weak var answerDLabel: UILabel!
     @IBOutlet weak var answerDImage: UIImageView!
-    @IBOutlet weak var timeRunLabel: UILabel!
-    @IBOutlet weak var audioSlider: UISlider!
-    @IBOutlet weak var timeRemainLabel: UILabel!
-    @IBOutlet weak var pauseResumeImage: UIImageView!
-    @IBOutlet weak var pauseResumeButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
-    private var isPaused: Bool = true
     private var correctAnswer: Int = -1
-    weak var delegate: QuestionPhotoCellDelegate?
+    weak var delegate: ListQuestionWithTextCellDelegate?
 }
 
 // MARK: - Awake
-extension QuestionPhotoCell {
+extension ListQuestionWithTextCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
 }
+
 // MARK: - Action
-extension QuestionPhotoCell {
-    @IBAction func answerButtonTapped(_ sender: UIButton) {
+extension ListQuestionWithTextCell {
+    @IBAction func answerButtonTapped(_ sender: UIButton) { 
         updateAnswerButtonStates(selectedButton: sender)
         let selectedAnswerIndex = answerButtons.firstIndex(of: sender) ?? -1
         if selectedAnswerIndex == correctAnswer {
@@ -62,10 +55,6 @@ extension QuestionPhotoCell {
         }
     }
     
-    @IBAction func pauseResumeButtonTapped(_ sender: UIButton) {
-        togglePauseResume()
-    }
-    
     @objc func scrollPrevious(_ sender: UIButton) {
         delegate?.handleScrollPrevious(sender: sender)
     }
@@ -73,11 +62,13 @@ extension QuestionPhotoCell {
     @objc func scrollNext(_ sender: UIButton) {
         delegate?.handleScrollNext(sender: sender)
     }
+
 }
 
 // MARK: - Func
-extension QuestionPhotoCell {
+extension ListQuestionWithTextCell {
     func configure(with question: StudyQuestion) {
+        questionLabel.attributedText = question.normalQuestionContent.htmlToAttributedString
         answerALabel.text = question.subAnswers?[0].answerContent
         answerBLabel.text = question.subAnswers?[1].answerContent
         answerCLabel.text = question.subAnswers?[2].answerContent
@@ -90,7 +81,7 @@ extension QuestionPhotoCell {
             }
         }
     }
-    
+
     func updateAnswerButtonStates(selectedButton: UIButton) {
         for (index, button) in answerButtons.enumerated() {
             if button == selectedButton {
@@ -110,12 +101,6 @@ extension QuestionPhotoCell {
         }
     }
     
-    func togglePauseResume() {
-        isPaused.toggle()
-        let imageName = isPaused ? "pause" : "resume"
-        pauseResumeImage.image = UIImage(named: imageName)
-    }
-    
     func handleScroll() {
         leftButton.addTarget(self, action: #selector(scrollPrevious(_:)), for: .touchUpInside)
         rightButton.addTarget(self, action: #selector(scrollNext(_:)), for: .touchUpInside)
@@ -126,3 +111,20 @@ extension QuestionPhotoCell {
         handleScroll()
     }
 }
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return nil
+        }
+    }
+    
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+}
+

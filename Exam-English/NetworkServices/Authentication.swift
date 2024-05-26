@@ -26,8 +26,8 @@ class Authentication {
     private init() {}
 
     func postLogin(username: String, password: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = URL(string: "http://172.16.75.32:8080/auth/token") else {
-            completion(.failure(NSError(domain: "URL không hợp lệ", code: 0, userInfo: nil)))
+        guard let url = URL(string: Constants.API.Endpoints.loginURL) else {
+            completion(.failure(NSError(domain: Constants.Messages.invalidURL, code: 0, userInfo: nil)))
             return
         }
         let loginData = LoginData(username: username, password: password)
@@ -51,22 +51,19 @@ class Authentication {
             }
             
             guard let data = data else {
-                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                completion(.failure(NSError(domain: Constants.Messages.noData, code: 0, userInfo: nil)))
                 return
             }
             
             do {
                 let responseObject = try JSONDecoder().decode(AccessTokenResponse.self, from: data)
                 if responseObject.code == 1000 {
-                    // Xử lý đăng nhập thành công
                     completion(.success(data))
                 } else {
-                    // Xử lý đăng nhập thất bại với mã lỗi từ API
                     let errorMessage = "Login failed with error code: \(responseObject.code)"
                     completion(.failure(NSError(domain: "Login Error", code: responseObject.code, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
                 }
             } catch {
-                // Xử lý lỗi khi giải mã dữ liệu phản hồi từ API
                 completion(.failure(error))
             }
         }
@@ -74,7 +71,7 @@ class Authentication {
     }
     
     func postLogout(navigationController: UINavigationController?, accessToken: String) {
-        guard let url = URL(string: "http://172.16.75.32:8080/auth/logout") else {
+        guard let url = URL(string: Constants.API.Endpoints.logoutURL) else {
             return
         }
         
@@ -115,7 +112,7 @@ class Authentication {
     }
     
     func checkAccessTokenValidity(accessToken: String, completion: @escaping (TokenValidity) -> Void) {
-        guard let url = URL(string: "http://172.16.75.32:8080/auth/introspect") else {
+        guard let url = URL(string: Constants.API.Endpoints.introspectURL) else {
             completion(.unknown)
             return
         }
@@ -150,7 +147,7 @@ class Authentication {
     }
     
     func refreshAccessToken(accessToken: String) {
-        guard let url = URL(string: "http://172.16.75.32:8080/auth/refresh") else { return }
+        guard let url = URL(string: Constants.API.Endpoints.refreshURL) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -188,7 +185,7 @@ class Authentication {
         task.resume()
     }
     
-    func scheduleRefreshAccessToken(accessToken: String, interval: TimeInterval = 3600) {
+    func scheduleRefreshAccessToken(accessToken: String, interval: TimeInterval = Constants.Network.timeoutInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
             self.refreshAccessToken(accessToken: accessToken)
             self.scheduleRefreshAccessToken(accessToken: accessToken, interval: interval)

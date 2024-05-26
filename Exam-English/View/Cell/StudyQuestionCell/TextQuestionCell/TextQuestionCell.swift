@@ -1,19 +1,18 @@
 //
-//  QuestionPhotoCell.swift
+//  TextQuestionCell.swift
 //  Exam-English
 //
-//  Created by Trần Văn Chương on 13/05/2024.
+//  Created by Trần Văn Chương on 26/05/2024.
 //
 
 import UIKit
-protocol QuestionPhotoCellDelegate: AnyObject {
+protocol TextQuestionCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
 }
-
-class QuestionPhotoCell: UICollectionViewCell {
-// MARK: - Outlet
-    @IBOutlet weak var imageQuestionView: UIImageView!
+class TextQuestionCell: UICollectionViewCell {
+    // MARK: - Outlet
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerAButton: UIButton!
     @IBOutlet weak var answerALabel: UILabel!
     @IBOutlet weak var answerAImage: UIImageView!
@@ -35,23 +34,26 @@ class QuestionPhotoCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
     private var isPaused: Bool = true
     private var correctAnswer: Int = -1
-    weak var delegate: QuestionPhotoCellDelegate?
+    weak var delegate: TextQuestionCellDelegate?
 }
 
 // MARK: - Awake
-extension QuestionPhotoCell {
+extension TextQuestionCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
     }
 }
+
 // MARK: - Action
-extension QuestionPhotoCell {
+extension TextQuestionCell {
+
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         updateAnswerButtonStates(selectedButton: sender)
         let selectedAnswerIndex = answerButtons.firstIndex(of: sender) ?? -1
@@ -75,9 +77,11 @@ extension QuestionPhotoCell {
     }
 }
 
+
 // MARK: - Func
-extension QuestionPhotoCell {
+extension TextQuestionCell {
     func configure(with question: StudyQuestion) {
+        questionLabel.text = question.subQuestionContent
         answerALabel.text = question.subAnswers?[0].answerContent
         answerBLabel.text = question.subAnswers?[1].answerContent
         answerCLabel.text = question.subAnswers?[2].answerContent
@@ -126,3 +130,4 @@ extension QuestionPhotoCell {
         handleScroll()
     }
 }
+

@@ -247,79 +247,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "134B41E3-4A39-4F4F-966D-9D2F69179918"
+            uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestionSet/StudyQuestionSetViewController.swift"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DCEE3D2E-4B0D-4302-871C-7C010509EB8B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestionSet/StudyQuestionSetViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE4A053F-C7F7-4E82-BB9B-D7F7AA6C2630"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "fetchSubSection(for:completion:)"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "handleScrollNext(sender:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "CE4A053F-C7F7-4E82-BB9B-D7F7AA6C2630 - 39c707ee9d8d65d7"
+                  uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1 - 9eeeec9484d67d18"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollNext(sender: __C.UIButton) -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "1508">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
-                  uuid = "CE4A053F-C7F7-4E82-BB9B-D7F7AA6C2630 - 39c707ee9d8d65d7"
+                  uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1 - 9eeeec9484d67d18"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollNext(sender: __C.UIButton) -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "129"
-                  endingLineNumber = "129"
-                  offsetFromSymbolStart = "1616">
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -327,47 +295,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1A8019F-B832-44C6-8C3B-BBED465081D5"
+            uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "fetchSubSection(for:completion:)"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "handleScrollPrevious(sender:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A1A8019F-B832-44C6-8C3B-BBED465081D5 - 39c707ee9d8d62f0"
+                  uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D - 85f321c0576e7e56"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollPrevious(sender: __C.UIButton) -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "864">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "44">
                </Location>
                <Location
-                  uuid = "A1A8019F-B832-44C6-8C3B-BBED465081D5 - 39c707ee9d8d62f0"
+                  uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D - 85f321c0576e7e56"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollPrevious(sender: __C.UIButton) -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "964">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "48">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -375,47 +343,141 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CE0ADCD6-C667-4FEF-BA7A-AA6C8CA77180"
+            uuid = "EA3203FA-C1A2-404B-805C-631601111948"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "handleScrollNext(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7491527A-A751-4E70-9282-971EFBC54341"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "handleScrollPrevious(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38C7CD68-FB99-4DA9-AFA5-AAB31543A267"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "scrollNextToCell()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A01FC58-BB89-42E4-9E91-4BB1E1DADEFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "fetchSubSection(for:completion:)"
+            landmarkName = "scrollToPreviousCell()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2D17CB8-39E8-4B8E-B733-21AE52A2D91C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "scrollNextToCell()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "CE0ADCD6-C667-4FEF-BA7A-AA6C8CA77180 - 39c707ee9d8d625b"
+                  uuid = "E2D17CB8-39E8-4B8E-B733-21AE52A2D91C - 8d192cdc6b56e6d2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.scrollNextToCell() -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "332">
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "852">
                </Location>
                <Location
-                  uuid = "CE0ADCD6-C667-4FEF-BA7A-AA6C8CA77180 - 39c707ee9d8d625b"
+                  uuid = "E2D17CB8-39E8-4B8E-B733-21AE52A2D91C - 8d192cdc6b56e6d2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "Exam_English.StudyQuestionViewController.scrollNextToCell() -&gt; ()"
                   moduleName = "Exam-English"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "788">
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "1036">
+               </Location>
+               <Location
+                  uuid = "E2D17CB8-39E8-4B8E-B733-21AE52A2D91C - 8d192cdc6b56e6f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.StudyQuestionViewController.scrollNextToCell() -&gt; ()"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "804">
+               </Location>
+               <Location
+                  uuid = "E2D17CB8-39E8-4B8E-B733-21AE52A2D91C - 8d192cdc6b56e766"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.StudyQuestionViewController.scrollNextToCell() -&gt; ()"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "804">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -423,223 +485,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2731637C-995A-49B2-B8E0-24425AB3C909"
+            uuid = "56C326A2-2BBD-4A60-9470-40E1111BBEDE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "fetchSubSection(for:completion:)"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "updateCurrentCell(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2731637C-995A-49B2-B8E0-24425AB3C909 - 39c707ee9d8d642a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "1768">
-               </Location>
-               <Location
-                  uuid = "2731637C-995A-49B2-B8E0-24425AB3C909 - 39c707ee9d8d642a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132"
-                  offsetFromSymbolStart = "1940">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "691FADC7-5079-458E-9278-D04283006753"
+            uuid = "7E0F9F2D-14B8-4C8E-B9CF-563489B0BFFA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "fetchSubSection(for:completion:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "updateCurrentCell(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "691FADC7-5079-458E-9278-D04283006753 - bb79de5cc5239d0d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "548">
-               </Location>
-               <Location
-                  uuid = "691FADC7-5079-458E-9278-D04283006753 - bb79de5cc5239d0d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "964">
-               </Location>
-               <Location
-                  uuid = "691FADC7-5079-458E-9278-D04283006753 - 39c707ee9d8d6219"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "176">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9592B4B0-A480-4B85-8796-7A5FE87FB730"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "fetchSubSection(for:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9592B4B0-A480-4B85-8796-7A5FE87FB730 - bb79de5cc5239cec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "964">
-               </Location>
-               <Location
-                  uuid = "9592B4B0-A480-4B85-8796-7A5FE87FB730 - 39c707ee9d8d623a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "9592B4B0-A480-4B85-8796-7A5FE87FB730 - 39c707ee9d8d6219"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "176">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "01E9EDC8-A2F8-4D75-8332-7DC041124171"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/NetworkServices/StudyService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "fetchSubSection(for:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "01E9EDC8-A2F8-4D75-8332-7DC041124171 - 39c707ee9d8d623a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "01E9EDC8-A2F8-4D75-8332-7DC041124171 - 39c707ee9d8d623a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Exam_English.StudyService.fetchSubSection(completion: (Swift.Result&lt;Exam_English.StudySubSectionResponse, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/NetworkServices/StudyService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "332">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

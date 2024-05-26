@@ -48,7 +48,7 @@ extension StudyDetailViewController: UITableViewDataSource {
 extension StudyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainSection = mainSections[indexPath.row]
-        handleSubSection(subSectionID: mainSection.mainSectionID)
+        handleSubSection(mainSectionID: mainSection.mainSectionID)
     }
 }
 
@@ -75,9 +75,8 @@ extension StudyDetailViewController {
 
 // MARK: - Handle API
 extension StudyDetailViewController {
-    func handleSubSection(subSectionID: Int) {
-        print("Fetching sub sections for mainSectionID: \(subSectionID)")
-        StudyService.shared.fetchSubSection(for: subSectionID) { [weak self] result in
+    func handleSubSection(mainSectionID: Int) {
+        StudyService.shared.fetchSubSection(for: mainSectionID) { [weak self] result in
             switch result {
             case .success(let studySubSectionResponse):
                 if let subSections = studySubSectionResponse.result {
