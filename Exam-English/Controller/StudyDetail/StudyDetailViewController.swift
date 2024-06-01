@@ -14,6 +14,7 @@ class StudyDetailViewController: UIViewController {
 // MARK: - Variable
     var mainSections = [StudyMainSection]()
     var subSections = [StudySubSection]()
+    private var customView = CustomView()
 }
  // MARK: Life Cycle
 extension StudyDetailViewController {
@@ -48,11 +49,12 @@ extension StudyDetailViewController: UITableViewDataSource {
 extension StudyDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainSection = mainSections[indexPath.row]
+        updateTitle(with: mainSection.mainSectionName)
         handleSubSection(mainSectionID: mainSection.mainSectionID)
     }
 }
 
-// MARK: - Func
+// MARK: - SetupView
 extension StudyDetailViewController {
     
     func registerCell(){
@@ -60,10 +62,30 @@ extension StudyDetailViewController {
         tableView.register(studyDetailNib, forCellReuseIdentifier: "StudyDetailCell")
     }
     
-    func setupStudyDetailView(){
-        registerCell()
+    func registerDataSourceDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func setupStudyDetailView(){
+        registerCell()
+        resetCell()
+        registerDataSourceDelegate()
+        customDetailView()
+    }
+    
+    func resetCell() {
+        tableView.separatorStyle = .none
+    }
+    
+    func customDetailView() {
+//        customView.customizeNavigationBar(for: self.navigationController)
+    }
+}
+
+// MARK: Func
+extension StudyDetailViewController {
+    func callFunc() {
     }
     
     private func navigateToStudyQuestionSetViewController() {
@@ -71,6 +93,15 @@ extension StudyDetailViewController {
         studyDetailVC.subSections = self.subSections
         self.navigationController?.pushViewController(studyDetailVC, animated: true)
     }
+    
+    func updateTitle(with mainSectionName: String) {
+        self.title = mainSectionName
+    }
+    
+//    private func setupNavigationBarAppearance() {
+//        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationController?.navigationBar.titleTextAttributes = textAttributes
+//    }
 }
 
 // MARK: - Handle API

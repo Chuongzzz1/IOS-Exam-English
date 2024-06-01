@@ -14,6 +14,7 @@ class StudyQuestionSetViewController: UIViewController {
     // MARK: - Variable
     var subSections = [StudySubSection]()
     var questions = [StudyQuestion]()
+    private var currentPage = 1
 }
 
 // MARK: - Life Cycle
@@ -42,7 +43,8 @@ extension StudyQuestionSetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subSection = subSections[indexPath.row]
-        handleQuestion(subSectionID: subSection.subSectionID)
+        updateTitle(with: subSection.subSectionName)
+        handleQuestion(subSectionID: subSection.subSectionID,page: currentPage)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -55,7 +57,7 @@ extension StudyQuestionSetViewController: UITableViewDelegate {
 
 }
 
-// MARK: - Func
+// MARK: - SetupView
 extension StudyQuestionSetViewController {
     func registerCell(){
         let studyQuestionSetNib = UINib(nibName: "StudyQuestionSetCell", bundle: nil)
@@ -67,18 +69,25 @@ extension StudyQuestionSetViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+}
+
+// MARK: - Func
+extension StudyQuestionSetViewController {
     private func navigateToStudyQuestionViewController() {
         let studyQuestionSetVC = StudyQuestionViewController(nibName: "StudyQuestionViewController", bundle: nil)
         studyQuestionSetVC.questions = self.questions
         self.navigationController?.pushViewController(studyQuestionSetVC, animated: true)
     }
+    
+    func updateTitle(with subSectionName: String) {
+        self.title = subSectionName
+    }
 }
 
 // MARK: - Handle API
 extension StudyQuestionSetViewController {
-    func handleQuestion(subSectionID: Int) {
-        StudyService.shared.fetchQuestion(for: subSectionID) { [weak self] result in
+    func handleQuestion(subSectionID: Int,page: Int) {
+        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
             switch result {
             case .success(let studyQuestionResponse):
                 if let questions = studyQuestionResponse.result {

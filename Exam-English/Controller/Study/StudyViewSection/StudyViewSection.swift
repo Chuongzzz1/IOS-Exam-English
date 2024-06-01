@@ -8,6 +8,7 @@
 import UIKit
 
 protocol StudyViewSectionDelegate: AnyObject {
+    func updateTitle(with categoryName: String)
     func didSelectItem(mainSections: [StudyMainSection])
     func handleMainSection(categoryID: Int)
 }
@@ -55,8 +56,11 @@ extension StudyViewSection: UICollectionViewDataSource {
 // MARK: - Delegate
 extension StudyViewSection: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let categoryID = categories[indexPath.row].categoryID
-//        delegate?.didSelectItem(mainSections: mainSectionDict[categoryID] ?? [])
+        let category = categories[indexPath.row]
+        let categoryID = category.categoryID
+        let categoryName = category.categoryName
+        let truncatedCategoryName = categoryName.truncated(to: 20)
+        delegate?.updateTitle(with: truncatedCategoryName)
         delegate?.handleMainSection(categoryID: categoryID)
     }
 }
@@ -75,7 +79,7 @@ extension StudyViewSection: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Func
+// MARK: - SetupView
 extension StudyViewSection {
     func registerCell() {
         let studyCellNib = UINib(nibName: "StudyViewCell", bundle: .main)
@@ -103,6 +107,18 @@ extension StudyViewSection {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
     }
-    
+}
 
+
+// MARK: Extention
+extension String {
+    func truncated(to length: Int, addEllipsis: Bool = true) -> String {
+        if self.count <= length {
+            return self
+        } else {
+            let endIndex = self.index(self.startIndex, offsetBy: length)
+            let truncatedString = self[..<endIndex]
+            return addEllipsis ? truncatedString + "..." : String(truncatedString)
+        }
+    }
 }

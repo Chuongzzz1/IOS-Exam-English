@@ -8,30 +8,6 @@
 import UIKit
 
 class StudyViewController: UIViewController, StudyViewSectionDelegate {
-    func handleMainSection(categoryID: Int) {
-        StudyService.shared.fetchMainSection(for: categoryID) { [weak self] mainSectionResult in
-            switch mainSectionResult {
-            case .success(let mainSectionResult):
-                if let mainSections = mainSectionResult.result {
-                    DispatchQueue.main.async {
-//                        self?.mainSections.append(contentsOf: mainSections)
-                        self?.mainSections = mainSections
-//                        self?.mainSectionDict[categoryID] = mainSections
-                        self?.collectionView.reloadData()
-                        self?.didSelectItem(mainSections: mainSections)                    }
-                }
-            case .failure(let error):
-                print("Error fetching main section:", error)
-            }
-        }
-    }
-
-    func didSelectItem(mainSections: [StudyMainSection]) {
-             let studyVC = StudyDetailViewController(nibName: "StudyDetailViewController", bundle: nil)
-             studyVC.mainSections = mainSections
-             self.navigationController?.pushViewController(studyVC, animated: true)
-        }
-    
     // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -42,6 +18,7 @@ class StudyViewController: UIViewController, StudyViewSectionDelegate {
     private var mainSections = [StudyMainSection]()
     private var mainSectionDict = [Int : [StudyMainSection]]()
     private let studyService = StudyService.shared
+    private let customView = CustomView()
 }
 
 // MARK: - Life Cycle
@@ -49,6 +26,17 @@ extension StudyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        callFunc()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
@@ -125,9 +113,8 @@ extension StudyViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - Func
+// MARK: - SetupView
 extension StudyViewController {
-    
     func registerSection() {
         let studySectionNib = UINib(nibName: "StudyViewSection", bundle: .main)
         collectionView.register(studySectionNib, forCellWithReuseIdentifier: "StudyViewSection")
@@ -144,8 +131,7 @@ extension StudyViewController {
         registerSection()
         registerHeaderSection()
         hideScrollBar()
-        setupNavigation()
-        handleSubjectCategory()
+//        setupNavigation()
 //        handleMainSection()
     }
     
@@ -155,13 +141,43 @@ extension StudyViewController {
     }
     
     func setupNavigation() {
-//        let studyViewController = StudyViewController()
-//        let navigationController = UINavigationController(rootViewController: studyViewController)
-//        present(navigationController, animated: true, completion: nil)
         let studyViewSection = StudyViewSection()
         studyViewSection.delegate = self
     }
+}
+
+// MARK: - Func
+extension StudyViewController {
+    func callFunc() {
+        setupNavigationBarAppearance()
+        handleSubjectCategory()
+//        customizeNavigationBar(for: self.navigationController)
+    }
     
+    func updateTitle(with categoryName: String) {
+        self.title = categoryName
+    }
+    
+    private func setupNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "66B366")
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.title = ""
+    }
+    
+    func didSelectItem(mainSections: [StudyMainSection]) {
+             let studyVC = StudyDetailViewController(nibName: "StudyDetailViewController", bundle: nil)
+        
+             studyVC.mainSections = mainSections
+             self.navigationController?.pushViewController(studyVC, animated: true)
+    }
+}
+
+// MARK: Handle API
+extension StudyViewController {
     func handleSubjectCategory() {
         studyService.fetchSubject { [weak self] result in
             switch result {
@@ -194,6 +210,25 @@ extension StudyViewController {
                 }
             case .failure(let error):
                 print("Error when retrieving subject data", error)
+            }
+        }
+    }
+    
+    func handleMainSection(categoryID: Int) {
+        StudyService.shared.fetchMainSection(for: categoryID) { [weak self] mainSectionResult in
+            switch mainSectionResult {
+            case .success(let mainSectionResult):
+                if let mainSections = mainSectionResult.result {
+                    DispatchQueue.main.async {
+//                        self?.mainSections.append(contentsOf: mainSections)
+                        self?.mainSections = mainSections
+//                        self?.mainSectionDict[categoryID] = mainSections
+                        self?.collectionView.reloadData()
+                        self?.didSelectItem(mainSections: mainSections)
+                        }
+                }
+            case .failure(let error):
+                print("Error fetching main section:", error)
             }
         }
     }

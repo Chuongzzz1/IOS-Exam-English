@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0Z-SL-xVb" userLabel="Sub View">
-                        <rect key="frame" x="10" y="0.0" width="329" height="187"/>
+                        <rect key="frame" x="10" y="10" width="329" height="177"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Part 1: Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GU5-Xv-h2D">
-                                <rect key="frame" x="8" y="83" width="104" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="8" y="79" width="96.666666666666671" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" name="008000"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZs-T8-jlL">
-                                <rect key="frame" x="279.66666666666669" y="83.333333333333329" width="41.333333333333314" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="281.33333333333331" y="79" width="39.666666666666686" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="008000"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -47,7 +47,7 @@
                 <constraints>
                     <constraint firstItem="M0Z-SL-xVb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="KoY-wV-bpV"/>
                     <constraint firstAttribute="bottom" secondItem="M0Z-SL-xVb" secondAttribute="bottom" constant="10" id="Xab-WU-znp"/>
-                    <constraint firstItem="M0Z-SL-xVb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gEu-Qa-3Xf"/>
+                    <constraint firstItem="M0Z-SL-xVb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gEu-Qa-3Xf"/>
                     <constraint firstAttribute="trailing" secondItem="M0Z-SL-xVb" secondAttribute="trailing" constant="10" id="j64-Cv-00W"/>
                 </constraints>
             </tableViewCellContentView>

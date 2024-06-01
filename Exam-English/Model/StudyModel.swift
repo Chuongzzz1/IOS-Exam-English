@@ -155,52 +155,53 @@ struct StudyQuestionResponse {
 }
 
 struct StudyQuestion {
-    let questionID: Int
-    let mainQuestionID: Int
-    let mainQuestionContent: String
-    let mainQuestionUrl: String
-    let subQuestionID: Int
-    let subQuestionContent: String
-    let subQuestionUrl: String
-    let normalQuestionID: Int
-    let normalQuestionContent: String
-    let normalQuestionUrl: String
-    let subAnswers: [SubAnswer]? // answer
+    let questionID: Int?
+    let mainQuestionID: Int?
+    let mainQuestionContent: String?
+    let mainQuestionUrl: String?
+    let subQuestionID: Int?
+    let subQuestionContent: String?
+    let subQuestionUrl: String?
+    let normalQuestionID: Int?
+    let normalQuestionContent: String?
+    let normalQuestionUrl: String?
+    let answers: [Answer]? // answer
+    var selectedAnswerIndex: Int?
     init(dictionary: [String: Any]) {
         self.questionID = dictionary["QuestionId"] as? Int ?? 0
         self.mainQuestionID = dictionary["MainQuestionId"] as? Int ?? 0
-        self.mainQuestionContent = dictionary["MainQuestionContent"] as? String ?? ""
-        self.mainQuestionUrl = dictionary["MainQuestionUrl"] as? String ?? ""
+        self.mainQuestionContent = dictionary["MainQuestionContent"] as? String
+        self.mainQuestionUrl = dictionary["MainQuestionUrl"] as? String
         self.subQuestionID = dictionary["SubQuestionId"] as? Int ?? 0
-        self.subQuestionContent = dictionary["SubQuestionContent"] as? String ?? ""
-        self.subQuestionUrl = dictionary["SubQuestionUrl"] as? String ?? ""
+        self.subQuestionContent = dictionary["SubQuestionContent"] as? String
+        self.subQuestionUrl = dictionary["SubQuestionUrl"] as? String
         self.normalQuestionID = dictionary["NormalQuestionId"] as? Int ?? 0
-        self.normalQuestionContent = dictionary["NormalQuestionContent"] as? String ?? ""
-        self.normalQuestionUrl = dictionary["NormalQuestionUrl"] as? String ?? ""
-        if let value = dictionary["SubAnswers"] as? [[String: Any]] {
-            var answers: [SubAnswer] = []
+        self.normalQuestionContent = dictionary["NormalQuestionContent"] as? String
+        self.normalQuestionUrl = dictionary["NormalQuestionUrl"] as? String
+        if let value = dictionary["Answers"] as? [[String: Any]] {
+            var answers: [Answer] = []
             for answerDict in value {
-                let studyAnswer = SubAnswer(dictionary: answerDict)
+                let studyAnswer = Answer(dictionary: answerDict)
                 answers.append(studyAnswer)
             }
-            self.subAnswers = answers
+            self.answers = answers
         } else {
-            self.subAnswers = []
+            self.answers = []
         }
     }
 }
 // answer
-struct SubAnswer {
-    let subAnswerID: Int
+struct Answer {
+//    let subAnswerID: Int
     let answerContent: String
-    let subQuestionID: Int
+//    let subQuestionID: Int
     let correctAnswer: Bool
     let explanation: String
     let fileUrl: String
     init(dictionary: [String: Any]) {
-        self.subAnswerID = dictionary["SubAnswerId"] as? Int ?? 0
+//        self.subAnswerID = dictionary["SubAnswers"] as? Int ?? 0
         self.answerContent = dictionary["AnswerContent"] as? String ?? ""
-        self.subQuestionID = dictionary["SubQuestionId"] as? Int ?? 0
+//        self.subQuestionID = dictionary["SubQuestionId"] as? Int ?? 0
         self.correctAnswer = dictionary["CorrectAnswer"] as? Bool ?? false
         self.explanation = dictionary["Explanation"] as? String ?? ""
         self.fileUrl = dictionary["FileUrl"] as? String ?? ""

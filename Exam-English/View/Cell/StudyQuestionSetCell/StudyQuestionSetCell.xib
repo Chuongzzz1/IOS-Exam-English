@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="344" height="151"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4S-fZ-M3x">
-                                <rect key="frame" x="10" y="0.0" width="334" height="151"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="12" y="0.0" width="332" height="151"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="008000"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -33,7 +33,7 @@
                             <constraint firstAttribute="bottom" secondItem="S4S-fZ-M3x" secondAttribute="bottom" id="84c-SM-Unx"/>
                             <constraint firstItem="S4S-fZ-M3x" firstAttribute="top" secondItem="9BU-JH-D5l" secondAttribute="top" id="JdY-lR-RQh"/>
                             <constraint firstAttribute="trailing" secondItem="S4S-fZ-M3x" secondAttribute="trailing" id="L2D-pb-Kwq"/>
-                            <constraint firstItem="S4S-fZ-M3x" firstAttribute="leading" secondItem="9BU-JH-D5l" secondAttribute="leading" constant="10" id="Nr8-Kv-X10"/>
+                            <constraint firstItem="S4S-fZ-M3x" firstAttribute="leading" secondItem="9BU-JH-D5l" secondAttribute="leading" constant="12" id="Nr8-Kv-X10"/>
                         </constraints>
                     </view>
                 </subviews>

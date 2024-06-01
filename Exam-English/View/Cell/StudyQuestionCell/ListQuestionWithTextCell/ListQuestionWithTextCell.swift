@@ -13,6 +13,7 @@ protocol ListQuestionWithTextCellDelegate: AnyObject {
 class ListQuestionWithTextCell: UICollectionViewCell {
     // MARK: - Outlet
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionBackgoundView: UIView!
     @IBOutlet weak var answerAButton: UIButton!
     @IBOutlet weak var answerALabel: UILabel!
     @IBOutlet weak var answerAImage: UIImageView!
@@ -31,7 +32,10 @@ class ListQuestionWithTextCell: UICollectionViewCell {
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
+    private var answerLabels: [UILabel] = []
     private var correctAnswer: Int = -1
+    private var selectedAnswerIndex: Int? = nil
+    private var custom = CustomView()
     weak var delegate: ListQuestionWithTextCellDelegate?
 }
 
@@ -47,14 +51,19 @@ extension ListQuestionWithTextCell {
 extension ListQuestionWithTextCell {
     @IBAction func answerButtonTapped(_ sender: UIButton) { 
         updateAnswerButtonStates(selectedButton: sender)
-        let selectedAnswerIndex = answerButtons.firstIndex(of: sender) ?? -1
-        if selectedAnswerIndex == correctAnswer {
-            print("Đáp án đúng đã được chọn")
+        selectedAnswerIndex = answerButtons.firstIndex(of: sender)    }
+    
+    @IBAction func checkAnswer(_ sender: UIButton) {
+        if let selectedIndex = selectedAnswerIndex {
+            if selectedIndex == correctAnswer {
+                custom.trueAnswer(answerImages[selectedIndex], answerLabels[selectedIndex])
+            } else {
+                custom.falseAnswer(answerImages[selectedIndex], answerLabels[selectedIndex])
+            }
         } else {
-            print("Đáp án sai đã được chọn")
+            custom.trueAnswer(answerImages[correctAnswer], answerLabels[correctAnswer])
         }
     }
-    
     @objc func scrollPrevious(_ sender: UIButton) {
         delegate?.handleScrollPrevious(sender: sender)
     }
@@ -68,20 +77,38 @@ extension ListQuestionWithTextCell {
 // MARK: - Func
 extension ListQuestionWithTextCell {
     func configure(with question: StudyQuestion) {
-        questionLabel.attributedText = question.normalQuestionContent.htmlToAttributedString
-        answerALabel.text = question.subAnswers?[0].answerContent
-        answerBLabel.text = question.subAnswers?[1].answerContent
-        answerCLabel.text = question.subAnswers?[2].answerContent
-        answerDLabel.text = question.subAnswers?[3].answerContent
-        if let subAnswers = question.subAnswers {
-            for (index, answer) in subAnswers.enumerated() {
-                if answer.correctAnswer {
-                    correctAnswer = index
-                }
+        resetUI()
+        questionLabel.attributedText = question.normalQuestionContent?.htmlToAttributedString
+        
+        guard let subAnswers = question.answers else { return }
+        
+        answerALabel.text = subAnswers[safe: 0]?.answerContent
+        answerBLabel.text = subAnswers[safe: 1]?.answerContent
+        answerCLabel.text = subAnswers[safe: 2]?.answerContent
+        answerDLabel.text = subAnswers[safe: 3]?.answerContent
+        
+        let isAnswerDHidden = subAnswers.count < 4
+        answerDLabel.isHidden = isAnswerDHidden
+        answerDButton.isHidden = isAnswerDHidden
+        answerDImage.isHidden = isAnswerDHidden
+        
+        for (index, answer) in subAnswers.enumerated() {
+            if answer.correctAnswer {
+                correctAnswer = index
             }
         }
     }
 
+    func resetUI() {
+        for imageView in answerImages {
+            imageView.image = UIImage(named: "off")
+        }
+        for label in answerLabels {
+            label.textColor = UIColor.label
+        }
+        selectedAnswerIndex = nil
+    }
+    
     func updateAnswerButtonStates(selectedButton: UIButton) {
         for (index, button) in answerButtons.enumerated() {
             if button == selectedButton {
@@ -95,6 +122,7 @@ extension ListQuestionWithTextCell {
     func handleFunc() {
         answerButtons = [answerAButton, answerBButton, answerCButton, answerDButton]
         answerImages = [answerAImage, answerBImage, answerCImage, answerDImage]
+        answerLabels = [answerALabel, answerBLabel, answerCLabel, answerDLabel]
         
         for button in answerButtons {
             button.addTarget(self, action: #selector(answerButtonTapped(_:)), for: .touchUpInside)
@@ -109,14 +137,31 @@ extension ListQuestionWithTextCell {
     func setupCell() {
         handleFunc()
         handleScroll()
+        customView()
+        questionLabel.adjustsFontSizeToFitWidth = true
+        questionLabel.minimumScaleFactor = 0.5 
+    }
+    
+    func customView() {
+        custom.customCheckButton(checkButton)
+        custom.labelQuestion(nameBackground: questionBackgoundView)
     }
 }
 
+// MARK: Extention
 extension String {
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            let attributedString = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+            
+            let fontMetrics = UIFontMetrics.default
+            
+            let scaledFont = fontMetrics.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .medium))
+            
+            attributedString.addAttributes([.font: scaledFont], range: NSRange(location: 0, length: attributedString.length))
+            
+            return attributedString
         } catch {
             print("error:", error)
             return nil
@@ -125,6 +170,12 @@ extension String {
     
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
+    }
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
 

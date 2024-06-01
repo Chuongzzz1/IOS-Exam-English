@@ -11,7 +11,7 @@ import UIKit
 class StudyService {
     static let shared = StudyService()
     private init() {}
-    var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlIjoiIiwiaXNzIjoiZGV2dGVyaWEuY29tIiwiZXhwIjoxNzE2ODc1NDUwLCJpYXQiOjE3MTY2OTU0NTAsImp0aSI6IjNlYjM1MjdiLWUxOTEtNGUzMy04NDRkLWE4NjZmN2QwZDIxNSJ9.JVvtZmn2G5cSKfod90ON8liUk7yDqaTZwmGs0DRWY1_GJqMKM2kqO0InBV_0K283prtRXbH2lQxu24SWC7xv3g"
+    var token = "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxOTgyNzYyOCwiaWF0IjoxNzE3MjM1NjI4LCJqdGkiOiJlYThhMzU2MS02MGU5LTRhZjgtYTRjMy01NDg2YTllNWY1OTAiLCJzY29wZSI6IiJ9.Yxi3g5y2OoTLBe2T7Btx_CslpQXVKaF3hLaDh5yJiQpPQFYZyQ9c-6jhxk6LsjshM_xISFkWgqIJb3wqT8B1DA"
     
     func fetchSubject(completion: @escaping (Result<StudySubjectResponse, Error>) -> Void) {
         guard let url = URL(string: Constants.API.Endpoints.subject) else {
@@ -136,8 +136,8 @@ class StudyService {
         task.resume()
     }
     
-    func fetchQuestion(for subSection: Int,completion: @escaping (Result<StudyQuestionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.question(for: subSection)) else {
+    func fetchQuestion(for subSection: Int,page: Int,completion: @escaping (Result<StudyQuestionResponse, Error>) -> Void) {
+        guard let url = URL(string: Constants.API.Endpoints.question(for: subSection, page: page)) else {
             return
         }
         var request = URLRequest(url: url)

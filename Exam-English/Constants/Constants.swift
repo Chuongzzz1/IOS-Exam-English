@@ -12,7 +12,7 @@ struct Constants {
     }
     
     struct API {
-        static let baseURL = "http://localhost:8085"
+        static let baseURL = "http://172.16.75.43:8080"
         static let authBaseURL = "http://172.16.75.32:8080"
         
         struct Endpoints {
@@ -30,8 +30,8 @@ struct Constants {
                 return "\(Constants.API.baseURL)/api/subject/categories/mainSection/subSection?mainSectionId=\(mainSectionID)"
             }
             
-            static func question(for subSection: Int) -> String {
-                return "\(Constants.API.baseURL)/api/questions?subSectionId=\(subSection)&pageNumber=1&pageSize=10"
+            static func question(for subSection: Int,page: Int) -> String {
+                return "\(Constants.API.baseURL)/api/questions?subSectionId=\(subSection)&pageNumber=\(page)&pageSize=10"
             }
             
             static let loginURL = "\(Constants.API.authBaseURL)/auth/token"
