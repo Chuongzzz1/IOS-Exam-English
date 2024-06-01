@@ -22,6 +22,7 @@ extension StudyQuestionSetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStudyDetailView()
+        callFunc()
     }
 }
 
@@ -73,6 +74,10 @@ extension StudyQuestionSetViewController {
 
 // MARK: - Func
 extension StudyQuestionSetViewController {
+    func callFunc() {
+        setupNavigationBar()
+    }
+    
     private func navigateToStudyQuestionViewController() {
         let studyQuestionSetVC = StudyQuestionViewController(nibName: "StudyQuestionViewController", bundle: nil)
         studyQuestionSetVC.questions = self.questions
@@ -82,6 +87,12 @@ extension StudyQuestionSetViewController {
     func updateTitle(with subSectionName: String) {
         self.title = subSectionName
     }
+    
+    private func setupNavigationBar() {
+        let customTitleView = UIView()
+        self.navigationItem.titleView = customTitleView
+    }
+
 }
 
 // MARK: - Handle API

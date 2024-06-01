@@ -247,135 +247,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "handleScrollNext(sender:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1 - 9eeeec9484d67d18"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollNext(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "E833E709-92EF-4AB3-8643-815C14B9D3A1 - 9eeeec9484d67d18"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollNext(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "handleScrollPrevious(sender:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D - 85f321c0576e7e56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollPrevious(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "DCA3FAAB-BA0C-47C2-AFEE-867E28C9968D - 85f321c0576e7e56"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Exam_English.StudyQuestionViewController.handleScrollPrevious(sender: __C.UIButton) -&gt; ()"
-                  moduleName = "Exam-English"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EA3203FA-C1A2-404B-805C-631601111948"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "handleScrollNext(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7491527A-A751-4E70-9282-971EFBC54341"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "handleScrollPrevious(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8755B9CB-E5E7-4465-9B2D-AC47F3D20803"
+            uuid = "254482A7-29CD-4C9F-9E3E-D5B3BF9310AB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -391,7 +263,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "00D3282B-019E-4F8C-A30C-24CE8C18D47F"
+            uuid = "3BB99BDE-522A-4F61-A7BB-D4DF4938E541"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -407,7 +279,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "99D962F5-77E6-439A-B4DD-DE0151C95873"
+            uuid = "7012B2F8-B243-492C-8882-0570D7A7C8AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -416,6 +288,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85878314-7042-4BB9-9048-82900D9FE47B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyQuestion/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -11,6 +11,7 @@ struct StudySubjectResponse {
     let code: Int
     let message: String
     var result: [StudySubject]?
+    let paginate: [Paginate]?
     init(dictionary: [String: Any]) {
         code = dictionary["code"] as? Int ?? 0
         message = dictionary["message"] as? String ?? ""
@@ -24,6 +25,18 @@ struct StudySubjectResponse {
         } else {
             self.result = nil
         }
+        
+        if let value = dictionary["paginate"] as? [[String: Any]] {
+            var paginate: [Paginate] = []
+            for paginateDict in value {
+                let studyPaginate = Paginate(dictionary: paginateDict)
+                paginate.append(studyPaginate)
+            }
+            self.paginate = paginate
+        } else {
+            self.paginate = []
+        }
+
     }
 }
 
@@ -33,6 +46,15 @@ struct StudySubject {
     init(dictionary: [String: Any]) {
         self.subjectID = dictionary["SubjectId"] as? Int ?? 0
         self.subjectName = dictionary["SubjectName"] as? String ?? ""
+    }
+}
+
+struct Paginate {
+    let totalQuestion: Int
+    let totalPage: Int
+    init(dictionary: [String: Any]) {
+        self.totalQuestion = dictionary["TotalQuestions"] as? Int ?? 0
+        self.totalPage = dictionary["TotalPages"] as? Int ?? 0
     }
 }
 
@@ -165,7 +187,7 @@ struct StudyQuestion {
     let normalQuestionID: Int?
     let normalQuestionContent: String?
     let normalQuestionUrl: String?
-    let answers: [Answer]? // answer
+    let answers: [Answer]?
     var selectedAnswerIndex: Int?
     init(dictionary: [String: Any]) {
         self.questionID = dictionary["QuestionId"] as? Int ?? 0
@@ -178,6 +200,7 @@ struct StudyQuestion {
         self.normalQuestionID = dictionary["NormalQuestionId"] as? Int ?? 0
         self.normalQuestionContent = dictionary["NormalQuestionContent"] as? String
         self.normalQuestionUrl = dictionary["NormalQuestionUrl"] as? String
+        
         if let value = dictionary["Answers"] as? [[String: Any]] {
             var answers: [Answer] = []
             for answerDict in value {
@@ -192,19 +215,16 @@ struct StudyQuestion {
 }
 // answer
 struct Answer {
-//    let subAnswerID: Int
     let answerContent: String
-//    let subQuestionID: Int
     let correctAnswer: Bool
     let explanation: String
     let fileUrl: String
     init(dictionary: [String: Any]) {
-//        self.subAnswerID = dictionary["SubAnswers"] as? Int ?? 0
         self.answerContent = dictionary["AnswerContent"] as? String ?? ""
-//        self.subQuestionID = dictionary["SubQuestionId"] as? Int ?? 0
         self.correctAnswer = dictionary["CorrectAnswer"] as? Bool ?? false
         self.explanation = dictionary["Explanation"] as? String ?? ""
         self.fileUrl = dictionary["FileUrl"] as? String ?? ""
     }
 }
+
 

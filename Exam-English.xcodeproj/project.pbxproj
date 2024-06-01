@@ -164,13 +164,31 @@
 		9D2EAF662BCC37C8002B077C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9D8FC3352BE3774500FCEBF6 /* Login */,
-				9D8FC3362BE3776100FCEBF6 /* Study */,
-				9D4A9C562BE865AF007BF06F /* StudyDetail */,
-				9D4A9C632BE899E0007BF06F /* StudyQuestionSet */,
-				9D4A9C6D2BEA0721007BF06F /* StudyQuestion */,
+				9D8FC3352BE3774500FCEBF6 /* LoginVC */,
+				9D8FC3362BE3776100FCEBF6 /* StudyVC */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9D3AFDE02C0B5CCB00B2891F /* StudyCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FC32F2BE373A800FCEBF6 /* StudyViewCell */,
+				9D4A9C5C2BE8742C007BF06F /* StudyDetailCell */,
+				9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */,
+				9D7AEE762BF1A81C00DFA97E /* StudyQuestionCell */,
+			);
+			path = StudyCell;
+			sourceTree = "<group>";
+		};
+		9D3AFDE12C0B5DD400B2891F /* StudyViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */,
+				9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */,
+				9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */,
+			);
+			path = StudyViewVC;
 			sourceTree = "<group>";
 		};
 		9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */ = {
@@ -191,13 +209,13 @@
 			path = HeaderStudySection;
 			sourceTree = "<group>";
 		};
-		9D4A9C562BE865AF007BF06F /* StudyDetail */ = {
+		9D4A9C562BE865AF007BF06F /* StudyDetailVC */ = {
 			isa = PBXGroup;
 			children = (
 				9D4A9C582BE86A35007BF06F /* StudyDetailViewController.swift */,
 				9D4A9C592BE86A35007BF06F /* StudyDetailViewController.xib */,
 			);
-			path = StudyDetail;
+			path = StudyDetailVC;
 			sourceTree = "<group>";
 		};
 		9D4A9C5C2BE8742C007BF06F /* StudyDetailCell */ = {
@@ -212,10 +230,7 @@
 		9D4A9C5D2BE8744D007BF06F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				9D8FC32F2BE373A800FCEBF6 /* StudyCell */,
-				9D4A9C5C2BE8742C007BF06F /* StudyDetailCell */,
-				9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */,
-				9D7AEE762BF1A81C00DFA97E /* StudyQuestionCell */,
+				9D3AFDE02C0B5CCB00B2891F /* StudyCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -228,22 +243,22 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		9D4A9C632BE899E0007BF06F /* StudyQuestionSet */ = {
+		9D4A9C632BE899E0007BF06F /* StudyQuestionSetVC */ = {
 			isa = PBXGroup;
 			children = (
 				9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */,
 				9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */,
 			);
-			path = StudyQuestionSet;
+			path = StudyQuestionSetVC;
 			sourceTree = "<group>";
 		};
-		9D4A9C6D2BEA0721007BF06F /* StudyQuestion */ = {
+		9D4A9C6D2BEA0721007BF06F /* StudyQuestionVC */ = {
 			isa = PBXGroup;
 			children = (
 				9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */,
 				9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */,
 			);
-			path = StudyQuestion;
+			path = StudyQuestionVC;
 			sourceTree = "<group>";
 		};
 		9D4A9C6E2BEB7269007BF06F /* NetworkServices */ = {
@@ -329,16 +344,16 @@
 			path = ListQuestionWithTextCell;
 			sourceTree = "<group>";
 		};
-		9D8FC32F2BE373A800FCEBF6 /* StudyCell */ = {
+		9D8FC32F2BE373A800FCEBF6 /* StudyViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */,
 				9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */,
 			);
-			path = StudyCell;
+			path = StudyViewCell;
 			sourceTree = "<group>";
 		};
-		9D8FC3352BE3774500FCEBF6 /* Login */ = {
+		9D8FC3352BE3774500FCEBF6 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
 				9D2EAF702BCC44F7002B077C /* LoginViewController.swift */,
@@ -346,17 +361,18 @@
 				9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */,
 				9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */,
 			);
-			path = Login;
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
-		9D8FC3362BE3776100FCEBF6 /* Study */ = {
+		9D8FC3362BE3776100FCEBF6 /* StudyVC */ = {
 			isa = PBXGroup;
 			children = (
-				9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */,
-				9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */,
-				9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */,
+				9D3AFDE12C0B5DD400B2891F /* StudyViewVC */,
+				9D4A9C562BE865AF007BF06F /* StudyDetailVC */,
+				9D4A9C632BE899E0007BF06F /* StudyQuestionSetVC */,
+				9D4A9C6D2BEA0721007BF06F /* StudyQuestionVC */,
 			);
-			path = Study;
+			path = StudyVC;
 			sourceTree = "<group>";
 		};
 		9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */ = {

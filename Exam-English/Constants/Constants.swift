@@ -30,8 +30,8 @@ struct Constants {
                 return "\(Constants.API.baseURL)/api/subject/categories/mainSection/subSection?mainSectionId=\(mainSectionID)"
             }
             
-            static func question(for subSection: Int,page: Int) -> String {
-                return "\(Constants.API.baseURL)/api/questions?subSectionId=\(subSection)&pageNumber=\(page)&pageSize=10"
+            static func question(for subSection: Int, page: Int) -> String {
+                return "\(Constants.API.baseURL)/api/questionstudies/questions?subSectionId=\(subSection)&pageNumber=\(page)&pageSize=10"
             }
             
             static let loginURL = "\(Constants.API.authBaseURL)/auth/token"

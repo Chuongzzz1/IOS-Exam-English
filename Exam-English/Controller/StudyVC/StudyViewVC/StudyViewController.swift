@@ -165,7 +165,8 @@ extension StudyViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .white
-        self.navigationItem.title = ""
+        let customTitleView = UIView()
+        self.navigationItem.titleView = customTitleView
     }
     
     func didSelectItem(mainSections: [StudyMainSection]) {

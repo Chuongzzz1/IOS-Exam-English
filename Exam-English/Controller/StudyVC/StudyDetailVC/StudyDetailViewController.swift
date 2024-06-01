@@ -21,6 +21,7 @@ extension StudyDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStudyDetailView()
+        callFunc()
     }
 }
 
@@ -86,6 +87,7 @@ extension StudyDetailViewController {
 // MARK: Func
 extension StudyDetailViewController {
     func callFunc() {
+        setupNavigationBar()
     }
     
     private func navigateToStudyQuestionSetViewController() {
@@ -98,10 +100,10 @@ extension StudyDetailViewController {
         self.title = mainSectionName
     }
     
-//    private func setupNavigationBarAppearance() {
-//        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        navigationController?.navigationBar.titleTextAttributes = textAttributes
-//    }
+    private func setupNavigationBar() {
+        let customTitleView = UIView()
+        self.navigationItem.titleView = customTitleView
+    }
 }
 
 // MARK: - Handle API
