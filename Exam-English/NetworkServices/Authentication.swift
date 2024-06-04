@@ -188,6 +188,7 @@ class Authentication {
     func scheduleRefreshAccessToken(accessToken: String, interval: TimeInterval = Constants.Network.timeoutInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
             self.refreshAccessToken(accessToken: accessToken)
+            print("new: \(accessToken)")
             self.scheduleRefreshAccessToken(accessToken: accessToken, interval: interval)
         }
     }

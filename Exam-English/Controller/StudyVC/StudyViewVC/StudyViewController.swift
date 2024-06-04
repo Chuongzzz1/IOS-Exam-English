@@ -32,6 +32,7 @@ extension StudyViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.title = "Study"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

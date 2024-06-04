@@ -42,7 +42,7 @@
                             </connections>
                         </searchBar>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="cAH-ZK-NUO" secondAttribute="trailing" constant="16" id="76U-2t-ndd"/>
                         <constraint firstItem="Uc7-6E-rCT" firstAttribute="leading" secondItem="2lZ-qu-nwW" secondAttribute="leading" constant="16" id="LyB-cs-Rjo"/>
@@ -55,7 +55,7 @@
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-jh-pAO">
                     <rect key="frame" x="0.0" y="187" width="393" height="631"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OiX-y0-aeK">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -75,7 +75,7 @@
                 <constraint firstItem="2lZ-qu-nwW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lgG-ff-8Ea"/>
                 <constraint firstItem="ffH-jh-pAO" firstAttribute="top" secondItem="2lZ-qu-nwW" secondAttribute="bottom" constant="16" id="uMD-X2-BgE"/>
             </constraints>
-            <point key="canvasLocation" x="26.717557251908396" y="-1.4084507042253522"/>
+            <point key="canvasLocation" x="7" y="18"/>
         </view>
     </objects>
     <resources>

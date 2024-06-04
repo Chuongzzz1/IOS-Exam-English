@@ -11,7 +11,6 @@ struct StudySubjectResponse {
     let code: Int
     let message: String
     var result: [StudySubject]?
-    let paginate: [Paginate]?
     init(dictionary: [String: Any]) {
         code = dictionary["code"] as? Int ?? 0
         message = dictionary["message"] as? String ?? ""
@@ -25,18 +24,6 @@ struct StudySubjectResponse {
         } else {
             self.result = nil
         }
-        
-        if let value = dictionary["paginate"] as? [[String: Any]] {
-            var paginate: [Paginate] = []
-            for paginateDict in value {
-                let studyPaginate = Paginate(dictionary: paginateDict)
-                paginate.append(studyPaginate)
-            }
-            self.paginate = paginate
-        } else {
-            self.paginate = []
-        }
-
     }
 }
 
@@ -46,15 +33,6 @@ struct StudySubject {
     init(dictionary: [String: Any]) {
         self.subjectID = dictionary["SubjectId"] as? Int ?? 0
         self.subjectName = dictionary["SubjectName"] as? String ?? ""
-    }
-}
-
-struct Paginate {
-    let totalQuestion: Int
-    let totalPage: Int
-    init(dictionary: [String: Any]) {
-        self.totalQuestion = dictionary["TotalQuestions"] as? Int ?? 0
-        self.totalPage = dictionary["TotalPages"] as? Int ?? 0
     }
 }
 
@@ -160,6 +138,7 @@ struct StudyQuestionResponse {
     let code: Int
     let message: String
     var result: [StudyQuestion]?
+    let pagination: Paginate?
     init(dictionary: [String: Any]) {
         code = dictionary["code"] as? Int ?? 0
         message = dictionary["message"] as? String ?? ""
@@ -173,6 +152,21 @@ struct StudyQuestionResponse {
         } else {
             self.result = []
         }
+        
+        if let value = dictionary["pagination"] as? [String: Any] {
+            pagination = Paginate(dictionary: value)
+        } else {
+            pagination = nil
+        }
+    }
+}
+
+struct Paginate {
+    let totalQuestion: Int
+    let totalPage: Int
+    init(dictionary: [String: Any]) {
+        self.totalQuestion = dictionary["TotalQuestions"] as? Int ?? 0
+        self.totalPage = dictionary["TotalPages"] as? Int ?? 0
     }
 }
 
@@ -213,6 +207,7 @@ struct StudyQuestion {
         }
     }
 }
+
 // answer
 struct Answer {
     let answerContent: String

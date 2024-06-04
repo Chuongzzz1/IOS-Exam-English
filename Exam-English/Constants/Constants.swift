@@ -8,12 +8,12 @@
 import Foundation
 struct Constants {
     struct Network {
-        static let timeoutInterval: TimeInterval = 3600.0
+        static let timeoutInterval: TimeInterval = 3.0
     }
     
     struct API {
         static let baseURL = "http://172.16.75.43:8080"
-        static let authBaseURL = "http://172.16.75.32:8080"
+        static let authBaseURL = "http://172.16.75.43:8080"
         
         struct Endpoints {
             static let subject = "\(Constants.API.baseURL)/api/subject"
@@ -49,5 +49,29 @@ struct Constants {
         static let loginFailed = "Login failed with error code:"
         static let errorOccurred = "There was an error: "
         static let errorResponse = "Response error"
+    }
+    
+    struct Color {
+        static let mainColor = "008000"
+        static let backgroundColor = "66B366"
+        static let itemColor = "E5F2E5"
+        static let wrapItemColor = "9FDBB4"
+        static let normalColor = "D9DDDE"
+        static let wrongColor = "EF4F2B"
+    }
+    
+    struct MessageColors {
+        static let mainColor = "No Main Color"
+        static let itemColor = "No Item Color"
+        static let wrapItemColor = "No Wrap Item Color"
+        static let backgroundColor = "No Background Color"
+        static let wrongColor = "No Wrong Color"
+        static let normalColor = "No Normal Color"
+    }
+    
+    struct Layer {
+        static let borderWidth = 1.0
+        static let mainRadius = 10.0
+        static let buttonRadius = 25.0
     }
 }

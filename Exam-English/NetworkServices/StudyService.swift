@@ -11,10 +11,13 @@ import UIKit
 class StudyService {
     static let shared = StudyService()
     private init() {}
-    var token = "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZXZ0ZXJpYS5jb20iLCJzdWIiOiJhZG1pbiIsImV4cCI6MTcxOTgyNzYyOCwiaWF0IjoxNzE3MjM1NjI4LCJqdGkiOiJlYThhMzU2MS02MGU5LTRhZjgtYTRjMy01NDg2YTllNWY1OTAiLCJzY29wZSI6IiJ9.Yxi3g5y2OoTLBe2T7Btx_CslpQXVKaF3hLaDh5yJiQpPQFYZyQ9c-6jhxk6LsjshM_xISFkWgqIJb3wqT8B1DA"
+    
+    private var accessToken: String? {
+        return UserDefaults.standard.string(forKey: "accessToken")
+    }
     
     func fetchSubject(completion: @escaping (Result<StudySubjectResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.subject) else {
+        guard let url = URL(string: Constants.API.Endpoints.subject), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -44,7 +47,7 @@ class StudyService {
     }
     
     func fetchCategory(for subjectID: Int,completion: @escaping (Result<StudyCategoryResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.categories(for: subjectID)) else {
+        guard let url = URL(string: Constants.API.Endpoints.categories(for: subjectID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -75,7 +78,7 @@ class StudyService {
     }
     
     func fetchMainSection(for categoryID: Int,completion: @escaping (Result<StudyMainSectionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.mainSection(for: categoryID)) else {
+        guard let url = URL(string: Constants.API.Endpoints.mainSection(for: categoryID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -106,7 +109,7 @@ class StudyService {
     }
     
     func fetchSubSection(for mainSectionID: Int,completion: @escaping (Result<StudySubSectionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.subSection(for: mainSectionID)) else {
+        guard let url = URL(string: Constants.API.Endpoints.subSection(for: mainSectionID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -137,7 +140,7 @@ class StudyService {
     }
     
     func fetchQuestion(for subSection: Int,page: Int,completion: @escaping (Result<StudyQuestionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.question(for: subSection, page: page)) else {
+        guard let url = URL(string: Constants.API.Endpoints.question(for: subSection, page: page)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)

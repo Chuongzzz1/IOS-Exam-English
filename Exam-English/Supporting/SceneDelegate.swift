@@ -17,13 +17,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         
-//        let loginViewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
-//        let navigationController = UINavigationController(rootViewController: loginViewController)
-        let studyViewController = StudyViewController(nibName: "StudyViewController", bundle: nil)
-        let navigationController = UINavigationController(rootViewController: studyViewController)
-        window.rootViewController = navigationController
+        // login
+        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        let loginNavi = UINavigationController(rootViewController: loginVC)
+        window.rootViewController = loginNavi
         
+//        let studyVC = StudyViewController(nibName: "StudyViewController", bundle: nil)
+//        let studyNavi = UINavigationController(rootViewController: studyVC)
+//        window.rootViewController = studyNavi
+
         self.window = window
+    }
+    
+    func createTabBarController() -> UITabBarController {
+        // home
+        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let homeNavi = UINavigationController(rootViewController: homeVC)
+        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "home-off"), selectedImage: UIImage(named: "home-on"))
+        homeTabBarItem.tag = 0
+        homeVC.tabBarItem = homeTabBarItem
+
+        // study
+        let studyVC = StudyViewController(nibName: "StudyViewController", bundle: nil)
+        let studyNavi = UINavigationController(rootViewController: studyVC)
+        let studyTabBarItem = UITabBarItem(title: "Study", image: UIImage(named: "study-off"), selectedImage: UIImage(named: "study-on"))
+        studyTabBarItem.tag = 1
+        studyVC.tabBarItem = studyTabBarItem
+        
+        // tabbar
+        let tabbarController = UITabBarController()
+        if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
+            Authentication.shared.scheduleRefreshAccessToken(accessToken: accessToken)
+        }
+        tabbarController.viewControllers = [homeNavi, studyNavi]
+        tabbarController.tabBar.tintColor = UIColor(named: Constants.Color.mainColor)
+//        tabbarController.tabBar.backgroundColor = UIColor(named: "D9DDDE")
+        
+        return tabbarController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

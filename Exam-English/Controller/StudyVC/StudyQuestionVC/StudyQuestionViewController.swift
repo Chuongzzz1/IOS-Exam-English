@@ -34,6 +34,9 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
     }
     private var currentQuestion = [StudyQuestion]()
     private var currentIndex = 0
+    var currentPage = 0
+    var totalpage = 0
+    var subSectionID = 0
 }
 
 // MARK: - Life Cycle
@@ -123,10 +126,15 @@ extension StudyQuestionViewController {
         collectionView.isScrollEnabled = false
     }
     
+    func hideUITabbar() {
+        hidesBottomBarWhenPushed = true
+    }
+    
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         setupFlowlayout()
+        hideUITabbar()
         registerCell()
         handleScroll()
     }
@@ -140,8 +148,12 @@ extension StudyQuestionViewController {
             currentIndex = questions.count - 1
         }
         let newQuestion = questions[currentIndex]
+        let countQuestion = questions.count - 1
         self.currentQuestion.removeAll()
         self.currentQuestion.append(newQuestion)
+        if countQuestion == currentIndex {
+            loadmoreQuestion(subSectionID: subSectionID, page: currentPage)
+        }
         self.collectionView.reloadData()
         print("Updating current cell with new question at index \(currentIndex)")
         //        updateCurrentCell(with: newQuestion)
@@ -183,6 +195,32 @@ extension StudyQuestionViewController {
         if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
             currentCell.configure(with: question)
             collectionView.reloadItems(at: [indexPath])
+        }
+    }
+}
+
+//MARK: - API
+extension StudyQuestionViewController {
+    func loadmoreQuestion(subSectionID: Int,page: Int) {
+        guard page <= totalpage else {
+            print("No more pages to load")
+            return
+        }
+        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
+            switch result {
+            case .success(let studyQuestionResponse):
+                if let questions = studyQuestionResponse.result {
+                    DispatchQueue.main.async {
+                        self?.questions.append(contentsOf: questions)
+                        self?.currentPage += 1
+                        self?.collectionView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print("Failed to fetch sub sections: \(error.localizedDescription)")
+                }
+            }
         }
     }
 }

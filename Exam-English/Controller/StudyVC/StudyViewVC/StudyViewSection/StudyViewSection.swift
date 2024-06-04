@@ -111,14 +111,14 @@ extension StudyViewSection {
 
 
 // MARK: Extention
-extension String {
-    func truncated(to length: Int, addEllipsis: Bool = true) -> String {
-        if self.count <= length {
-            return self
-        } else {
-            let endIndex = self.index(self.startIndex, offsetBy: length)
-            let truncatedString = self[..<endIndex]
-            return addEllipsis ? truncatedString + "..." : String(truncatedString)
-        }
-    }
-}
+//extension String {
+//    func truncated(to length: Int, addEllipsis: Bool = true) -> String {
+//        if self.count <= length {
+//            return self
+//        } else {
+//            let endIndex = self.index(self.startIndex, offsetBy: length)
+//            let truncatedString = self[..<endIndex]
+//            return addEllipsis ? truncatedString + "..." : String(truncatedString)
+//        }
+//    }
+//}

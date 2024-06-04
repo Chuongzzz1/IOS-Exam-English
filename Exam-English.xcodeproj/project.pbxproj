@@ -13,6 +13,12 @@
 		9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF592BCC3790002B077C /* Assets.xcassets */; };
 		9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF5B2BCC3790002B077C /* LaunchScreen.storyboard */; };
 		9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EAF702BCC44F7002B077C /* LoginViewController.swift */; };
+		9D3AFDE92C0C67F500B2891F /* ListQuestionWithTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D886E6C2C007B7F00A47F3C /* ListQuestionWithTextCell.swift */; };
+		9D3AFDEA2C0C681E00B2891F /* HeaderStudySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C522BE85975007BF06F /* HeaderStudySection.swift */; };
+		9D3AFDED2C0CC61E00B2891F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3AFDEB2C0CC61E00B2891F /* HomeViewController.swift */; };
+		9D3AFDEE2C0CC61E00B2891F /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AFDEC2C0CC61E00B2891F /* HomeViewController.xib */; };
+		9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3AFDF02C0D6A6100B2891F /* HomeViewCell.swift */; };
+		9D3AFDF32C0D6A6100B2891F /* HomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AFDF12C0D6A6100B2891F /* HomeViewCell.xib */; };
 		9D3C95542BD5D02C00F5190D /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95532BD5D02C00F5190D /* LoginModel.swift */; };
 		9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */; };
 		9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */; };
@@ -21,7 +27,6 @@
 		9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */; };
 		9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C4D2BE8512E007BF06F /* StudyViewSection.swift */; };
 		9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C4E2BE8512E007BF06F /* StudyViewSection.xib */; };
-		9D4A9C542BE85975007BF06F /* HeaderStudySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C522BE85975007BF06F /* HeaderStudySection.swift */; };
 		9D4A9C552BE85975007BF06F /* HeaderStudySection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C532BE85975007BF06F /* HeaderStudySection.xib */; };
 		9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C582BE86A35007BF06F /* StudyDetailViewController.swift */; };
 		9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C592BE86A35007BF06F /* StudyDetailViewController.xib */; };
@@ -38,7 +43,6 @@
 		9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */; };
 		9D7AEE862BF3264F00DFA97E /* StudyDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */; };
 		9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4E342BD8C16000DA34A4 /* Authentication.swift */; };
-		9D886E6E2C007B7F00A47F3C /* ListQuestionWithTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D886E6C2C007B7F00A47F3C /* ListQuestionWithTextCell.swift */; };
 		9D886E6F2C007B7F00A47F3C /* ListQuestionWithTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D886E6D2C007B7F00A47F3C /* ListQuestionWithTextCell.xib */; };
 		9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */; };
 		9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */; };
@@ -61,6 +65,10 @@
 		9D2EAF5E2BCC3790002B077C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D2EAF702BCC44F7002B077C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9D2EAF722BCC44F9002B077C /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9D3AFDEB2C0CC61E00B2891F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9D3AFDEC2C0CC61E00B2891F /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		9D3AFDF02C0D6A6100B2891F /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
+		9D3AFDF12C0D6A6100B2891F /* HomeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewCell.xib; sourceTree = "<group>"; };
 		9D3C95532BD5D02C00F5190D /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSuccessViewController.swift; sourceTree = "<group>"; };
 		9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSuccessViewController.xib; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				9D8FC3352BE3774500FCEBF6 /* LoginVC */,
+				9D3AFDE42C0C574500B2891F /* HomeVC */,
 				9D8FC3362BE3776100FCEBF6 /* StudyVC */,
 			);
 			path = Controller;
@@ -189,6 +198,24 @@
 				9D8FC3472BE4CCC400FCEBF6 /* StudyViewSection */,
 			);
 			path = StudyViewVC;
+			sourceTree = "<group>";
+		};
+		9D3AFDE42C0C574500B2891F /* HomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D3AFDEB2C0CC61E00B2891F /* HomeViewController.swift */,
+				9D3AFDEC2C0CC61E00B2891F /* HomeViewController.xib */,
+			);
+			path = HomeVC;
+			sourceTree = "<group>";
+		};
+		9D3AFDEF2C0D689C00B2891F /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D3AFDF02C0D6A6100B2891F /* HomeViewCell.swift */,
+				9D3AFDF12C0D6A6100B2891F /* HomeViewCell.xib */,
+			);
+			path = HomeCell;
 			sourceTree = "<group>";
 		};
 		9D44A32B2BEDC72D00D20521 /* StudyQuestionSetCell */ = {
@@ -230,6 +257,7 @@
 		9D4A9C5D2BE8744D007BF06F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9D3AFDEF2C0D689C00B2891F /* HomeCell */,
 				9D3AFDE02C0B5CCB00B2891F /* StudyCell */,
 			);
 			path = Cell;
@@ -477,6 +505,8 @@
 				9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */,
 				9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */,
 				9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */,
+				9D3AFDEE2C0CC61E00B2891F /* HomeViewController.xib in Resources */,
+				9D3AFDF32C0D6A6100B2891F /* HomeViewCell.xib in Resources */,
 				9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */,
 				9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */,
 				9D78B2E92C02F9F500D88DBE /* TextQuestionCell.xib in Resources */,
@@ -493,7 +523,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3AFDED2C0CC61E00B2891F /* HomeViewController.swift in Sources */,
 				9DBC8D2D2C06DB900091A340 /* Extensions.swift in Sources */,
+				9D3AFDE92C0C67F500B2891F /* ListQuestionWithTextCell.swift in Sources */,
 				9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */,
 				9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */,
 				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
@@ -502,6 +534,7 @@
 				9D2841F62BF9D34F003D722D /* Constants.swift in Sources */,
 				9D5E8D902BCE60070095441C /* CustomView.swift in Sources */,
 				9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */,
+				9D3AFDEA2C0C681E00B2891F /* HeaderStudySection.swift in Sources */,
 				9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */,
 				9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */,
 				9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */,
@@ -509,10 +542,9 @@
 				9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */,
 				9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */,
 				9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */,
-				9D886E6E2C007B7F00A47F3C /* ListQuestionWithTextCell.swift in Sources */,
-				9D4A9C542BE85975007BF06F /* HeaderStudySection.swift in Sources */,
 				9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */,
 				9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */,
+				9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */,
 				9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */,
 				9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */,
 				9D3C95542BD5D02C00F5190D /* LoginModel.swift in Sources */,
