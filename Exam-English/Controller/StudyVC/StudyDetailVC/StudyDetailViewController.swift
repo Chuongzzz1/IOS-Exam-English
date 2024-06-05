@@ -120,7 +120,7 @@ extension StudyDetailViewController {
                     }
                 }
             case .failure(let error):
-                print("Failed to fetch sub sections: \(error.localizedDescription)")
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchSubSection + "\(error)")
             }
         }
     }

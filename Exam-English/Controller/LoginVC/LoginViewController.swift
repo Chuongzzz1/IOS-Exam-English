@@ -47,16 +47,18 @@ extension LoginViewController {
         }
     }
     
-    @IBAction func logginButton(_ sender: UIButton) {
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
         guard let username = accountTextField.text, !username.isEmpty else {
             customView.errorTextField(accountTextField)
             warningAccountLabel.isHidden = false
+            Logger.shared.logError(Loggers.LoginMessages.accountLoginFailed)
             return
         }
         
         guard let password = passwordTextField.text, !password.isEmpty else {
             customView.errorTextField(passwordTextField)
             warningPasswordLabel.isHidden = false
+            Logger.shared.logError(Loggers.LoginMessages.passwordLoginFailed)
             return
         }
         apiService.postLogin(username: username, password: password) { [weak self] result in
@@ -98,7 +100,7 @@ extension LoginViewController {
     }
     
     func getDefaulTextField() {
-        defaultPasswordWarning = warningPasswordLabel.text ?? ""
+        defaultPasswordWarning = warningPasswordLabel.text ?? Constants.DefaultString.empty
     }
 }
 
@@ -133,28 +135,25 @@ extension LoginViewController {
             // Extract the access token
             let accessToken = tokenResponse.result?.token
             
-            // Save the access token to UserDefaults
             UserDefaults.standard.set(accessToken, forKey: "accessToken")
             //            print("\(String(describing: accessToken))")
                         
             // Navigate to the next screen or perform any other necessary actions
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
             
-            // Create the tab bar controller
             let tabBarController = sceneDelegate.createTabBarController()
             
-            // Set the tab bar controller as the root view controller
             sceneDelegate.window?.rootViewController = tabBarController
             sceneDelegate.window?.makeKeyAndVisible()
         } catch {
-            print("Error decoding token response: \(error)")
+            Logger.shared.logError(Loggers.LoginMessages.errorTokenResponse + "\(error)")
         }
     }
 
     private func handleLoginFailure(error: Error) {
-            warningPasswordLabel.text = "User account or password incorrect"
+        warningPasswordLabel.text = Constants.MessageLogin.loginFailed
             warningPasswordLabel.isHidden = false
-        print("Login fail with error: \(error.localizedDescription)")
+        Logger.shared.logError(Loggers.LoginMessages.errorLoginFailed + "\(error.localizedDescription)")
     }
 }
 

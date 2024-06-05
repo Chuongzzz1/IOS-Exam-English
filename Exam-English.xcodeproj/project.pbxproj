@@ -49,6 +49,8 @@
 		9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */; };
 		9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */; };
 		9D8FC3462BE4823800FCEBF6 /* StudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */; };
+		9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F6C2C0F00C300B1A61C /* Logger.swift */; };
+		9DB06F6F2C0F112600B1A61C /* LoggerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */; };
 		9DBC8D2D2C06DB900091A340 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2C2C06DB900091A340 /* Extensions.swift */; };
 		9DBC8D302C082AF00091A340 /* ListQuestionWithPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2E2C082AF00091A340 /* ListQuestionWithPhotoCell.swift */; };
 		9DBC8D312C082AF00091A340 /* ListQuestionWithPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2F2C082AF00091A340 /* ListQuestionWithPhotoCell.xib */; };
@@ -100,6 +102,8 @@
 		9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewCell.swift; sourceTree = "<group>"; };
 		9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyViewCell.xib; sourceTree = "<group>"; };
 		9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModel.swift; sourceTree = "<group>"; };
+		9DB06F6C2C0F00C300B1A61C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerConstants.swift; sourceTree = "<group>"; };
 		9DBC8D2C2C06DB900091A340 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DBC8D2E2C082AF00091A340 /* ListQuestionWithPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionWithPhotoCell.swift; sourceTree = "<group>"; };
 		9DBC8D2F2C082AF00091A340 /* ListQuestionWithPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionWithPhotoCell.xib; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				9D4A9C6E2BEB7269007BF06F /* NetworkServices */,
 				9D4A9C6F2BEB7305007BF06F /* Constants */,
 				9DD0B38F2BD3ACC100F3E745 /* Common */,
+				9DB06F6B2C0F009200B1A61C /* Utils */,
 				9DD0B38A2BD3A77600F3E745 /* Fonts */,
 				9D2EAF662BCC37C8002B077C /* Controller */,
 				9D2EAF652BCC37C1002B077C /* View */,
@@ -175,6 +180,7 @@
 				9D8FC3352BE3774500FCEBF6 /* LoginVC */,
 				9D3AFDE42C0C574500B2891F /* HomeVC */,
 				9D8FC3362BE3776100FCEBF6 /* StudyVC */,
+				9DB06F6A2C0ECC7500B1A61C /* ExamVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				9D2841F52BF9D34F003D722D /* Constants.swift */,
+				9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -410,6 +417,21 @@
 				9D4A9C4E2BE8512E007BF06F /* StudyViewSection.xib */,
 			);
 			path = StudyViewSection;
+			sourceTree = "<group>";
+		};
+		9DB06F6A2C0ECC7500B1A61C /* ExamVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExamVC;
+			sourceTree = "<group>";
+		};
+		9DB06F6B2C0F009200B1A61C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9DB06F6C2C0F00C300B1A61C /* Logger.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		9DBC8D2B2C06DB570091A340 /* Extensions */ = {
@@ -527,6 +549,7 @@
 				9DBC8D2D2C06DB900091A340 /* Extensions.swift in Sources */,
 				9D3AFDE92C0C67F500B2891F /* ListQuestionWithTextCell.swift in Sources */,
 				9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */,
+				9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */,
 				9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */,
 				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
@@ -543,6 +566,7 @@
 				9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */,
 				9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */,
 				9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */,
+				9DB06F6F2C0F112600B1A61C /* LoggerConstants.swift in Sources */,
 				9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */,
 				9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */,
 				9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */,

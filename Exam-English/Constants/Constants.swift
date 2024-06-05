@@ -10,7 +10,7 @@ struct Constants {
     struct Network {
         static let timeoutInterval: TimeInterval = 3.0
     }
-    
+        
     struct API {
         static let baseURL = "http://172.16.75.43:8080"
         static let authBaseURL = "http://172.16.75.43:8080"
@@ -41,6 +41,16 @@ struct Constants {
         }
     }
     
+    struct Layer {
+        static let borderWidth = 1.0
+        static let mainRadius = 10.0
+        static let buttonRadius = 25.0
+    }
+    
+    struct DefaultString {
+        static let empty = ""
+    }
+    
     struct Messages {
         static let success = "Success"
         static let failure = "An error occurred"
@@ -69,9 +79,9 @@ struct Constants {
         static let normalColor = "No Normal Color"
     }
     
-    struct Layer {
-        static let borderWidth = 1.0
-        static let mainRadius = 10.0
-        static let buttonRadius = 25.0
+    struct MessageLogin {
+        static let loginFailed = "User account or password incorrect"
     }
 }
+
+

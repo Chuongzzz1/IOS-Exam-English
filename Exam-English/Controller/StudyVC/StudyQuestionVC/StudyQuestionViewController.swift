@@ -45,6 +45,17 @@ extension StudyQuestionViewController {
         super.viewDidLoad()
         setupCollectionView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showTabbar()
+    }
+
 }
 
 // MARK: -  DataSource
@@ -155,7 +166,7 @@ extension StudyQuestionViewController {
             loadmoreQuestion(subSectionID: subSectionID, page: currentPage)
         }
         self.collectionView.reloadData()
-        print("Updating current cell with new question at index \(currentIndex)")
+        print("DEBUG: Updating current cell with new question at index \(currentIndex)")
         //        updateCurrentCell(with: newQuestion)
     }
     
@@ -168,7 +179,7 @@ extension StudyQuestionViewController {
         self.currentQuestion.removeAll()
         self.currentQuestion.append(newQuestion)
         self.collectionView.reloadData()
-        print("Updating current cell with new question at index \(currentIndex)")
+        print("DEBUG: Updating current cell with new question at index \(currentIndex)")
 //        updateCurrentCell(with: newQuestion)
     }
     
@@ -197,13 +208,22 @@ extension StudyQuestionViewController {
             collectionView.reloadItems(at: [indexPath])
         }
     }
+    
+    func hideTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func showTabbar() {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
 }
 
 //MARK: - API
 extension StudyQuestionViewController {
     func loadmoreQuestion(subSectionID: Int,page: Int) {
         guard page <= totalpage else {
-            print("No more pages to load")
+            print("DEBUG: No more pages to load")
             return
         }
         StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
@@ -218,7 +238,7 @@ extension StudyQuestionViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    print("Failed to fetch sub sections: \(error.localizedDescription)")
+                    Logger.shared.logError(Loggers.StudyMessages.errorLoadmoreQuestion + "\(error)")
                 }
             }
         }

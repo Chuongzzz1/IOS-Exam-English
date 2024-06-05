@@ -162,7 +162,7 @@ extension StudyViewController {
     private func setupNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "66B366")
+        appearance.backgroundColor = UIColor(named: Constants.Color.backgroundColor)
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .white
@@ -204,14 +204,14 @@ extension StudyViewController {
                                     }
                                 }
                             case .failure(let error):
-                                print("Error get data category", error)
+                                Logger.shared.logError(Loggers.StudyMessages.errorFetchCategory + "\(error)")
                             }
                             dispatchGroup.leave()
                         }
                     }
                 }
             case .failure(let error):
-                print("Error when retrieving subject data", error)
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchSubject + "\(error)")
             }
         }
     }
@@ -222,15 +222,13 @@ extension StudyViewController {
             case .success(let mainSectionResult):
                 if let mainSections = mainSectionResult.result {
                     DispatchQueue.main.async {
-//                        self?.mainSections.append(contentsOf: mainSections)
                         self?.mainSections = mainSections
-//                        self?.mainSectionDict[categoryID] = mainSections
                         self?.collectionView.reloadData()
                         self?.didSelectItem(mainSections: mainSections)
                         }
                 }
             case .failure(let error):
-                print("Error fetching main section:", error)
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchMainSection + "\(error)")
             }
         }
     }

@@ -116,7 +116,7 @@ extension StudyQuestionSetViewController {
                     }
                 }
             case .failure(let error):
-                print("Failed to fetch sub sections: \(error.localizedDescription)")
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
             }
         }
     }
