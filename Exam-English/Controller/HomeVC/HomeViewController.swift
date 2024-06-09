@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     
 // MARK: - Variable
     private var custom = CustomView()
+    private var scores = [Score]()
 }
 
 // MARK: - Life Cycle
@@ -33,6 +34,7 @@ extension HomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        callFunc()
     }
 }
 
@@ -44,12 +46,18 @@ extension HomeViewController: UITableViewDelegate {
 // MARK: - DataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return scores.count
+        
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewCell", for: indexPath) as! HomeViewCell
-        return cell
+       if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewCell", for: indexPath) as? HomeViewCell {
+           let score = scores[indexPath.row]
+           cell.updatesView(score: score, rank: indexPath.row + 1)
+                return cell
+        } else {
+            return HomeViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -90,4 +98,27 @@ extension HomeViewController {
 }
 
 // MARK: - Func
-extension HomeViewController {}
+extension HomeViewController {
+    func callFunc() {
+        fetchScore()
+    }
+}
+
+// MARK: - Handle API
+extension HomeViewController {
+    func fetchScore() {
+        HomeService.shared.fetchSubject { [weak self] result in
+            switch result {
+            case .success(let scoreResult):
+                if let scores = scoreResult.result {
+                    DispatchQueue.main.async {
+                        self?.scores = scores
+                        self?.tableView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchMainSection + "\(error)")
+            }
+        }
+    }
+}

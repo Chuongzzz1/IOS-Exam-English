@@ -36,7 +36,7 @@ class StudyService {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                     let studySubjectResponse = StudySubjectResponse(dictionary: json)
-//                    print(json)
+                    //                    print(json)
                     completion(.success(studySubjectResponse))
                 }
             } catch {
@@ -67,7 +67,7 @@ class StudyService {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                     let studyCategoryResponse = StudyCategoryResponse(dictionary: json)
-//                    print(json)
+                    //                    print(json)
                     completion(.success(studyCategoryResponse))
                 }
             } catch {
@@ -129,7 +129,7 @@ class StudyService {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                     let studySubSectionResponse = StudySubSectionResponse(dictionary: json)
-//                    print(json)
+                    //                    print(json)
                     completion(.success(studySubSectionResponse))
                 }
             } catch {
@@ -160,12 +160,38 @@ class StudyService {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                     let studyQuestionResponse = StudyQuestionResponse(dictionary: json)
-//                    print(json)
+                    //                    print(json)
                     completion(.success(studyQuestionResponse))
                 }
             } catch {
                 print(Constants.Messages.errorResponse)
             }
+        }
+        task.resume()
+    }
+    
+    func fetchAudio(completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: "http://172.16.75.43:8080/stream/streamingMainQuestion?mainQuestionId=774"), let token = accessToken else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL or access token"])))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                return
+            }
+            
+            completion(.success(data))
         }
         task.resume()
     }

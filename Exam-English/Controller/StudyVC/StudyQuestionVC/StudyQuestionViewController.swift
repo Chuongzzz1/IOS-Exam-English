@@ -37,6 +37,7 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
     var currentPage = 0
     var totalpage = 0
     var subSectionID = 0
+    var audioData: Data?
 }
 
 // MARK: - Life Cycle
@@ -70,25 +71,32 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
 //        let question = questions[indexPath.item]
         let question = currentQuestion[0]
 
-        // Kiểm tra nếu có nội dung chính và liên kết hình ảnh, sử dụng PhotoQuestionCell
         if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as? QuestionPhotoCell {
                 cell.delegate = self
-                cell.configure(with: question)
+                print("audio pass: \(audioData)")
+                if let audioData = audioData {
+                    cell.configure(with: question, audioData: audioData)
+                } else {
+                    cell.configure(with: question)
+                }
                 return cell
             }
+            
         } else if let normalContent = question.normalQuestionContent {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithTextCell", for: indexPath) as? ListQuestionWithTextCell {
                 cell.delegate = self
                 cell.configure(with: question)
                 return cell
             }
+            
         } else if let mainContent = question.mainQuestionContent, question.subQuestionUrl == nil {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as? TextQuestionCell {
                 cell.delegate = self
                 cell.configure(with: question)
                 return cell
             }
+            
         } else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithPhotoCell", for: indexPath) as? ListQuestionWithPhotoCell {
                 cell.delegate = self
@@ -96,7 +104,6 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
                 return cell
             }
         }
-        // Nếu không thỏa mãn các điều kiện trên, trả về UICollectionViewCell mặc định
         return UICollectionViewCell()   
     }
 }
@@ -163,7 +170,7 @@ extension StudyQuestionViewController {
         self.currentQuestion.removeAll()
         self.currentQuestion.append(newQuestion)
         if countQuestion == currentIndex {
-            loadmoreQuestion(subSectionID: subSectionID, page: currentPage)
+            loadMoreQuestion(subSectionID: subSectionID, page: currentPage)
         }
         self.collectionView.reloadData()
         print("DEBUG: Updating current cell with new question at index \(currentIndex)")
@@ -204,7 +211,7 @@ extension StudyQuestionViewController {
         }
         
         if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
-            currentCell.configure(with: question)
+            currentCell.configure(with: question,audioData: audioData!)
             collectionView.reloadItems(at: [indexPath])
         }
     }
@@ -221,7 +228,7 @@ extension StudyQuestionViewController {
 
 //MARK: - API
 extension StudyQuestionViewController {
-    func loadmoreQuestion(subSectionID: Int,page: Int) {
+    func loadMoreQuestion(subSectionID: Int,page: Int) {
         guard page <= totalpage else {
             print("DEBUG: No more pages to load")
             return

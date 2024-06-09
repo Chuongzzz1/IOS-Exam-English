@@ -14,9 +14,12 @@ class StudyQuestionSetViewController: UIViewController {
     // MARK: - Variable
     var subSections = [StudySubSection]()
     var questions = [StudyQuestion]()
-    var subSectionID = 0
-    var currentPage = 1
-    var totalPage = 1
+    private var subSectionID = 0
+    private var currentPage = 1
+    private var totalPage = 1
+    var audioData: Data?
+    var isQuestionsFetched = false
+    var isAudioFetched = false
 }
 
 // MARK: - Life Cycle
@@ -25,6 +28,12 @@ extension StudyQuestionSetViewController {
         super.viewDidLoad()
         setupStudyDetailView()
         callFunc()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isQuestionsFetched = false
+        isAudioFetched = false
     }
 }
 
@@ -85,6 +94,7 @@ extension StudyQuestionSetViewController {
         studyQuestionSetVC.questions = self.questions
         studyQuestionSetVC.currentPage = self.currentPage
         studyQuestionSetVC.totalpage = self.totalPage
+        studyQuestionSetVC.audioData = self.audioData
         studyQuestionSetVC.subSectionID = self.subSectionID
         self.navigationController?.pushViewController(studyQuestionSetVC, animated: true)
     }
@@ -96,6 +106,12 @@ extension StudyQuestionSetViewController {
     private func setupNavigationBar() {
         let customTitleView = UIView()
         self.navigationItem.titleView = customTitleView
+    }
+    
+    private func navigateIfDataReady() {
+        if isQuestionsFetched && isAudioFetched {
+            navigateToStudyQuestionViewController()
+        }
     }
 
 }
@@ -112,11 +128,27 @@ extension StudyQuestionSetViewController {
                         self?.totalPage = paginates.totalPage
                         self?.subSectionID = subSectionID
                         self?.currentPage += 1
-                        self?.navigateToStudyQuestionViewController()
+                        self?.isQuestionsFetched = true
+                        self?.handleAudio()
+//                        self?.navigateToStudyQuestionViewController()
+                        self?.navigateIfDataReady()
                     }
                 }
             case .failure(let error):
                 Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
+            }
+        }
+    }
+    
+    func handleAudio() {
+        StudyService.shared.fetchAudio { [weak self] result in
+            switch result {
+            case .success(let audioData):
+                    self?.audioData = audioData
+                self?.isAudioFetched = true
+
+            case .failure(let error):
+                print("Failed to fetch audio: \(error.localizedDescription)")
             }
         }
     }

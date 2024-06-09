@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         
-        // login
-        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let loginNavi = UINavigationController(rootViewController: loginVC)
-        window.rootViewController = loginNavi
+//        // login
+//        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+//        let loginNavi = UINavigationController(rootViewController: loginVC)
+//        window.rootViewController = loginNavi
         
-//        let studyVC = StudyViewController(nibName: "StudyViewController", bundle: nil)
-//        let studyNavi = UINavigationController(rootViewController: studyVC)
-//        window.rootViewController = studyNavi
+        let testVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let testNavi = UINavigationController(rootViewController: testVC)
+        window.rootViewController = testNavi
 
         self.window = window
     }

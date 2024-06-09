@@ -8,7 +8,7 @@
 import Foundation
 struct Constants {
     struct Network {
-        static let timeoutInterval: TimeInterval = 3.0
+        static let timeoutInterval: TimeInterval = 3600.0
     }
         
     struct API {
