@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, ListQuestionWithTextCellDelegate, TextQuestionCellDelegate, ListQuestionWithPhotoCellDelegate {
     func handleScrollNext(sender: UIButton) {
         scrollNextToCell()
@@ -20,7 +19,7 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    var questions = [StudyQuestion]() {
+   var questions = [StudyQuestion]() {
         didSet {
             currentQuestion.removeAll()
             if !questions.isEmpty {
@@ -74,7 +73,7 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
         if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as? QuestionPhotoCell {
                 cell.delegate = self
-                print("audio pass: \(audioData)")
+//                print(imageDataList)
                 if let audioData = audioData {
                     cell.configure(with: question, audioData: audioData)
                 } else {
@@ -90,10 +89,14 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
                 return cell
             }
             
-        } else if let mainContent = question.mainQuestionContent, question.subQuestionUrl == nil {
+        } else if let mainContent = question.subQuestionContent, question.subQuestionUrl == nil {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as? TextQuestionCell {
                 cell.delegate = self
-                cell.configure(with: question)
+                if let audioData = audioData {
+                    cell.configure(with: question, audioData: audioData)
+                } else {
+                    cell.configure(with: question)
+                }
                 return cell
             }
             
@@ -190,31 +193,29 @@ extension StudyQuestionViewController {
 //        updateCurrentCell(with: newQuestion)
     }
     
-    func updateCurrentCell(with question: StudyQuestion) {
-        //        collectionView.scrollTo  Item(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
-        //        collectionView.reloadData()
-        let indexPath = IndexPath(item: 0, section: 0)
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithTextCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? TextQuestionCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithPhotoCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
-            currentCell.configure(with: question,audioData: audioData!)
-            collectionView.reloadItems(at: [indexPath])
-        }
-    }
+//    func updateCurrentCell(with question: StudyQuestion) {
+//        let indexPath = IndexPath(item: 0, section: 0)
+//        
+//        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithTextCell {
+//            currentCell.configure(with: question)
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//        
+//        if let currentCell = collectionView.cellForItem(at: indexPath) as? TextQuestionCell {
+//            currentCell.configure(with: question,audioData: audioData!)
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//        
+//        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithPhotoCell {
+//            currentCell.configure(with: question)
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//        
+//        if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
+//            currentCell.configure(with: question,audioData: audioData!)
+//            collectionView.reloadItems(at: [indexPath])
+//        }
+//    }
     
     func hideTabbar() {
         self.tabBarController?.tabBar.isHidden = true
@@ -226,7 +227,7 @@ extension StudyQuestionViewController {
 
 }
 
-//MARK: - API
+// MARK: - API
 extension StudyQuestionViewController {
     func loadMoreQuestion(subSectionID: Int,page: Int) {
         guard page <= totalpage else {

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol APIServiceProtocol {
+    func postLogin(username: String, password: String, completion: @escaping (Result<Data, Error>) -> Void)
+}
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
 // MARK: - Outlet
@@ -20,10 +24,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var warningPasswordLabel: UILabel!
 
 // MARK: - Variable
-    private var tempHideShow = true
-    private var defaultPasswordWarning: String = ""
-    private var customView = CustomView()
-    private let apiService = Authentication.shared
+     var tempHideShow = true
+     var defaultPasswordWarning: String = ""
+     var customView = CustomView()
+     let apiService = Authentication.shared
 }
 
 // MARK: Life Cycle
@@ -129,20 +133,13 @@ extension LoginViewController {
 extension LoginViewController {
     private func handleLoginSuccess(data: Data) {
         do {
-            // Decode JSON data to retrieve the access token
             let tokenResponse = try JSONDecoder().decode(AccessTokenResponse.self, from: data)
-            
-            // Extract the access token
             let accessToken = tokenResponse.result?.token
-            
             UserDefaults.standard.set(accessToken, forKey: "accessToken")
             //            print("\(String(describing: accessToken))")
                         
-            // Navigate to the next screen or perform any other necessary actions
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-            
             let tabBarController = sceneDelegate.createTabBarController()
-            
             sceneDelegate.window?.rootViewController = tabBarController
             sceneDelegate.window?.makeKeyAndVisible()
         } catch {
@@ -156,5 +153,7 @@ extension LoginViewController {
         Logger.shared.logError(Loggers.LoginMessages.errorLoginFailed + "\(error.localizedDescription)")
     }
 }
+
+
 
 

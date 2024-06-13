@@ -14,8 +14,8 @@ class HomeService {
         return UserDefaults.standard.string(forKey: "accessToken")
     }
     
-    func fetchSubject(completion: @escaping (Result<ScoreResponse, Error>) -> Void) {
-        guard let url = URL(string: "http://172.16.75.43:8080/api/scores?numberOfPeople=10"), let token = accessToken else {
+    func fetchScore(completion: @escaping (Result<ScoreResponse, Error>) -> Void) {
+        guard let url = URL(string: Constants.API.Endpoints.scoreURL), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)

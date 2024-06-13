@@ -48,6 +48,12 @@ struct Loggers {
         static let errorFetchMainSection = "Error fetching Main Section: "
         static let errorFetchSubSection = "Error fetching Sub Section: "
         static let errorFetchQuestion = "Error fetching Qusetion: "
+        static let errorFetchAudio = "Failed to fetch audio: "
         static let errorLoadmoreQuestion = "Error Loadmore Question: "
+    }
+    
+    struct AudioMessages {
+        static let errorSaved = "Failed to save audio data to file."
+        static let errorWrited = "Failed to write audio data to file: "
     }
 }

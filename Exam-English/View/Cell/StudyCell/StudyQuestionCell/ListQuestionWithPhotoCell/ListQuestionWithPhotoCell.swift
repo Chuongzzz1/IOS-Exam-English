@@ -31,8 +31,6 @@ class ListQuestionWithPhotoCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
 
-
-    
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
@@ -40,6 +38,7 @@ class ListQuestionWithPhotoCell: UICollectionViewCell {
     private var correctAnswer: Int = -1
     private var selectedAnswerIndex: Int? = nil
     private var custom = CustomView()
+    var baseUrl = Constants.API.Endpoints.baseImageURL
     weak var delegate: ListQuestionWithPhotoCellDelegate?
 }
 
@@ -58,7 +57,6 @@ extension ListQuestionWithPhotoCell {
         selectedAnswerIndex = answerButtons.firstIndex(of: sender)
     }
 
-        
     @IBAction func checkAnswer(_ sender: UIButton) {
         if let selectedIndex = selectedAnswerIndex {
             if selectedIndex == correctAnswer {
@@ -104,6 +102,20 @@ extension ListQuestionWithPhotoCell {
                 correctAnswer = index
             }
         }
+        
+        if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let imageData = data {
+                    DispatchQueue.main.async {
+                        self.imageQuestionView.image = UIImage(data: imageData)
+                    }
+                } else {
+                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+            task.resume()
+        }
+
     }
 
     func resetUI() {

@@ -48,6 +48,7 @@ class QuestionPhotoCell: UICollectionViewCell {
     private var timeObserver: Any?
     private var custom = CustomView()
     weak var delegate: QuestionPhotoCellDelegate?
+    var baseUrl = Constants.API.Endpoints.baseImageURL
     
 }
 
@@ -98,6 +99,7 @@ extension QuestionPhotoCell {
 extension QuestionPhotoCell {
     func configure(with question: StudyQuestion, audioData: Data) {
         resetUI()
+        
         guard let subAnswers = question.answers else { return }
         answerALabel.text = subAnswers[safe: 0]?.answerContent
         answerBLabel.text = subAnswers[safe: 1]?.answerContent
@@ -118,10 +120,20 @@ extension QuestionPhotoCell {
         if let selectedIndex = question.selectedAnswerIndex {
             updateAnswerButtonStates(selectedButton: answerButtons[selectedIndex])
         }
-        
-        
-        
         setupAudioPlayer(with: audioData)
+        
+        if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let imageData = data {
+                    DispatchQueue.main.async {
+                        self.imageQuestionView.image = UIImage(data: imageData)
+                    }
+                } else {
+                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+            task.resume()
+        }
     }
     
     func configure(with question: StudyQuestion) {
@@ -238,10 +250,10 @@ extension QuestionPhotoCell {
     
     func setupAudioPlayer(with audioData: Data) {
         guard let tempFileURL = saveAudioDataToFile(data: audioData) else {
-            print("Failed to save audio data to file.")
+            Logger.shared.logError(Loggers.AudioMessages.errorSaved)
             return
         }
-        print("Temp file URL: \(tempFileURL)")
+//        print("Temp file URL: \(tempFileURL)")
 
         player = AVPlayer(url: tempFileURL)
         addPeriodicTimeObserver()
@@ -258,17 +270,17 @@ extension QuestionPhotoCell {
         isPaused = false
         pauseResumeImage.image = UIImage(named: "pause")
 
-        print("AVPlayer created successfully")
+//        print("AVPlayer created successfully")
     }
     
     func saveAudioDataToFile(data: Data) -> URL? {
-        let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".mp3")
+        let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + Constants.DefaultString.audioTail)
         do {
             try data.write(to: tempFileURL)
-            print("Audio saved to: \(tempFileURL)")
+//            print("Audio saved to: \(tempFileURL)")
             return tempFileURL
         } catch {
-            print("Failed to write audio data to file: \(error)")
+            Logger.shared.logError(Loggers.AudioMessages.errorWrited + "\(error)")
             return nil
         }
     }

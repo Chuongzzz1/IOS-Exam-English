@@ -63,9 +63,8 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96
     }
-    
-    
 }
+
 // MARK: - Setup View
 extension HomeViewController {
     func setupView() {
@@ -107,7 +106,7 @@ extension HomeViewController {
 // MARK: - Handle API
 extension HomeViewController {
     func fetchScore() {
-        HomeService.shared.fetchSubject { [weak self] result in
+        HomeService.shared.fetchScore { [weak self] result in
             switch result {
             case .success(let scoreResult):
                 if let scores = scoreResult.result {

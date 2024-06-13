@@ -17,7 +17,7 @@ class StudyService {
     }
     
     func fetchSubject(completion: @escaping (Result<StudySubjectResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.subject), let token = accessToken else {
+        guard let url = URL(string: Constants.API.Endpoints.subjectURL), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -47,7 +47,7 @@ class StudyService {
     }
     
     func fetchCategory(for subjectID: Int,completion: @escaping (Result<StudyCategoryResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.categories(for: subjectID)), let token = accessToken else {
+        guard let url = URL(string: Constants.API.Endpoints.categoryURL(for: subjectID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -78,7 +78,7 @@ class StudyService {
     }
     
     func fetchMainSection(for categoryID: Int,completion: @escaping (Result<StudyMainSectionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.mainSection(for: categoryID)), let token = accessToken else {
+        guard let url = URL(string: Constants.API.Endpoints.mainSectionURL(for: categoryID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -109,7 +109,7 @@ class StudyService {
     }
     
     func fetchSubSection(for mainSectionID: Int,completion: @escaping (Result<StudySubSectionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.subSection(for: mainSectionID)), let token = accessToken else {
+        guard let url = URL(string: Constants.API.Endpoints.subSectionURL(for: mainSectionID)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -140,7 +140,7 @@ class StudyService {
     }
     
     func fetchQuestion(for subSection: Int,page: Int,completion: @escaping (Result<StudyQuestionResponse, Error>) -> Void) {
-        guard let url = URL(string: Constants.API.Endpoints.question(for: subSection, page: page)), let token = accessToken else {
+        guard let url = URL(string: Constants.API.Endpoints.questionURL(for: subSection, page: page)), let token = accessToken else {
             return
         }
         var request = URLRequest(url: url)
@@ -170,9 +170,8 @@ class StudyService {
         task.resume()
     }
     
-    func fetchAudio(completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = URL(string: "http://172.16.75.43:8080/stream/streamingMainQuestion?mainQuestionId=774"), let token = accessToken else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL or access token"])))
+    func fetchAudio(mainQuestionURL: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: Constants.API.Endpoints.audioURL(mainQuestionURL: mainQuestionURL)), let token = accessToken else {
             return
         }
         
@@ -182,15 +181,14 @@ class StudyService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                print(Constants.Messages.errorOccurred +  "\(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                print(Constants.Messages.noData)
                 return
             }
-            
             completion(.success(data))
         }
         task.resume()
