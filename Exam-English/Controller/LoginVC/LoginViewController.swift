@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private var tempHideShow = true
     private var defaultPasswordWarning: String = ""
     private var customView = CustomView()
-    private let apiService = APIService.shared
+    private let apiService = Authentication.shared
 }
 
 // MARK: Life Cycle
@@ -135,16 +135,17 @@ extension LoginViewController {
             
             // Save the access token to UserDefaults
             UserDefaults.standard.set(accessToken, forKey: "accessToken")
-//            print("\(String(describing: accessToken))")
-            
-            // Schedule refresh token
-            apiService.scheduleRefreshAccessToken(accessToken: accessToken!)
-            
+            //            print("\(String(describing: accessToken))")
+                        
             // Navigate to the next screen or perform any other necessary actions
-            let loginSuccessVC = LoginSuccessViewController(nibName: "LoginSuccessViewController", bundle: nil)
-//            self.navigationController?.pushViewController(loginSuccessVC, animated: true)
-            UIApplication.shared.windows.first?.rootViewController = loginSuccessVC
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            
+            // Create the tab bar controller
+            let tabBarController = sceneDelegate.createTabBarController()
+            
+            // Set the tab bar controller as the root view controller
+            sceneDelegate.window?.rootViewController = tabBarController
+            sceneDelegate.window?.makeKeyAndVisible()
         } catch {
             print("Error decoding token response: \(error)")
         }
