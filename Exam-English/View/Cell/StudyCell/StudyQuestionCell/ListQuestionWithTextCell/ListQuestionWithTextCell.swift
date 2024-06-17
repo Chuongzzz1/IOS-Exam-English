@@ -78,7 +78,11 @@ extension ListQuestionWithTextCell {
 extension ListQuestionWithTextCell {
     func configure(with question: StudyQuestion) {
         resetUI()
-        questionLabel.attributedText = question.normalQuestionContent?.htmlToAttributedString
+        if let subQuestionContent = question.subQuestionContent {
+            questionLabel.attributedText = subQuestionContent.htmlToAttributedString
+        } else if let normalQuestionContent = question.normalQuestionContent {
+            questionLabel.attributedText = normalQuestionContent.htmlToAttributedString
+        }
         
         guard let subAnswers = question.answers else { return }
         

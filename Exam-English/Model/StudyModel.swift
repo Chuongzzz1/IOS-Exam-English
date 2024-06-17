@@ -209,6 +209,7 @@ class StudyQuestion {
             self.answers = []
         }
         self.image = nil
+        self.audioData = nil
     }
 }
 

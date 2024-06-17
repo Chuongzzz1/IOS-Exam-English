@@ -47,6 +47,10 @@ struct Constants {
             static func baseImageURL() -> String {
                 return "\(Constants.API.baseURL)/api/images/"
             }
+            
+            static func baseAudioURL() -> String {
+                return "\(Constants.API.baseURL)/stream/streamingMainQuestion?mainQuestionId="
+            }
         }
     }
     

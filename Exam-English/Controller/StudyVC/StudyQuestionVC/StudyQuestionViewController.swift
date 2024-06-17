@@ -6,6 +6,30 @@
 //
 
 import UIKit
+enum QuestionType {
+    case questionPhoto(mainUrl: String?, subUrl: String?)
+    case listQuestionWithText(normalContent: String?)
+    case textQuestion(mainContent: String?)
+    case listQuestionWithPhoto(subQuestionContent: String?)
+    case unknown
+    
+    init(question: StudyQuestion) {
+        if question.mainQuestionUrl == nil && question.subQuestionUrl == nil && question.subQuestionContent != nil {
+            self = .listQuestionWithText(normalContent: question.subQuestionContent)
+        } else if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
+            self = .questionPhoto(mainUrl: mainUrl, subUrl: subUrl)
+        } else if let normalContent = question.normalQuestionContent {
+            self = .listQuestionWithText(normalContent: normalContent)
+        } else if let mainContent = question.mainQuestionContent, question.subQuestionUrl == nil {
+            self = .textQuestion(mainContent: mainContent)
+        } else if let subQuestionContent = question.subQuestionContent, question.subQuestionUrl != nil {
+            self = .listQuestionWithPhoto(subQuestionContent: subQuestionContent)
+        } else {
+            self = .unknown
+        }
+    }
+}
+
 class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, ListQuestionWithTextCellDelegate, TextQuestionCellDelegate, ListQuestionWithPhotoCellDelegate {
     func handleScrollNext(sender: UIButton) {
         scrollNextToCell()
@@ -74,48 +98,37 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let question = questions[indexPath.item]
         let question = currentQuestion[0]
+        let questionType = QuestionType(question: question)
 
-        if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as? QuestionPhotoCell {
-                cell.delegate = self
-//                print(imageDataList)
-                if let audioData = audioData {
-                    cell.configure(with: question, audioData: audioData)
-                } else {
-                    cell.configure(with: question)
-                }
-                return cell
-            }
-            
-        } else if let normalContent = question.normalQuestionContent {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithTextCell", for: indexPath) as? ListQuestionWithTextCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-            
-        } else if let mainContent = question.subQuestionContent, question.subQuestionUrl == nil {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as? TextQuestionCell {
-                cell.delegate = self
-                if let audioData = audioData {
-                    cell.configure(with: question, audioData: audioData)
-                } else {
-                    cell.configure(with: question)
-                }
-                return cell
-            }
-            
-        } else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithPhotoCell", for: indexPath) as? ListQuestionWithPhotoCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-        }
-        return UICollectionViewCell()   
-    }
+        switch questionType {
+        case .questionPhoto(let mainUrl, let subUrl):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as! QuestionPhotoCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .listQuestionWithText(let normalContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithTextCell", for: indexPath) as! ListQuestionWithTextCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .textQuestion(let mainContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as! TextQuestionCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .listQuestionWithPhoto(let subQuestionContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithPhotoCell", for: indexPath) as! ListQuestionWithPhotoCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .unknown:
+            return UICollectionViewCell()
+        }    }
 }
 
 // MARK: - Delegate
@@ -246,9 +259,9 @@ extension StudyQuestionViewController {
                         self?.totalpage = paginates.totalPage
                         self?.subSectionID = subSectionID
                         self?.currentPage += 1
-                        if let firstQuestion = questions.first, let mainQuestionUrl = firstQuestion.mainQuestionUrl {
-                            self?.handleAudio(mainQuestionURL: mainQuestionUrl)
-                        }
+//                        if let firstQuestion = questions.first, let mainQuestionUrl = firstQuestion.mainQuestionUrl {
+//                            self?.handleAudio(mainQuestionURL: mainQuestionUrl)
+//                        }
                         self?.collectionView.reloadData()
                     }
                 }

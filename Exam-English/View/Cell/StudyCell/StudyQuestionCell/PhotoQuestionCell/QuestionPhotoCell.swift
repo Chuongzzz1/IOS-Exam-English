@@ -50,7 +50,8 @@ class QuestionPhotoCell: UICollectionViewCell, AVAudioPlayerDelegate {
     private var timeObserver: Any?
     private var custom = CustomView()
     weak var delegate: QuestionPhotoCellDelegate?
-    var baseUrl = Constants.API.Endpoints.baseImageURL
+    private var baseImageUrl = Constants.API.Endpoints.baseImageURL
+    private var baseAudioUrl = Constants.API.Endpoints.baseAudioURL
     
     private(set) var questionModel: StudyQuestion!
 }
@@ -95,57 +96,7 @@ extension QuestionPhotoCell {
 }
 
 // MARK: - Func
-extension QuestionPhotoCell {
-    func configure(with question: StudyQuestion, audioData: Data) {
-        self.questionModel = question
-        resetUI()
-        guard let subAnswers = question.answers else { return }
-        answerALabel.text = subAnswers[safe: 0]?.answerContent
-        answerBLabel.text = subAnswers[safe: 1]?.answerContent
-        answerCLabel.text = subAnswers[safe: 2]?.answerContent
-        answerDLabel.text = subAnswers[safe: 3]?.answerContent
-        let isAnswerDHidden = subAnswers.count < 4
-        answerDLabel.isHidden = isAnswerDHidden
-        answerDButton.isHidden = isAnswerDHidden
-        answerDImage.isHidden = isAnswerDHidden
-        
-        if let subAnswers = question.answers {
-            for (index, answer) in subAnswers.enumerated() {
-                if answer.correctAnswer {
-                    correctAnswer = index
-                }
-            }
-        }
-        if let selectedIndex = question.selectedAnswerIndex {
-            updateAnswerButtonStates(selectedButton: answerButtons[selectedIndex])
-        }
-        loadingIndicator.startAnimating()
-
-        setupAudioPlayer(with: audioData)
-                
-        // Jeff
-        if let img = question.image {
-            self.imageQuestionView.image = img
-            loadingIndicator.stopAnimating()
-            loadingIndicator.isHidden = true
-        }
-        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
-            let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
-                if let imageData = data {
-                    self?.questionModel.image = UIImage(data: imageData)
-                    DispatchQueue.main.async {
-                        self?.delegate?.handleRefreshData()
-                        self?.loadingIndicator.stopAnimating()
-                        self?.loadingIndicator.isHidden = true
-                    }
-                } else {
-                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
-                }
-            }
-            task.resume()
-        }
-    }
-    
+extension QuestionPhotoCell {    
     func configure(with question: StudyQuestion) {
         self.questionModel = question
         resetUI()
@@ -177,22 +128,35 @@ extension QuestionPhotoCell {
             loadingIndicator.isHidden = true
 
         }
-        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+        else if let imageUrl = URL(string: baseImageUrl() + question.subQuestionUrl!) {
             let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
                 if let imageData = data {
                     self?.questionModel.image = UIImage(data: imageData)
                     DispatchQueue.main.async {
                         self?.delegate?.handleRefreshData()
-                        self?.loadingIndicator.stopAnimating()
                     }
                 } else {
                     print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
-                    DispatchQueue.main.async {
-                        self?.loadingIndicator.stopAnimating()
-                    }
                 }
             }
             task.resume()
+        }
+        
+        if let audioData = question.audioData {
+            setupAudioPlayer(with: audioData)
+        } else if let audioUrl = URL(string: baseAudioUrl() + question.mainQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: audioUrl) { [weak self] (data, response, error) in
+                if let audioData = data {
+                    self?.questionModel.audioData = audioData
+                    DispatchQueue.main.async {
+                        self?.delegate?.handleRefreshData()
+                    }
+                } else {
+                    print("Error loading audio: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+            task.resume()
+
         }
     }
     

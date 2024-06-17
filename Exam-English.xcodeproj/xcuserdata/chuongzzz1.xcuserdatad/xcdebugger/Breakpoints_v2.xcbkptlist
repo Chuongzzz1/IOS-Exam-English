@@ -279,38 +279,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "90A9E430-5FBB-4F46-9C42-64F549091B46"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyVC/StudyQuestionVC/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "handleRefreshData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FE7531E4-05DB-42CD-8C08-784521E152DF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Exam-English/Controller/StudyVC/StudyQuestionVC/StudyQuestionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BFABE460-37A6-438E-8B13-44A8D5E22390"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -354,6 +322,94 @@
             endingLineNumber = "10"
             landmarkName = "ExamViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "A12FF7AC-E288-4397-8708-AE22053004D3 - 57e06d0b02722963"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.ExamViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Exam_English.ExamViewController"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/ExamVC/ExamViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "A12FF7AC-E288-4397-8708-AE22053004D3 - f7af01d8f9383ee4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.ExamViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Exam_English.ExamViewController"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/ExamVC/ExamViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "A12FF7AC-E288-4397-8708-AE22053004D3 - 3c3330a947488374"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.ExamViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Exam_English.ExamViewController&gt;"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/ExamVC/ExamViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "A12FF7AC-E288-4397-8708-AE22053004D3 - a806dcbb606c67ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.ExamViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Exam_English.ExamViewController&gt;"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/ExamVC/ExamViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12">
+               </Location>
+               <Location
+                  uuid = "A12FF7AC-E288-4397-8708-AE22053004D3 - 6d9d19c49e1d12c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Exam_English.ExamViewController.__deallocating_deinit"
+                  moduleName = "Exam-English"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuongzzz1/Documents/learn%20ios/UIkit/Enclave/Exam-English/Exam-English/Controller/ExamVC/ExamViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E026F5AE-884C-45B8-A3A5-5EACBC33488A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Exam-English/Controller/StudyVC/StudyQuestionVC/StudyQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
