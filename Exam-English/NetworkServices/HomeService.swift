@@ -34,7 +34,6 @@ class HomeService {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                     let scoreResponse = ScoreResponse(dictionary: json)
-//                                        print(json)
                     completion(.success(scoreResponse))
                 }
             } catch {

@@ -28,15 +28,14 @@ extension HomeViewCell {
 
 // MARK: - Func
 extension HomeViewCell {
-    func updatesView(score: Score, rank: Int) {
-        nameUserLabel.text = score.email
-        scoreNumberLabel.text = String(score.score)
-        rankNumberLabel.text = String(rank)
+    func updatesView(topScores: TopScore) {
+        nameUserLabel.text = topScores.user
+        scoreNumberLabel.text = String(topScores.score)
+        rankNumberLabel.text = String(topScores.rank)
     }
     
     func customIem() {
         custom.customItemCategory(subView)
         self.selectionStyle = .none
     }
-
 }

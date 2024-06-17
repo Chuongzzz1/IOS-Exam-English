@@ -11,9 +11,10 @@ import AVFoundation
 protocol QuestionPhotoCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
+    func handleRefreshData()
 }
 
-class QuestionPhotoCell: UICollectionViewCell {
+class QuestionPhotoCell: UICollectionViewCell, AVAudioPlayerDelegate {
     // MARK: - Outlet
     @IBOutlet weak var imageQuestionView: UIImageView!
     @IBOutlet weak var answerAButton: UIButton!
@@ -36,7 +37,8 @@ class QuestionPhotoCell: UICollectionViewCell {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
-    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
@@ -44,12 +46,13 @@ class QuestionPhotoCell: UICollectionViewCell {
     private var isPaused: Bool = true
     private var correctAnswer: Int = -1
     private var selectedAnswerIndex: Int? = nil
-    private var player: AVPlayer?
+    private var audioPlayer: AVAudioPlayer?
     private var timeObserver: Any?
     private var custom = CustomView()
     weak var delegate: QuestionPhotoCellDelegate?
     var baseUrl = Constants.API.Endpoints.baseImageURL
     
+    private(set) var questionModel: StudyQuestion!
 }
 
 // MARK: - Awake
@@ -64,10 +67,6 @@ extension QuestionPhotoCell {
     @IBAction func answerButtonTapped(_ sender: UIButton) {
         updateAnswerButtonStates(selectedButton: sender)
         selectedAnswerIndex = answerButtons.firstIndex(of: sender)
-        //        if let indexPath = collectionView.indexPath(for: self) {
-        //            let question = currentQuestion[indexPath.item]
-        //            question.selectedAnswerIndex = selectedAnswerIndex
-        //        }
     }
     
     @IBAction func pauseResumeButtonTapped(_ sender: UIButton) {
@@ -98,8 +97,8 @@ extension QuestionPhotoCell {
 // MARK: - Func
 extension QuestionPhotoCell {
     func configure(with question: StudyQuestion, audioData: Data) {
+        self.questionModel = question
         resetUI()
-        
         guard let subAnswers = question.answers else { return }
         answerALabel.text = subAnswers[safe: 0]?.answerContent
         answerBLabel.text = subAnswers[safe: 1]?.answerContent
@@ -120,13 +119,24 @@ extension QuestionPhotoCell {
         if let selectedIndex = question.selectedAnswerIndex {
             updateAnswerButtonStates(selectedButton: answerButtons[selectedIndex])
         }
+        loadingIndicator.startAnimating()
+
         setupAudioPlayer(with: audioData)
-        
-        if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
-            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                
+        // Jeff
+        if let img = question.image {
+            self.imageQuestionView.image = img
+            loadingIndicator.stopAnimating()
+            loadingIndicator.isHidden = true
+        }
+        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
                 if let imageData = data {
+                    self?.questionModel.image = UIImage(data: imageData)
                     DispatchQueue.main.async {
-                        self.imageQuestionView.image = UIImage(data: imageData)
+                        self?.delegate?.handleRefreshData()
+                        self?.loadingIndicator.stopAnimating()
+                        self?.loadingIndicator.isHidden = true
                     }
                 } else {
                     print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
@@ -137,6 +147,7 @@ extension QuestionPhotoCell {
     }
     
     func configure(with question: StudyQuestion) {
+        self.questionModel = question
         resetUI()
         guard let subAnswers = question.answers else { return }
         answerALabel.text = subAnswers[safe: 0]?.answerContent
@@ -156,6 +167,32 @@ extension QuestionPhotoCell {
         
         if let selectedIndex = question.selectedAnswerIndex {
             updateAnswerButtonStates(selectedButton: answerButtons[selectedIndex])
+        }
+        
+        loadingIndicator.startAnimating()
+
+        if let img = question.image {
+            self.imageQuestionView.image = img        
+            loadingIndicator.stopAnimating()
+            loadingIndicator.isHidden = true
+
+        }
+        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
+                if let imageData = data {
+                    self?.questionModel.image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        self?.delegate?.handleRefreshData()
+                        self?.loadingIndicator.stopAnimating()
+                    }
+                } else {
+                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
+                    DispatchQueue.main.async {
+                        self?.loadingIndicator.stopAnimating()
+                    }
+                }
+            }
+            task.resume()
         }
     }
     
@@ -191,12 +228,12 @@ extension QuestionPhotoCell {
     
     func togglePauseResume() {
         if isPaused {
-            player?.play()
+            audioPlayer?.play()
         } else {
-            player?.pause()
+            audioPlayer?.pause()
         }
         isPaused.toggle()
-        let imageName = isPaused ? "pause" : "resume"
+        let imageName = isPaused ? "resume" : "pause"
         pauseResumeImage.image = UIImage(named: imageName)
     }
     
@@ -220,22 +257,7 @@ extension QuestionPhotoCell {
 extension QuestionPhotoCell {
     @objc func sliderValueChanged(_ sender: UISlider) {
         let seconds = sender.value
-        let targetTime = CMTime(seconds: Double(seconds), preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        player?.seek(to: targetTime)
-    }
-    
-    func addPeriodicTimeObserver() {
-        let interval = CMTime(seconds: 1, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        timeObserver = player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { [weak self] time in
-            let seconds = CMTimeGetSeconds(time)
-            self?.audioSlider.value = Float(seconds)
-            self?.timeRunLabel.text = self?.formatTime(seconds: seconds)
-            
-            if let duration = self?.player?.currentItem?.duration {
-                let durationSeconds = CMTimeGetSeconds(duration)
-                self?.timeRemainLabel.text = self?.formatTime(seconds: durationSeconds - seconds)
-            }
-        }
+        audioPlayer?.currentTime = TimeInterval(seconds)
     }
     
     func formatTime(seconds: Float64) -> String {
@@ -248,40 +270,42 @@ extension QuestionPhotoCell {
         return String(format: "%02d:%02d", mins, secs)
     }
     
+    func addPeriodicTimeObserver() {
+        let interval = TimeInterval(1.0)
+        timeObserver = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] timer in
+            guard let player = self?.audioPlayer else { return }
+            let currentTime = player.currentTime
+            let duration = player.duration
+            
+            self?.audioSlider.value = Float(currentTime)
+            self?.timeRunLabel.text = self?.formatTime(seconds: currentTime)
+            self?.timeRemainLabel.text = self?.formatTime(seconds: duration - currentTime)
+        }
+    }
+
     func setupAudioPlayer(with audioData: Data) {
-        guard let tempFileURL = saveAudioDataToFile(data: audioData) else {
-            Logger.shared.logError(Loggers.AudioMessages.errorSaved)
-            return
+        do {
+            audioPlayer = try AVAudioPlayer(data: audioData)
+            audioPlayer?.delegate = self
+            audioPlayer?.prepareToPlay()
+            
+            audioSlider.maximumValue = Float(audioPlayer?.duration ?? 0)
+            timeRemainLabel.text = formatTime(seconds: audioPlayer?.duration ?? 0)
+            
+            audioSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+            
+            audioPlayer?.play()
+            isPaused = false
+            pauseResumeImage.image = UIImage(named: "pause")
+            
+            addPeriodicTimeObserver()
+        } catch {
+            print("Error initializing audio player: \(error.localizedDescription)")
         }
-//        print("Temp file URL: \(tempFileURL)")
-
-        player = AVPlayer(url: tempFileURL)
-        addPeriodicTimeObserver()
-
-        audioSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-
-        if let duration = player?.currentItem?.asset.duration, !duration.isIndefinite {
-            let seconds = CMTimeGetSeconds(duration)
-            audioSlider.maximumValue = Float(seconds)
-            timeRemainLabel.text = formatTime(seconds: seconds)
-        }
-
-        player?.play()
-        isPaused = false
-        pauseResumeImage.image = UIImage(named: "pause")
-
-//        print("AVPlayer created successfully")
     }
     
-    func saveAudioDataToFile(data: Data) -> URL? {
-        let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + Constants.DefaultString.audioTail)
-        do {
-            try data.write(to: tempFileURL)
-//            print("Audio saved to: \(tempFileURL)")
-            return tempFileURL
-        } catch {
-            Logger.shared.logError(Loggers.AudioMessages.errorWrited + "\(error)")
-            return nil
-        }
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        isPaused = true
+        pauseResumeImage.image = UIImage(named: "resume")
     }
 }

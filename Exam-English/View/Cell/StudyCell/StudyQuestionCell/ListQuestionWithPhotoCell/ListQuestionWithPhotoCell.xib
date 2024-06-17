@@ -22,14 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="459" height="756"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="hZZ-ag-872">
-                                <rect key="frame" x="16" y="16" width="427" height="200"/>
+                                <rect key="frame" x="4" y="4" width="451" height="256"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="eHI-GE-wsW"/>
+                                    <constraint firstAttribute="height" constant="256" id="eHI-GE-wsW"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IbK-3G-LIA" userLabel="AnswerView">
-                                <rect key="frame" x="8" y="240" width="443" height="440"/>
+                                <rect key="frame" x="8" y="284" width="443" height="396"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fS-lp-U1i" userLabel="QuestionView">
                                         <rect key="frame" x="4" y="11.999999999999998" width="435" height="27.333333333333329"/>
@@ -388,12 +388,12 @@
                             <constraint firstItem="cDp-05-0PY" firstAttribute="leading" secondItem="73S-js-Nfq" secondAttribute="leading" constant="4" id="7DY-pC-Mjs"/>
                             <constraint firstAttribute="trailing" secondItem="cDp-05-0PY" secondAttribute="trailing" constant="4" id="AhQ-Ox-CgC"/>
                             <constraint firstItem="cDp-05-0PY" firstAttribute="top" secondItem="IbK-3G-LIA" secondAttribute="bottom" constant="24" id="DAE-aD-Ptm"/>
-                            <constraint firstItem="hZZ-ag-872" firstAttribute="top" secondItem="73S-js-Nfq" secondAttribute="top" constant="16" id="G5F-7L-Re7"/>
+                            <constraint firstItem="hZZ-ag-872" firstAttribute="top" secondItem="73S-js-Nfq" secondAttribute="top" constant="4" id="G5F-7L-Re7"/>
                             <constraint firstAttribute="trailing" secondItem="IbK-3G-LIA" secondAttribute="trailing" constant="8" id="Z4T-ro-oTY"/>
-                            <constraint firstItem="hZZ-ag-872" firstAttribute="leading" secondItem="73S-js-Nfq" secondAttribute="leading" constant="16" id="dIx-Mp-hZ0"/>
+                            <constraint firstItem="hZZ-ag-872" firstAttribute="leading" secondItem="73S-js-Nfq" secondAttribute="leading" constant="4" id="dIx-Mp-hZ0"/>
                             <constraint firstItem="IbK-3G-LIA" firstAttribute="leading" secondItem="73S-js-Nfq" secondAttribute="leading" constant="8" id="g5n-EA-Zpv"/>
                             <constraint firstItem="IbK-3G-LIA" firstAttribute="top" secondItem="hZZ-ag-872" secondAttribute="bottom" constant="24" id="ogC-uZ-Ioz"/>
-                            <constraint firstAttribute="trailing" secondItem="hZZ-ag-872" secondAttribute="trailing" constant="16" id="wJZ-1d-1zU"/>
+                            <constraint firstAttribute="trailing" secondItem="hZZ-ag-872" secondAttribute="trailing" constant="4" id="wJZ-1d-1zU"/>
                             <constraint firstAttribute="bottom" secondItem="cDp-05-0PY" secondAttribute="bottom" constant="4" id="xQl-u2-hWO"/>
                         </constraints>
                     </view>

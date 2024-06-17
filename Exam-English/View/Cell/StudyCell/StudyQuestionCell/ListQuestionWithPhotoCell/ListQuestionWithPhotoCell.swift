@@ -9,6 +9,7 @@ import UIKit
 protocol ListQuestionWithPhotoCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
+    func handleRefreshData()
 }
 class ListQuestionWithPhotoCell: UICollectionViewCell {
     // MARK: - Outlet
@@ -40,6 +41,9 @@ class ListQuestionWithPhotoCell: UICollectionViewCell {
     private var custom = CustomView()
     var baseUrl = Constants.API.Endpoints.baseImageURL
     weak var delegate: ListQuestionWithPhotoCellDelegate?
+    
+    private(set) var questionModel: StudyQuestion!
+
 }
 
 // MARK: - Awake
@@ -103,11 +107,20 @@ extension ListQuestionWithPhotoCell {
             }
         }
         
-        if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
-            let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+        // Jeff
+        if let img = question.image {
+            self.imageQuestionView.image = img
+//            loadingIndicator.stopAnimating()
+//            loadingIndicator.isHidden = true
+        }
+        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
                 if let imageData = data {
+                    self?.questionModel.image = UIImage(data: imageData)
                     DispatchQueue.main.async {
-                        self.imageQuestionView.image = UIImage(data: imageData)
+                        self?.delegate?.handleRefreshData()
+//                        self?.loadingIndicator.stopAnimating()
+//                        self?.loadingIndicator.isHidden = true
                     }
                 } else {
                     print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
@@ -115,7 +128,6 @@ extension ListQuestionWithPhotoCell {
             }
             task.resume()
         }
-
     }
 
     func resetUI() {

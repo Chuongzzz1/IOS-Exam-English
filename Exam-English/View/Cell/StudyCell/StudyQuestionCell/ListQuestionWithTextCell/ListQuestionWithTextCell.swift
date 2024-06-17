@@ -147,35 +147,3 @@ extension ListQuestionWithTextCell {
         custom.labelQuestion(nameBackground: questionBackgoundView)
     }
 }
-
-// MARK: Extention
-//extension String {
-//    var htmlToAttributedString: NSAttributedString? {
-//        guard let data = data(using: .utf8) else { return nil }
-//        do {
-//            let attributedString = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
-//            
-//            let fontMetrics = UIFontMetrics.default
-//            
-//            let scaledFont = fontMetrics.scaledFont(for: UIFont.systemFont(ofSize: 16, weight: .medium))
-//            
-//            attributedString.addAttributes([.font: scaledFont], range: NSRange(location: 0, length: attributedString.length))
-//            
-//            return attributedString
-//        } catch {
-//            print("error:", error)
-//            return nil
-//        }
-//    }
-//    
-//    var htmlToString: String {
-//        return htmlToAttributedString?.string ?? ""
-//    }
-//}
-//
-//extension Collection {
-//    subscript(safe index: Index) -> Element? {
-//        return indices.contains(index) ? self[index] : nil
-//    }
-//}
-

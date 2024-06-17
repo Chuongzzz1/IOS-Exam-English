@@ -175,7 +175,7 @@ extension TextQuestionCell {
     
     func togglePauseResume() {
         isPaused.toggle()
-        let imageName = isPaused ? "pause" : "resume"
+        let imageName = isPaused ? "resume" : "pause"
         pauseResumeImage.image = UIImage(named: imageName)
     }
     

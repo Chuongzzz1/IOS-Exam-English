@@ -13,10 +13,10 @@ class StudyQuestionSetViewController: UIViewController {
     
     // MARK: - Variable
     var subSections = [StudySubSection]()
-    var questions = [StudyQuestion]()
+//    var questions = [StudyQuestion]()
     private var subSectionID = 0
-    private var currentPage = 1
-    private var totalPage = 1
+//    private var currentPage = 1
+//    private var totalPage = 1
     var audioData: Data?
 }
 
@@ -48,7 +48,9 @@ extension StudyQuestionSetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subSection = subSections[indexPath.row]
         updateTitle(with: subSection.subSectionName)
-        handleQuestion(subSectionID: subSection.subSectionID,page: currentPage)
+//        handleQuestion(subSectionID: subSection.subSectionID,page: currentPage)
+        subSectionID = subSection.subSectionID
+        navigateToStudyQuestionViewController()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,11 +85,7 @@ extension StudyQuestionSetViewController {
     
     private func navigateToStudyQuestionViewController() {
         let studyQuestionSetVC = StudyQuestionViewController(nibName: "StudyQuestionViewController", bundle: nil)
-        studyQuestionSetVC.questions = self.questions
-        studyQuestionSetVC.currentPage = self.currentPage
-        studyQuestionSetVC.totalpage = self.totalPage
-        studyQuestionSetVC.audioData = self.audioData
-        studyQuestionSetVC.subSectionID = self.subSectionID
+        studyQuestionSetVC.subSectionID = subSectionID
         self.navigationController?.pushViewController(studyQuestionSetVC, animated: true)
     }
     
@@ -103,38 +101,6 @@ extension StudyQuestionSetViewController {
 
 // MARK: - Handle API
 extension StudyQuestionSetViewController {
-    func handleQuestion(subSectionID: Int,page: Int) {
-        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
-            switch result {
-            case .success(let studyQuestionResponse):
-                if let questions = studyQuestionResponse.result, let paginates = studyQuestionResponse.pagination {
-                    DispatchQueue.main.async {
-                        self?.questions = questions
-                        self?.totalPage = paginates.totalPage
-                        self?.subSectionID = subSectionID
-                        self?.currentPage += 1
-                        if let firstQuestion = questions.first, let mainQuestionUrl = firstQuestion.mainQuestionUrl {
-                            self?.handleAudio(mainQuestionURL: mainQuestionUrl)
-                        }
-                        self?.navigateToStudyQuestionViewController()
-                    }
-                }
-            case .failure(let error):
-                Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
-            }
-        }
-    }
-    
-    func handleAudio(mainQuestionURL: String) {
-        StudyService.shared.fetchAudio(mainQuestionURL: mainQuestionURL) { [weak self] result in
-            switch result {
-            case .success(let audioData):
-                self?.audioData = audioData
-            case .failure(let error):
-                Logger.shared.logError(Loggers.StudyMessages.errorFetchAudio + "\(error.localizedDescription)")
-            }
-        }
-    }
 }
 
 

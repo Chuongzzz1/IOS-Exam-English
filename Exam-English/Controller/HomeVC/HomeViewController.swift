@@ -26,7 +26,8 @@ class HomeViewController: UIViewController {
     
 // MARK: - Variable
     private var custom = CustomView()
-    private var scores = [Score]()
+    private var topScores = [TopScore]()
+    private var userScore: UserScore?
 }
 
 // MARK: - Life Cycle
@@ -46,14 +47,14 @@ extension HomeViewController: UITableViewDelegate {
 // MARK: - DataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scores.count
+        return topScores.count
         
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewCell", for: indexPath) as? HomeViewCell {
-           let score = scores[indexPath.row]
-           cell.updatesView(score: score, rank: indexPath.row + 1)
+           let topScores = topScores[indexPath.row]
+           cell.updatesView(topScores: topScores)
                 return cell
         } else {
             return HomeViewCell()
@@ -94,6 +95,12 @@ extension HomeViewController {
         custom.childRankBackgound(nameBackground: rankView)
         custom.childRankBackgound(nameBackground: scoreView)
     }
+    
+    func setValueUI() {
+        welcomeLabel.text = "Hi, \(userScore?.user ?? "Guys")"
+        rankNumberLabel.text = "\(userScore?.rank ?? 0)"
+        scoreNumberLabel.text = "\(userScore?.score ?? 0)"   
+    }
 }
 
 // MARK: - Func
@@ -108,10 +115,16 @@ extension HomeViewController {
     func fetchScore() {
         HomeService.shared.fetchScore { [weak self] result in
             switch result {
-            case .success(let scoreResult):
-                if let scores = scoreResult.result {
+            case .success(let resultResponse):
+                if let results = resultResponse.result {
                     DispatchQueue.main.async {
-                        self?.scores = scores
+                        if let topScores = results.topScores {
+                            self?.topScores = topScores
+                        }
+                        if let userScore = results.userScore {
+                            self?.userScore = userScore
+                            self?.setValueUI()
+                        }
                         self?.tableView.reloadData()
                     }
                 }

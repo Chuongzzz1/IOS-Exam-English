@@ -15,6 +15,12 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
         scrollToPreviousCell()
     }
     
+    func handleRefreshData() {
+        // Jeff
+        self.collectionView.reloadData()
+        // At this step, debug to check if currentQuestion.image != nil
+    }
+    
     // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -33,8 +39,8 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
     }
     private var currentQuestion = [StudyQuestion]()
     private var currentIndex = 0
-    var currentPage = 0
-    var totalpage = 0
+    private var currentPage = 1
+    private var totalpage = 0
     var subSectionID = 0
     var audioData: Data?
 }
@@ -44,6 +50,7 @@ extension StudyQuestionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        callFunc()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,6 +170,10 @@ extension StudyQuestionViewController {
 
 // MARK: - Func
 extension StudyQuestionViewController {
+    func callFunc() {
+        handleQuestion(subSectionID: subSectionID, page: currentPage)
+    }
+    
     @objc func scrollNextToCell() {
         currentIndex += 1
         if currentIndex >= questions.count {
@@ -177,7 +188,6 @@ extension StudyQuestionViewController {
         }
         self.collectionView.reloadData()
         print("DEBUG: Updating current cell with new question at index \(currentIndex)")
-        //        updateCurrentCell(with: newQuestion)
     }
     
     @objc func scrollToPreviousCell() {
@@ -190,32 +200,7 @@ extension StudyQuestionViewController {
         self.currentQuestion.append(newQuestion)
         self.collectionView.reloadData()
         print("DEBUG: Updating current cell with new question at index \(currentIndex)")
-//        updateCurrentCell(with: newQuestion)
     }
-    
-//    func updateCurrentCell(with question: StudyQuestion) {
-//        let indexPath = IndexPath(item: 0, section: 0)
-//        
-//        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithTextCell {
-//            currentCell.configure(with: question)
-//            collectionView.reloadItems(at: [indexPath])
-//        }
-//        
-//        if let currentCell = collectionView.cellForItem(at: indexPath) as? TextQuestionCell {
-//            currentCell.configure(with: question,audioData: audioData!)
-//            collectionView.reloadItems(at: [indexPath])
-//        }
-//        
-//        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithPhotoCell {
-//            currentCell.configure(with: question)
-//            collectionView.reloadItems(at: [indexPath])
-//        }
-//        
-//        if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
-//            currentCell.configure(with: question,audioData: audioData!)
-//            collectionView.reloadItems(at: [indexPath])
-//        }
-//    }
     
     func hideTabbar() {
         self.tabBarController?.tabBar.isHidden = true
@@ -224,7 +209,6 @@ extension StudyQuestionViewController {
     func showTabbar() {
         self.tabBarController?.tabBar.isHidden = false
     }
-
 }
 
 // MARK: - API
@@ -251,6 +235,37 @@ extension StudyQuestionViewController {
             }
         }
     }
+    
+    func handleQuestion(subSectionID: Int,page: Int) {
+        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
+            switch result {
+            case .success(let studyQuestionResponse):
+                if let questions = studyQuestionResponse.result, let paginates = studyQuestionResponse.pagination {
+                    DispatchQueue.main.async {
+                        self?.questions = questions
+                        self?.totalpage = paginates.totalPage
+                        self?.subSectionID = subSectionID
+                        self?.currentPage += 1
+                        if let firstQuestion = questions.first, let mainQuestionUrl = firstQuestion.mainQuestionUrl {
+                            self?.handleAudio(mainQuestionURL: mainQuestionUrl)
+                        }
+                        self?.collectionView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
+            }
+        }
+    }
+    
+    func handleAudio(mainQuestionURL: String) {
+        StudyService.shared.fetchAudio(mainQuestionURL: mainQuestionURL) { [weak self] result in
+            switch result {
+            case .success(let audioData):
+                self?.audioData = audioData
+            case .failure(let error):
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchAudio + "\(error.localizedDescription)")
+            }
+        }
+    }
 }
-
-

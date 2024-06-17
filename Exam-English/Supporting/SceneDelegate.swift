@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         
-        // login
-        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let loginNavi = UINavigationController(rootViewController: loginVC)
-        window.rootViewController = loginNavi
+//        // login
+//        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+//        let loginNavi = UINavigationController(rootViewController: loginVC)
+//        window.rootViewController = loginNavi
         
-//        let testVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
-//        let testNavi = UINavigationController(rootViewController: testVC)
-//        window.rootViewController = testNavi
+        let testVC = ExamViewController(nibName: "ExamViewController", bundle: nil)
+        let testNavi = UINavigationController(rootViewController: testVC)
+        window.rootViewController = testNavi
 
         self.window = window
     }
@@ -44,14 +44,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         studyTabBarItem.tag = 1
         studyVC.tabBarItem = studyTabBarItem
         
+        // menu
+        let menuVC = MenuViewController(nibName: "MenuViewController", bundle: nil)
+        let menuNavi = UINavigationController(rootViewController: menuVC)
+        let menuTabBarItem = UITabBarItem(title: "Menu", image: UIImage(named: "menu-off"), selectedImage: UIImage(named: "menu-on"))
+        menuTabBarItem.tag = 2
+        menuVC.tabBarItem = menuTabBarItem
+
+        
         // tabbar
         let tabbarController = UITabBarController()
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
             Authentication.shared.scheduleRefreshAccessToken(accessToken: accessToken)
         }
-        tabbarController.viewControllers = [homeNavi, studyNavi]
+        tabbarController.viewControllers = [homeNavi, studyNavi, menuNavi]
         tabbarController.tabBar.tintColor = UIColor(named: Constants.Color.mainColor)
-//        tabbarController.tabBar.backgroundColor = UIColor(named: "D9DDDE")
+//      tabbarController.tabBar.backgroundColor = UIColor(named: "D9DDDE")
         
         return tabbarController
     }
