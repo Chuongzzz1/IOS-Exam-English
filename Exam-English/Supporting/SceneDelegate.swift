@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         
-//        // login
-//        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
-//        let loginNavi = UINavigationController(rootViewController: loginVC)
-//        window.rootViewController = loginNavi
+        // login
+        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        let loginNavi = UINavigationController(rootViewController: loginVC)
+        window.rootViewController = loginNavi
         
-        let testVC = ExamViewController(nibName: "ExamViewController", bundle: nil)
-        let testNavi = UINavigationController(rootViewController: testVC)
-        window.rootViewController = testNavi
+//        let testVC = ExamViewController(nibName: "ExamViewController", bundle: nil)
+//        let testNavi = UINavigationController(rootViewController: testVC)
+//        window.rootViewController = testNavi
 
         self.window = window
     }
@@ -44,11 +44,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         studyTabBarItem.tag = 1
         studyVC.tabBarItem = studyTabBarItem
         
+        // exam
+        let examVC = ExamViewController(nibName: "ExamViewController", bundle: nil)
+        let examNavi = UINavigationController(rootViewController: examVC)
+        let examTabBarItem = UITabBarItem(title: "Exam", image: UIImage(named: "exam-off"), selectedImage: UIImage(named: "exam-on"))
+        examTabBarItem.tag = 2
+        examVC.tabBarItem = examTabBarItem
+
+        
+        
         // menu
         let menuVC = MenuViewController(nibName: "MenuViewController", bundle: nil)
         let menuNavi = UINavigationController(rootViewController: menuVC)
         let menuTabBarItem = UITabBarItem(title: "Menu", image: UIImage(named: "menu-off"), selectedImage: UIImage(named: "menu-on"))
-        menuTabBarItem.tag = 2
+        menuTabBarItem.tag = 3
         menuVC.tabBarItem = menuTabBarItem
 
         
@@ -57,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let accessToken = UserDefaults.standard.string(forKey: "accessToken") {
             Authentication.shared.scheduleRefreshAccessToken(accessToken: accessToken)
         }
-        tabbarController.viewControllers = [homeNavi, studyNavi, menuNavi]
+        tabbarController.viewControllers = [homeNavi, studyNavi, examNavi, menuNavi]
         tabbarController.tabBar.tintColor = UIColor(named: Constants.Color.mainColor)
 //      tabbarController.tabBar.backgroundColor = UIColor(named: "D9DDDE")
         

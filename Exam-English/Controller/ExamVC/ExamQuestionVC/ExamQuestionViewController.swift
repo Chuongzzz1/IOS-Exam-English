@@ -34,7 +34,17 @@ class ExamQuestionViewController: UIViewController {
 extension ExamQuestionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupQuestionView()
+        setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
@@ -42,6 +52,11 @@ extension ExamQuestionViewController {
 // MARK: - Setup View
 extension ExamQuestionViewController {
     // MARK: - Setup View
+    func setupView() {
+        hideNavigationBar()
+        setupQuestionView()
+    }
+    
     private func setupQuestionView() {
         questionView = QuestionView()
         questionView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,9 +77,21 @@ extension ExamQuestionViewController {
 }
 
 // MARK: - Func
-extension ExamQuestionViewController {}
+extension ExamQuestionViewController {
+    func hideNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true    }
+}
 
 // MARK: - Handle API
 extension ExamQuestionViewController {}
+
+// MARK: - UIGestureRecognizerDelegate
+extension ExamQuestionViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
 
 
