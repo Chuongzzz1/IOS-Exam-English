@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D09797D2C1D6A80006EBF85 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09797B2C1D6A80006EBF85 /* UserCell.swift */; };
+		9D09797E2C1D6A80006EBF85 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D09797C2C1D6A80006EBF85 /* UserCell.xib */; };
+		9D0979812C1D6F9E006EBF85 /* ButtonFuncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09797F2C1D6F9E006EBF85 /* ButtonFuncCell.swift */; };
+		9D0979822C1D6F9E006EBF85 /* ButtonFuncCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0979802C1D6F9E006EBF85 /* ButtonFuncCell.xib */; };
+		9D0979852C1D71FF006EBF85 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0979832C1D71FF006EBF85 /* ActionCell.swift */; };
+		9D0979862C1D71FF006EBF85 /* ActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0979842C1D71FF006EBF85 /* ActionCell.xib */; };
+		9D0979892C1D7A3F006EBF85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0979872C1D7A3F006EBF85 /* MenuViewController.swift */; };
+		9D09798A2C1D7A3F006EBF85 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0979882C1D7A3F006EBF85 /* MenuViewController.xib */; };
+		9D09798D2C1F2027006EBF85 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D09798C2C1F2027006EBF85 /* UserViewController.xib */; };
+		9D09798E2C1F2027006EBF85 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09798B2C1F2027006EBF85 /* UserViewController.swift */; };
 		9D2841F62BF9D34F003D722D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2841F52BF9D34F003D722D /* Constants.swift */; };
 		9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EAF502BCC3790002B077C /* AppDelegate.swift */; };
 		9D2EAF532BCC3790002B077C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EAF522BCC3790002B077C /* SceneDelegate.swift */; };
@@ -20,8 +30,6 @@
 		9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3AFDF02C0D6A6100B2891F /* HomeViewCell.swift */; };
 		9D3AFDF32C0D6A6100B2891F /* HomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3AFDF12C0D6A6100B2891F /* HomeViewCell.xib */; };
 		9D3C95542BD5D02C00F5190D /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95532BD5D02C00F5190D /* LoginModel.swift */; };
-		9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */; };
-		9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */; };
 		9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44A3292BEDBFF800D20521 /* StudyService.swift */; };
 		9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D44A32C2BEDC7AA00D20521 /* StudyQuestionSetCell.swift */; };
 		9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */; };
@@ -33,31 +41,69 @@
 		9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C5F2BE874F2007BF06F /* StudyDetailCell.swift */; };
 		9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */; };
 		9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */; };
+		9D4B23A42C2019AF001FC15C /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23A22C2019AF001FC15C /* ExamViewController.swift */; };
+		9D4B23A52C2019AF001FC15C /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23A32C2019AF001FC15C /* ExamViewController.xib */; };
+		9D4B23A92C202191001FC15C /* ExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23A72C202191001FC15C /* ExamCell.swift */; };
+		9D4B23AA2C202191001FC15C /* ExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23A82C202191001FC15C /* ExamCell.xib */; };
+		9D4B23B22C20A0BA001FC15C /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23B12C20A0BA001FC15C /* QuestionView.swift */; };
+		9D4B23B42C20A0CD001FC15C /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23B32C20A0CD001FC15C /* QuestionView.xib */; };
+		9D4B23B62C212838001FC15C /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23B52C212838001FC15C /* QuestionModel.swift */; };
+		9D4B23B92C2128E1001FC15C /* ExamQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */; };
+		9D4B23BA2C2128E1001FC15C /* ExamQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */; };
 		9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF722BCC44F9002B077C /* LoginViewController.xib */; };
 		9D5E8D902BCE60070095441C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E8D8F2BCE60070095441C /* CustomView.swift */; };
 		9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */; };
 		9D78B2E92C02F9F500D88DBE /* TextQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D78B2E72C02F9F500D88DBE /* TextQuestionCell.xib */; };
+		9D795EFC2C16D52D00955F35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D795EFB2C16D52D00955F35 /* XCTest.framework */; };
+		9D795F002C16D59B00955F35 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8093912C16AC1800E4A021 /* LoginViewControllerTests.swift */; };
 		9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */; };
 		9D7AEE752BF1A6B200DFA97E /* StudyQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */; };
 		9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AEE772BF1AAF100DFA97E /* QuestionPhotoCell.swift */; };
 		9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */; };
 		9D7AEE862BF3264F00DFA97E /* StudyDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */; };
 		9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B4E342BD8C16000DA34A4 /* Authentication.swift */; };
+		9D8093932C16AD8800E4A021 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2EAF702BCC44F7002B077C /* LoginViewController.swift */; };
 		9D886E6F2C007B7F00A47F3C /* ListQuestionWithTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D886E6D2C007B7F00A47F3C /* ListQuestionWithTextCell.xib */; };
 		9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */; };
 		9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */; };
 		9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */; };
 		9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */; };
 		9D8FC3462BE4823800FCEBF6 /* StudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D8FC3312BE374B400FCEBF6 /* StudyViewController.xib */; };
+		9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F6C2C0F00C300B1A61C /* Logger.swift */; };
+		9DB06F6F2C0F112600B1A61C /* LoggerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */; };
+		9DB06F772C11509800B1A61C /* Exam_EnglishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F762C11509800B1A61C /* Exam_EnglishTests.swift */; };
+		9DB06F7E2C144A7C00B1A61C /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F7D2C144A7C00B1A61C /* HomeModel.swift */; };
+		9DB06F802C144C1200B1A61C /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB06F7F2C144C1200B1A61C /* HomeService.swift */; };
 		9DBC8D2D2C06DB900091A340 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2C2C06DB900091A340 /* Extensions.swift */; };
 		9DBC8D302C082AF00091A340 /* ListQuestionWithPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2E2C082AF00091A340 /* ListQuestionWithPhotoCell.swift */; };
 		9DBC8D312C082AF00091A340 /* ListQuestionWithPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DBC8D2F2C082AF00091A340 /* ListQuestionWithPhotoCell.xib */; };
 		9DD0B38E2BD3A95500F3E745 /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = 9DD0B38D2BD3A95500F3E745 /* Roboto */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9DB06F782C11509800B1A61C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D2EAF452BCC378F002B077C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D2EAF4C2BCC3790002B077C;
+			remoteInfo = "Exam-English";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		9D0979782C1ADF75006EBF85 /* Exam-English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exam-English.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D0979792C1ADF75006EBF85 /* Exam-EnglishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Exam-EnglishTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D09797B2C1D6A80006EBF85 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		9D09797C2C1D6A80006EBF85 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		9D09797F2C1D6F9E006EBF85 /* ButtonFuncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFuncCell.swift; sourceTree = "<group>"; };
+		9D0979802C1D6F9E006EBF85 /* ButtonFuncCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonFuncCell.xib; sourceTree = "<group>"; };
+		9D0979832C1D71FF006EBF85 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		9D0979842C1D71FF006EBF85 /* ActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionCell.xib; sourceTree = "<group>"; };
+		9D0979872C1D7A3F006EBF85 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		9D0979882C1D7A3F006EBF85 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		9D09798B2C1F2027006EBF85 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		9D09798C2C1F2027006EBF85 /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		9D2841F52BF9D34F003D722D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9D2EAF4D2BCC3790002B077C /* Exam-English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Exam-English.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2EAF502BCC3790002B077C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D2EAF522BCC3790002B077C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D2EAF592BCC3790002B077C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,8 +116,6 @@
 		9D3AFDF02C0D6A6100B2891F /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		9D3AFDF12C0D6A6100B2891F /* HomeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewCell.xib; sourceTree = "<group>"; };
 		9D3C95532BD5D02C00F5190D /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSuccessViewController.swift; sourceTree = "<group>"; };
-		9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSuccessViewController.xib; sourceTree = "<group>"; };
 		9D44A3292BEDBFF800D20521 /* StudyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyService.swift; sourceTree = "<group>"; };
 		9D44A32C2BEDC7AA00D20521 /* StudyQuestionSetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyQuestionSetCell.swift; sourceTree = "<group>"; };
 		9D44A32E2BEDC7B100D20521 /* StudyQuestionSetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyQuestionSetCell.xib; sourceTree = "<group>"; };
@@ -84,15 +128,26 @@
 		9D4A9C5F2BE874F2007BF06F /* StudyDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailCell.swift; sourceTree = "<group>"; };
 		9D4A9C642BE8B081007BF06F /* StudyQuestionSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyQuestionSetViewController.swift; sourceTree = "<group>"; };
 		9D4A9C652BE8B081007BF06F /* StudyQuestionSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyQuestionSetViewController.xib; sourceTree = "<group>"; };
+		9D4B23A22C2019AF001FC15C /* ExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamViewController.swift; sourceTree = "<group>"; };
+		9D4B23A32C2019AF001FC15C /* ExamViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
+		9D4B23A72C202191001FC15C /* ExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCell.swift; sourceTree = "<group>"; };
+		9D4B23A82C202191001FC15C /* ExamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExamCell.xib; sourceTree = "<group>"; };
+		9D4B23B12C20A0BA001FC15C /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		9D4B23B32C20A0CD001FC15C /* QuestionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
+		9D4B23B52C212838001FC15C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamQuestionViewController.swift; sourceTree = "<group>"; };
+		9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExamQuestionViewController.xib; sourceTree = "<group>"; };
 		9D5E8D8F2BCE60070095441C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextQuestionCell.swift; sourceTree = "<group>"; };
 		9D78B2E72C02F9F500D88DBE /* TextQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextQuestionCell.xib; sourceTree = "<group>"; };
+		9D795EFB2C16D52D00955F35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9D7AEE722BF1A6B200DFA97E /* StudyQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyQuestionViewController.swift; sourceTree = "<group>"; };
 		9D7AEE732BF1A6B200DFA97E /* StudyQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyQuestionViewController.xib; sourceTree = "<group>"; };
 		9D7AEE772BF1AAF100DFA97E /* QuestionPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPhotoCell.swift; sourceTree = "<group>"; };
 		9D7AEE782BF1AAF100DFA97E /* QuestionPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionPhotoCell.xib; sourceTree = "<group>"; };
 		9D7AEE852BF3264F00DFA97E /* StudyDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudyDetailCell.xib; sourceTree = "<group>"; };
 		9D7B4E342BD8C16000DA34A4 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		9D8093912C16AC1800E4A021 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		9D886E6C2C007B7F00A47F3C /* ListQuestionWithTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionWithTextCell.swift; sourceTree = "<group>"; };
 		9D886E6D2C007B7F00A47F3C /* ListQuestionWithTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionWithTextCell.xib; sourceTree = "<group>"; };
 		9D8FC3302BE374B400FCEBF6 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +155,11 @@
 		9D8FC3372BE377D400FCEBF6 /* StudyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewCell.swift; sourceTree = "<group>"; };
 		9D8FC3382BE377D400FCEBF6 /* StudyViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyViewCell.xib; sourceTree = "<group>"; };
 		9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyModel.swift; sourceTree = "<group>"; };
+		9DB06F6C2C0F00C300B1A61C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerConstants.swift; sourceTree = "<group>"; };
+		9DB06F762C11509800B1A61C /* Exam_EnglishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam_EnglishTests.swift; sourceTree = "<group>"; };
+		9DB06F7D2C144A7C00B1A61C /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		9DB06F7F2C144C1200B1A61C /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		9DBC8D2C2C06DB900091A340 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9DBC8D2E2C082AF00091A340 /* ListQuestionWithPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionWithPhotoCell.swift; sourceTree = "<group>"; };
 		9DBC8D2F2C082AF00091A340 /* ListQuestionWithPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionWithPhotoCell.xib; sourceTree = "<group>"; };
@@ -114,23 +174,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9DB06F712C11509700B1A61C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D795EFC2C16D52D00955F35 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D09797A2C1D66AC006EBF85 /* MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D09797B2C1D6A80006EBF85 /* UserCell.swift */,
+				9D09797C2C1D6A80006EBF85 /* UserCell.xib */,
+				9D09797F2C1D6F9E006EBF85 /* ButtonFuncCell.swift */,
+				9D0979802C1D6F9E006EBF85 /* ButtonFuncCell.xib */,
+				9D0979832C1D71FF006EBF85 /* ActionCell.swift */,
+				9D0979842C1D71FF006EBF85 /* ActionCell.xib */,
+			);
+			path = MenuCell;
+			sourceTree = "<group>";
+		};
+		9D09798F2C1F338C006EBF85 /* MenuDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D09798B2C1F2027006EBF85 /* UserViewController.swift */,
+				9D09798C2C1F2027006EBF85 /* UserViewController.xib */,
+			);
+			path = MenuDetailVC;
+			sourceTree = "<group>";
+		};
 		9D2EAF442BCC378F002B077C = {
 			isa = PBXGroup;
 			children = (
 				9D2EAF4F2BCC3790002B077C /* Exam-English */,
-				9D2EAF4E2BCC3790002B077C /* Products */,
+				9DB06F752C11509800B1A61C /* Exam-EnglishTests */,
+				9D795EFA2C16D52D00955F35 /* Frameworks */,
+				9D0979782C1ADF75006EBF85 /* Exam-English.app */,
+				9D0979792C1ADF75006EBF85 /* Exam-EnglishTests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		9D2EAF4E2BCC3790002B077C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9D2EAF4D2BCC3790002B077C /* Exam-English.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9D2EAF4F2BCC3790002B077C /* Exam-English */ = {
@@ -140,6 +225,7 @@
 				9D4A9C6E2BEB7269007BF06F /* NetworkServices */,
 				9D4A9C6F2BEB7305007BF06F /* Constants */,
 				9DD0B38F2BD3ACC100F3E745 /* Common */,
+				9DB06F6B2C0F009200B1A61C /* Utils */,
 				9DD0B38A2BD3A77600F3E745 /* Fonts */,
 				9D2EAF662BCC37C8002B077C /* Controller */,
 				9D2EAF652BCC37C1002B077C /* View */,
@@ -155,6 +241,8 @@
 			children = (
 				9D3C95532BD5D02C00F5190D /* LoginModel.swift */,
 				9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */,
+				9DB06F7D2C144A7C00B1A61C /* HomeModel.swift */,
+				9D4B23B52C212838001FC15C /* QuestionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +263,8 @@
 				9D8FC3352BE3774500FCEBF6 /* LoginVC */,
 				9D3AFDE42C0C574500B2891F /* HomeVC */,
 				9D8FC3362BE3776100FCEBF6 /* StudyVC */,
+				9DB06F6A2C0ECC7500B1A61C /* ExamVC */,
+				9DB06F862C158EBB00B1A61C /* MenuVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +347,8 @@
 		9D4A9C5D2BE8744D007BF06F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				9D4B23A62C20216A001FC15C /* ExamCell */,
+				9D09797A2C1D66AC006EBF85 /* MenuCell */,
 				9D3AFDEF2C0D689C00B2891F /* HomeCell */,
 				9D3AFDE02C0B5CCB00B2891F /* StudyCell */,
 			);
@@ -294,6 +386,7 @@
 			children = (
 				9D7B4E342BD8C16000DA34A4 /* Authentication.swift */,
 				9D44A3292BEDBFF800D20521 /* StudyService.swift */,
+				9DB06F7F2C144C1200B1A61C /* HomeService.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -302,8 +395,36 @@
 			isa = PBXGroup;
 			children = (
 				9D2841F52BF9D34F003D722D /* Constants.swift */,
+				9DB06F6E2C0F112600B1A61C /* LoggerConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		9D4B23A62C20216A001FC15C /* ExamCell */ = {
+			isa = PBXGroup;
+			children = (
+				9D4B23A72C202191001FC15C /* ExamCell.swift */,
+				9D4B23A82C202191001FC15C /* ExamCell.xib */,
+			);
+			path = ExamCell;
+			sourceTree = "<group>";
+		};
+		9D4B23AB2C208D23001FC15C /* ExamQuestionVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */,
+				9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */,
+			);
+			path = ExamQuestionVC;
+			sourceTree = "<group>";
+		};
+		9D4B23B02C20A092001FC15C /* QuestionView */ = {
+			isa = PBXGroup;
+			children = (
+				9D4B23B12C20A0BA001FC15C /* QuestionView.swift */,
+				9D4B23B32C20A0CD001FC15C /* QuestionView.xib */,
+			);
+			path = QuestionView;
 			sourceTree = "<group>";
 		};
 		9D5E8D8C2BCE31720095441C /* Supporting */ = {
@@ -321,8 +442,17 @@
 			isa = PBXGroup;
 			children = (
 				9D5E8D8F2BCE60070095441C /* CustomView.swift */,
+				9D4B23B02C20A092001FC15C /* QuestionView */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		9D795EFA2C16D52D00955F35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D795EFB2C16D52D00955F35 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9D7AEE762BF1A81C00DFA97E /* StudyQuestionCell */ = {
@@ -386,8 +516,6 @@
 			children = (
 				9D2EAF702BCC44F7002B077C /* LoginViewController.swift */,
 				9D2EAF722BCC44F9002B077C /* LoginViewController.xib */,
-				9D3C95572BD5DADB00F5190D /* LoginSuccessViewController.swift */,
-				9D3C95582BD5DADB00F5190D /* LoginSuccessViewController.xib */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";
@@ -410,6 +538,43 @@
 				9D4A9C4E2BE8512E007BF06F /* StudyViewSection.xib */,
 			);
 			path = StudyViewSection;
+			sourceTree = "<group>";
+		};
+		9DB06F6A2C0ECC7500B1A61C /* ExamVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D4B23A22C2019AF001FC15C /* ExamViewController.swift */,
+				9D4B23A32C2019AF001FC15C /* ExamViewController.xib */,
+				9D4B23AB2C208D23001FC15C /* ExamQuestionVC */,
+			);
+			path = ExamVC;
+			sourceTree = "<group>";
+		};
+		9DB06F6B2C0F009200B1A61C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9DB06F6C2C0F00C300B1A61C /* Logger.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9DB06F752C11509800B1A61C /* Exam-EnglishTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D8093912C16AC1800E4A021 /* LoginViewControllerTests.swift */,
+				9DB06F762C11509800B1A61C /* Exam_EnglishTests.swift */,
+			);
+			path = "Exam-EnglishTests";
+			sourceTree = "<group>";
+		};
+		9DB06F862C158EBB00B1A61C /* MenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D0979872C1D7A3F006EBF85 /* MenuViewController.swift */,
+				9D0979882C1D7A3F006EBF85 /* MenuViewController.xib */,
+				9D09798F2C1F338C006EBF85 /* MenuDetailVC */,
+			);
+			path = MenuVC;
 			sourceTree = "<group>";
 		};
 		9DBC8D2B2C06DB570091A340 /* Extensions */ = {
@@ -452,8 +617,27 @@
 			);
 			name = "Exam-English";
 			productName = "Exam-English";
-			productReference = 9D2EAF4D2BCC3790002B077C /* Exam-English.app */;
+			productReference = 9D0979782C1ADF75006EBF85 /* Exam-English.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9DB06F732C11509700B1A61C /* Exam-EnglishTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DB06F7A2C11509800B1A61C /* Build configuration list for PBXNativeTarget "Exam-EnglishTests" */;
+			buildPhases = (
+				0F1C076BB349F3FBF178D01D /* [CP] Check Pods Manifest.lock */,
+				9DB06F702C11509700B1A61C /* Sources */,
+				9DB06F712C11509700B1A61C /* Frameworks */,
+				9DB06F722C11509700B1A61C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DB06F792C11509800B1A61C /* PBXTargetDependency */,
+			);
+			name = "Exam-EnglishTests";
+			productName = "Exam-EnglishTests";
+			productReference = 9D0979792C1ADF75006EBF85 /* Exam-EnglishTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -463,10 +647,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					9D2EAF4C2BCC3790002B077C = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					9DB06F732C11509700B1A61C = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 9D2EAF4C2BCC3790002B077C;
 					};
 				};
 			};
@@ -479,11 +667,12 @@
 				Base,
 			);
 			mainGroup = 9D2EAF442BCC378F002B077C;
-			productRefGroup = 9D2EAF4E2BCC3790002B077C /* Products */;
+			productRefGroup = 9D2EAF442BCC378F002B077C;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				9D2EAF4C2BCC3790002B077C /* Exam-English */,
+				9DB06F732C11509700B1A61C /* Exam-EnglishTests */,
 			);
 		};
 /* End PBXProject section */
@@ -498,25 +687,65 @@
 				9D7AEE862BF3264F00DFA97E /* StudyDetailCell.xib in Resources */,
 				9DD0B38E2BD3A95500F3E745 /* Roboto in Resources */,
 				9DBC8D312C082AF00091A340 /* ListQuestionWithPhotoCell.xib in Resources */,
+				9D4B23A52C2019AF001FC15C /* ExamViewController.xib in Resources */,
+				9D0979862C1D71FF006EBF85 /* ActionCell.xib in Resources */,
 				9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */,
 				9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */,
-				9D3C955A2BD5DADB00F5190D /* LoginSuccessViewController.xib in Resources */,
 				9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */,
 				9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */,
 				9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */,
 				9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */,
+				9D4B23B92C2128E1001FC15C /* ExamQuestionViewController.xib in Resources */,
+				9D09797E2C1D6A80006EBF85 /* UserCell.xib in Resources */,
+				9D4B23B42C20A0CD001FC15C /* QuestionView.xib in Resources */,
 				9D3AFDEE2C0CC61E00B2891F /* HomeViewController.xib in Resources */,
 				9D3AFDF32C0D6A6100B2891F /* HomeViewCell.xib in Resources */,
+				9D09798D2C1F2027006EBF85 /* UserViewController.xib in Resources */,
 				9D44A32F2BEDC7B100D20521 /* StudyQuestionSetCell.xib in Resources */,
 				9D2EAF5A2BCC3790002B077C /* Assets.xcassets in Resources */,
 				9D78B2E92C02F9F500D88DBE /* TextQuestionCell.xib in Resources */,
+				9D09798A2C1D7A3F006EBF85 /* MenuViewController.xib in Resources */,
 				9D4A9C552BE85975007BF06F /* HeaderStudySection.xib in Resources */,
 				9D886E6F2C007B7F00A47F3C /* ListQuestionWithTextCell.xib in Resources */,
+				9D0979822C1D6F9E006EBF85 /* ButtonFuncCell.xib in Resources */,
+				9D4B23AA2C202191001FC15C /* ExamCell.xib in Resources */,
 				9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9DB06F722C11509700B1A61C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F1C076BB349F3FBF178D01D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Exam-EnglishTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9D2EAF492BCC3790002B077C /* Sources */ = {
@@ -525,34 +754,65 @@
 			files = (
 				9D3AFDED2C0CC61E00B2891F /* HomeViewController.swift in Sources */,
 				9DBC8D2D2C06DB900091A340 /* Extensions.swift in Sources */,
+				9DB06F7E2C144A7C00B1A61C /* HomeModel.swift in Sources */,
 				9D3AFDE92C0C67F500B2891F /* ListQuestionWithTextCell.swift in Sources */,
 				9D4A9C4F2BE8512E007BF06F /* StudyViewSection.swift in Sources */,
-				9D3C95592BD5DADB00F5190D /* LoginSuccessViewController.swift in Sources */,
+				9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */,
+				9D09797D2C1D6A80006EBF85 /* UserCell.swift in Sources */,
 				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
 				9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */,
+				9D0979892C1D7A3F006EBF85 /* MenuViewController.swift in Sources */,
 				9D2841F62BF9D34F003D722D /* Constants.swift in Sources */,
+				9D4B23A92C202191001FC15C /* ExamCell.swift in Sources */,
 				9D5E8D902BCE60070095441C /* CustomView.swift in Sources */,
+				9D4B23B22C20A0BA001FC15C /* QuestionView.swift in Sources */,
 				9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */,
 				9D3AFDEA2C0C681E00B2891F /* HeaderStudySection.swift in Sources */,
 				9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */,
 				9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */,
 				9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */,
 				9DBC8D302C082AF00091A340 /* ListQuestionWithPhotoCell.swift in Sources */,
+				9D4B23B62C212838001FC15C /* QuestionModel.swift in Sources */,
 				9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */,
+				9D09798E2C1F2027006EBF85 /* UserViewController.swift in Sources */,
 				9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */,
 				9D44A32D2BEDC7AA00D20521 /* StudyQuestionSetCell.swift in Sources */,
 				9D44A32A2BEDBFF800D20521 /* StudyService.swift in Sources */,
+				9D4B23A42C2019AF001FC15C /* ExamViewController.swift in Sources */,
+				9DB06F6F2C0F112600B1A61C /* LoggerConstants.swift in Sources */,
 				9D2EAF512BCC3790002B077C /* AppDelegate.swift in Sources */,
+				9D4B23BA2C2128E1001FC15C /* ExamQuestionViewController.swift in Sources */,
+				9DB06F802C144C1200B1A61C /* HomeService.swift in Sources */,
 				9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */,
 				9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */,
 				9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */,
+				9D0979812C1D6F9E006EBF85 /* ButtonFuncCell.swift in Sources */,
+				9D0979852C1D71FF006EBF85 /* ActionCell.swift in Sources */,
 				9D3C95542BD5D02C00F5190D /* LoginModel.swift in Sources */,
 				9D2EAF532BCC3790002B077C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9DB06F702C11509700B1A61C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D795F002C16D59B00955F35 /* LoginViewControllerTests.swift in Sources */,
+				9D8093932C16AD8800E4A021 /* LoginViewController.swift in Sources */,
+				9DB06F772C11509800B1A61C /* Exam_EnglishTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DB06F792C11509800B1A61C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D2EAF4C2BCC3790002B077C /* Exam-English */;
+			targetProxy = 9DB06F782C11509800B1A61C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9D2EAF5B2BCC3790002B077C /* LaunchScreen.storyboard */ = {
@@ -741,6 +1001,52 @@
 			};
 			name = Release;
 		};
+		9DB06F7B2C11509800B1A61C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 5WDL7WH4W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comchuongzzz1.Exam-EnglishTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Exam-English.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Exam-English";
+			};
+			name = Debug;
+		};
+		9DB06F7C2C11509800B1A61C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 5WDL7WH4W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "comchuongzzz1.Exam-EnglishTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Exam-English.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Exam-English";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -758,6 +1064,15 @@
 			buildConfigurations = (
 				9D2EAF622BCC3790002B077C /* Debug */,
 				9D2EAF632BCC3790002B077C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DB06F7A2C11509800B1A61C /* Build configuration list for PBXNativeTarget "Exam-EnglishTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DB06F7B2C11509800B1A61C /* Debug */,
+				9DB06F7C2C11509800B1A61C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

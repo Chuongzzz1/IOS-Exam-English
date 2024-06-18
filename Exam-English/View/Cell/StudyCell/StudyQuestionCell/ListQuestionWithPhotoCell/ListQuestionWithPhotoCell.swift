@@ -9,6 +9,7 @@ import UIKit
 protocol ListQuestionWithPhotoCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
+    func handleRefreshData()
 }
 class ListQuestionWithPhotoCell: UICollectionViewCell {
     // MARK: - Outlet
@@ -31,8 +32,6 @@ class ListQuestionWithPhotoCell: UICollectionViewCell {
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
 
-
-    
     // MARK: - Variable
     private var answerButtons: [UIButton] = []
     private var answerImages: [UIImageView] = []
@@ -40,7 +39,11 @@ class ListQuestionWithPhotoCell: UICollectionViewCell {
     private var correctAnswer: Int = -1
     private var selectedAnswerIndex: Int? = nil
     private var custom = CustomView()
+    var baseUrl = Constants.API.Endpoints.baseImageURL
     weak var delegate: ListQuestionWithPhotoCellDelegate?
+    
+    private(set) var questionModel: StudyQuestion!
+
 }
 
 // MARK: - Awake
@@ -58,7 +61,6 @@ extension ListQuestionWithPhotoCell {
         selectedAnswerIndex = answerButtons.firstIndex(of: sender)
     }
 
-        
     @IBAction func checkAnswer(_ sender: UIButton) {
         if let selectedIndex = selectedAnswerIndex {
             if selectedIndex == correctAnswer {
@@ -103,6 +105,28 @@ extension ListQuestionWithPhotoCell {
             if answer.correctAnswer {
                 correctAnswer = index
             }
+        }
+        
+        // Jeff
+        if let img = question.image {
+            self.imageQuestionView.image = img
+//            loadingIndicator.stopAnimating()
+//            loadingIndicator.isHidden = true
+        }
+        else if let imageUrl = URL(string: baseUrl() + question.subQuestionUrl!) {
+            let task = URLSession.shared.dataTask(with: imageUrl) { [weak self] (data, response, error) in
+                if let imageData = data {
+                    self?.questionModel.image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        self?.delegate?.handleRefreshData()
+//                        self?.loadingIndicator.stopAnimating()
+//                        self?.loadingIndicator.isHidden = true
+                    }
+                } else {
+                    print("Error loading image: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+            task.resume()
         }
     }
 

@@ -130,6 +130,16 @@ class CustomView {
         nameBackground.layer.cornerRadius = Constants.Layer.mainRadius
     }
     
+    func viewButton(nameBackgroud: UIView) {
+            if let customColor = UIColor(named: Constants.Color.mainColor) {
+                nameBackgroud.backgroundColor = customColor
+            } else {
+                print(Constants.MessageColors.mainColor)
+            }
+        nameBackgroud.layer.cornerRadius = Constants.Layer.buttonRadius
+        nameBackgroud.layer.masksToBounds = true
+        }
+    
     // MARK: - NAV
     func customizeNavigationBar(for navigationController: UINavigationController?) {
         let appearance = UINavigationBarAppearance()
@@ -147,3 +157,5 @@ class CustomView {
         }
     }
 }
+
+

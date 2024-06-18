@@ -8,37 +8,61 @@
 import Foundation
 struct Constants {
     struct Network {
-        static let timeoutInterval: TimeInterval = 3.0
+        static let timeoutInterval: TimeInterval = 3600.0
     }
-    
+        
     struct API {
         static let baseURL = "http://172.16.75.43:8080"
-        static let authBaseURL = "http://172.16.75.43:8080"
         
         struct Endpoints {
-            static let subject = "\(Constants.API.baseURL)/api/subject"
+            static let subjectURL = "\(Constants.API.baseURL)/api/subject"
             
-            static func categories(for subjectID: Int) -> String {
+            static func categoryURL(for subjectID: Int) -> String {
                 return "\(Constants.API.baseURL)/api/subject/categories?subjectId=\(subjectID)"
             }
             
-            static func mainSection(for categoryID: Int) -> String {
+            static func mainSectionURL(for categoryID: Int) -> String {
                 return "\(Constants.API.baseURL)/api/subject/categories/mainSection?categoryId=\(categoryID)"
             }
             
-            static func subSection(for mainSectionID: Int) -> String {
+            static func subSectionURL(for mainSectionID: Int) -> String {
                 return "\(Constants.API.baseURL)/api/subject/categories/mainSection/subSection?mainSectionId=\(mainSectionID)"
             }
             
-            static func question(for subSection: Int, page: Int) -> String {
+            static func questionURL(for subSection: Int, page: Int) -> String {
                 return "\(Constants.API.baseURL)/api/questionstudies/questions?subSectionId=\(subSection)&pageNumber=\(page)&pageSize=10"
             }
             
-            static let loginURL = "\(Constants.API.authBaseURL)/auth/token"
-            static let logoutURL = "\(Constants.API.authBaseURL)/auth/logout"
-            static let introspectURL = "\(Constants.API.authBaseURL)/auth/introspect"
-            static let refreshURL = "\(Constants.API.authBaseURL)/auth/refresh"
+            static let loginURL = "\(Constants.API.baseURL)/auth/token"
+            static let logoutURL = "\(Constants.API.baseURL)/auth/logout"
+            static let introspectURL = "\(Constants.API.baseURL)/auth/introspect"
+            static let refreshURL = "\(Constants.API.baseURL)/auth/refresh"
+            
+            static let scoreURL = "\(Constants.API.baseURL)/api/scores?numberOfPeople=10"
+            
+            static func audioURL(mainQuestionURL: String) -> String {
+                return "\(Constants.API.baseURL)/stream/streamingMainQuestion?mainQuestionId=\(mainQuestionURL)"
+            }
+            
+            static func baseImageURL() -> String {
+                return "\(Constants.API.baseURL)/api/images/"
+            }
+            
+            static func baseAudioURL() -> String {
+                return "\(Constants.API.baseURL)/stream/streamingMainQuestion?mainQuestionId="
+            }
         }
+    }
+    
+    struct Layer {
+        static let borderWidth = 1.0
+        static let mainRadius = 10.0
+        static let buttonRadius = 25.0
+    }
+    
+    struct DefaultString {
+        static let empty = ""
+        static let audioTail = ".mp3"
     }
     
     struct Messages {
@@ -69,9 +93,9 @@ struct Constants {
         static let normalColor = "No Normal Color"
     }
     
-    struct Layer {
-        static let borderWidth = 1.0
-        static let mainRadius = 10.0
-        static let buttonRadius = 25.0
+    struct MessageLogin {
+        static let loginFailed = "User account or password incorrect"
     }
 }
+
+

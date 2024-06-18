@@ -13,10 +13,9 @@ class StudyQuestionSetViewController: UIViewController {
     
     // MARK: - Variable
     var subSections = [StudySubSection]()
-    var questions = [StudyQuestion]()
-    var subSectionID = 0
-    var currentPage = 1
-    var totalPage = 1
+    private var subSectionID = 0
+    private var cellHeight: CGFloat = 50
+    var audioData: Data?
 }
 
 // MARK: - Life Cycle
@@ -47,17 +46,19 @@ extension StudyQuestionSetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subSection = subSections[indexPath.row]
         updateTitle(with: subSection.subSectionName)
-        handleQuestion(subSectionID: subSection.subSectionID,page: currentPage)
+//        handleQuestion(subSectionID: subSection.subSectionID,page: currentPage)
+        subSectionID = subSection.subSectionID
+        navigateToStudyQuestionViewController()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return cellHeight
     }
 }
 
 // MARK: - Delegate
 extension StudyQuestionSetViewController: UITableViewDelegate {
-
+    
 }
 
 // MARK: - SetupView
@@ -82,10 +83,7 @@ extension StudyQuestionSetViewController {
     
     private func navigateToStudyQuestionViewController() {
         let studyQuestionSetVC = StudyQuestionViewController(nibName: "StudyQuestionViewController", bundle: nil)
-        studyQuestionSetVC.questions = self.questions
-        studyQuestionSetVC.currentPage = self.currentPage
-        studyQuestionSetVC.totalpage = self.totalPage
-        studyQuestionSetVC.subSectionID = self.subSectionID
+        studyQuestionSetVC.subSectionID = subSectionID
         self.navigationController?.pushViewController(studyQuestionSetVC, animated: true)
     }
     
@@ -97,29 +95,10 @@ extension StudyQuestionSetViewController {
         let customTitleView = UIView()
         self.navigationItem.titleView = customTitleView
     }
-
 }
 
 // MARK: - Handle API
 extension StudyQuestionSetViewController {
-    func handleQuestion(subSectionID: Int,page: Int) {
-        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
-            switch result {
-            case .success(let studyQuestionResponse):
-                if let questions = studyQuestionResponse.result, let paginates = studyQuestionResponse.pagination {
-                    DispatchQueue.main.async {
-                        self?.questions = questions
-                        self?.totalPage = paginates.totalPage
-                        self?.subSectionID = subSectionID
-                        self?.currentPage += 1
-                        self?.navigateToStudyQuestionViewController()
-                    }
-                }
-            case .failure(let error):
-                print("Failed to fetch sub sections: \(error.localizedDescription)")
-            }
-        }
-    }
 }
 
 

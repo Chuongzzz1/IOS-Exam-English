@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 // MARK: - Subject
 struct StudySubjectResponse {
     let code: Int
@@ -170,7 +171,7 @@ struct Paginate {
     }
 }
 
-struct StudyQuestion {
+class StudyQuestion {
     let questionID: Int?
     let mainQuestionID: Int?
     let mainQuestionContent: String?
@@ -183,6 +184,8 @@ struct StudyQuestion {
     let normalQuestionUrl: String?
     let answers: [Answer]?
     var selectedAnswerIndex: Int?
+    var image: UIImage?
+    var audioData: Data?
     init(dictionary: [String: Any]) {
         self.questionID = dictionary["QuestionId"] as? Int ?? 0
         self.mainQuestionID = dictionary["MainQuestionId"] as? Int ?? 0
@@ -205,6 +208,8 @@ struct StudyQuestion {
         } else {
             self.answers = []
         }
+        self.image = nil
+        self.audioData = nil
     }
 }
 

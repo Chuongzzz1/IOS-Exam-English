@@ -14,6 +14,7 @@ class StudyDetailViewController: UIViewController {
 // MARK: - Variable
     var mainSections = [StudyMainSection]()
     var subSections = [StudySubSection]()
+    private var cellHeight: CGFloat = 100
     private var customView = CustomView()
 }
  // MARK: Life Cycle
@@ -42,7 +43,7 @@ extension StudyDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return cellHeight
     }
 }
 
@@ -120,7 +121,7 @@ extension StudyDetailViewController {
                     }
                 }
             case .failure(let error):
-                print("Failed to fetch sub sections: \(error.localizedDescription)")
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchSubSection + "\(error)")
             }
         }
     }

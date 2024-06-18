@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import AVFoundation
+
 protocol TextQuestionCellDelegate: AnyObject {
     func handleScrollNext(sender: UIButton)
     func handleScrollPrevious(sender: UIButton)
+    func handleRefreshData()
+    
 }
-class TextQuestionCell: UICollectionViewCell {
+class TextQuestionCell: UICollectionViewCell, AVAudioPlayerDelegate {
     // MARK: - Outlet
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionBackgroundView: UIView!
@@ -42,8 +46,13 @@ class TextQuestionCell: UICollectionViewCell {
     private var isPaused: Bool = true
     private var correctAnswer: Int = -1
     private var selectedAnswerIndex: Int? = nil
+    private var audioPlayer: AVAudioPlayer?
+    private var timeObserver: Any?
     private var custom = CustomView()
     weak var delegate: TextQuestionCellDelegate?
+    private var baseAudioUrl = Constants.API.Endpoints.baseAudioURL
+    
+    private(set) var questionModel: StudyQuestion!
 }
 
 // MARK: - Awake
@@ -91,11 +100,11 @@ extension TextQuestionCell {
 // MARK: - Func
 extension TextQuestionCell {
     func configure(with question: StudyQuestion) {
+        self.questionModel = question
         resetUI()
         guard let subAnswers = question.answers else { return }
-//        questionLabel.text = question.subQuestionContent
         questionLabel.attributedText = question.subQuestionContent?.htmlToAttributedString
-
+        
         answerALabel.text = subAnswers[safe: 0]?.answerContent
         answerBLabel.text = subAnswers[safe: 1]?.answerContent
         answerCLabel.text = subAnswers[safe: 2]?.answerContent
@@ -104,7 +113,7 @@ extension TextQuestionCell {
         answerDLabel.isHidden = isAnswerDHidden
         answerDButton.isHidden = isAnswerDHidden
         answerDImage.isHidden = isAnswerDHidden
-
+        
         if let subAnswers = question.answers {
             for (index, answer) in subAnswers.enumerated() {
                 if answer.correctAnswer {
@@ -113,7 +122,25 @@ extension TextQuestionCell {
             }
         }
         
+        if let audioData = question.audioData {
+            setupAudioPlayer(with: audioData)
+        } else if let mainQuestionUrl = question.mainQuestionUrl, let audioUrl = URL(string: baseAudioUrl() + mainQuestionUrl) {
+            let task = URLSession.shared.dataTask(with: audioUrl) { [weak self] (data, response, error) in
+                if let audioData = data {
+                    self?.questionModel.audioData = audioData
+                    DispatchQueue.main.async {
+                        self?.delegate?.handleRefreshData()
+                    }
+                } else {
+                    print("Error loading audio: \(error?.localizedDescription ?? "Unknown error")")
+                }
+            }
+            task.resume()
+        } else {
+            print("Main question URL is nil or invalid.")
+        }
     }
+
     
     func resetUI() {
         for imageView in answerImages {
@@ -147,7 +174,7 @@ extension TextQuestionCell {
     
     func togglePauseResume() {
         isPaused.toggle()
-        let imageName = isPaused ? "pause" : "resume"
+        let imageName = isPaused ? "resume" : "pause"
         pauseResumeImage.image = UIImage(named: imageName)
     }
     
@@ -167,6 +194,63 @@ extension TextQuestionCell {
     func customView() {
         custom.customCheckButton(checkButton)
         custom.labelQuestion(nameBackground: questionBackgroundView)
+    }
+}
+
+// MARK: Func Audio
+extension TextQuestionCell {
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        let seconds = sender.value
+        audioPlayer?.currentTime = TimeInterval(seconds)
+    }
+    
+    func formatTime(seconds: Float64) -> String {
+        guard !seconds.isNaN, !seconds.isInfinite else {
+            return "00:00"
+        }
+        
+        let mins = Int(seconds / 60)
+        let secs = Int(seconds.truncatingRemainder(dividingBy: 60))
+        return String(format: "%02d:%02d", mins, secs)
+    }
+    
+    func addPeriodicTimeObserver() {
+        let interval = TimeInterval(1.0)
+        timeObserver = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] timer in
+            guard let player = self?.audioPlayer else { return }
+            let currentTime = player.currentTime
+            let duration = player.duration
+            
+            self?.audioSlider.value = Float(currentTime)
+            self?.timeRunLabel.text = self?.formatTime(seconds: currentTime)
+            self?.timeRemainLabel.text = self?.formatTime(seconds: duration - currentTime)
+        }
+    }
+    
+    func setupAudioPlayer(with audioData: Data) {
+        do {
+            audioPlayer = try AVAudioPlayer(data: audioData)
+            audioPlayer?.delegate = self
+            audioPlayer?.prepareToPlay()
+            
+            audioSlider.maximumValue = Float(audioPlayer?.duration ?? 0)
+            timeRemainLabel.text = formatTime(seconds: audioPlayer?.duration ?? 0)
+            
+            audioSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+            
+            audioPlayer?.play()
+            isPaused = false
+            pauseResumeImage.image = UIImage(named: "pause")
+            
+            addPeriodicTimeObserver()
+        } catch {
+            print("Error initializing audio player: \(error.localizedDescription)")
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        isPaused = true
+        pauseResumeImage.image = UIImage(named: "resume")
     }
 }
 

@@ -7,6 +7,31 @@
 
 import UIKit
 
+// MARK: - Enum
+enum QuestionType {
+    case questionPhoto(mainUrl: String?, subUrl: String?)
+    case listQuestionWithText(normalContent: String?)
+    case textQuestion(mainContent: String?)
+    case listQuestionWithPhoto(subQuestionContent: String?)
+    case unknown
+    
+    init(question: StudyQuestion) {
+        if question.mainQuestionUrl == nil && question.subQuestionUrl == nil && question.subQuestionContent != nil {
+            self = .listQuestionWithText(normalContent: question.subQuestionContent)
+        } else if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
+            self = .questionPhoto(mainUrl: mainUrl, subUrl: subUrl)
+        } else if let normalContent = question.normalQuestionContent {
+            self = .listQuestionWithText(normalContent: normalContent)
+        } else if let mainContent = question.mainQuestionContent, question.subQuestionUrl == nil {
+            self = .textQuestion(mainContent: mainContent)
+        } else if let subQuestionContent = question.subQuestionContent, question.subQuestionUrl != nil {
+            self = .listQuestionWithPhoto(subQuestionContent: subQuestionContent)
+        } else {
+            self = .unknown
+        }
+    }
+}
+
 class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, ListQuestionWithTextCellDelegate, TextQuestionCellDelegate, ListQuestionWithPhotoCellDelegate {
     func handleScrollNext(sender: UIButton) {
         scrollNextToCell()
@@ -16,11 +41,17 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
         scrollToPreviousCell()
     }
     
+    func handleRefreshData() {
+        // Jeff
+        self.collectionView.reloadData()
+        // At this step, debug to check if currentQuestion.image != nil
+    }
+    
     // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Variable
-    var questions = [StudyQuestion]() {
+   var questions = [StudyQuestion]() {
         didSet {
             currentQuestion.removeAll()
             if !questions.isEmpty {
@@ -34,9 +65,10 @@ class StudyQuestionViewController: UIViewController, QuestionPhotoCellDelegate, 
     }
     private var currentQuestion = [StudyQuestion]()
     private var currentIndex = 0
-    var currentPage = 0
-    var totalpage = 0
+    private var currentPage = 1
+    private var totalpage = 0
     var subSectionID = 0
+    var audioData: Data?
 }
 
 // MARK: - Life Cycle
@@ -44,7 +76,19 @@ extension StudyQuestionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        callFunc()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabbar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showTabbar()
+    }
+
 }
 
 // MARK: -  DataSource
@@ -56,38 +100,37 @@ extension StudyQuestionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let question = questions[indexPath.item]
         let question = currentQuestion[0]
+        let questionType = QuestionType(question: question)
 
-        // Kiểm tra nếu có nội dung chính và liên kết hình ảnh, sử dụng PhotoQuestionCell
-        if let mainUrl = question.mainQuestionUrl, let subUrl = question.subQuestionUrl {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as? QuestionPhotoCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-        } else if let normalContent = question.normalQuestionContent {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithTextCell", for: indexPath) as? ListQuestionWithTextCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-        } else if let mainContent = question.mainQuestionContent, question.subQuestionUrl == nil {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as? TextQuestionCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-        } else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithPhotoCell", for: indexPath) as? ListQuestionWithPhotoCell {
-                cell.delegate = self
-                cell.configure(with: question)
-                return cell
-            }
-        }
-        // Nếu không thỏa mãn các điều kiện trên, trả về UICollectionViewCell mặc định
-        return UICollectionViewCell()   
-    }
+        switch questionType {
+        case .questionPhoto(let mainUrl, let subUrl):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionPhotoCell", for: indexPath) as! QuestionPhotoCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .listQuestionWithText(let normalContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithTextCell", for: indexPath) as! ListQuestionWithTextCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .textQuestion(let mainContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TextQuestionCell", for: indexPath) as! TextQuestionCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .listQuestionWithPhoto(let subQuestionContent):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListQuestionWithPhotoCell", for: indexPath) as! ListQuestionWithPhotoCell
+            cell.delegate = self
+            cell.configure(with: question)
+            return cell
+
+        case .unknown:
+            return UICollectionViewCell()
+        }    }
 }
 
 // MARK: - Delegate
@@ -142,6 +185,10 @@ extension StudyQuestionViewController {
 
 // MARK: - Func
 extension StudyQuestionViewController {
+    func callFunc() {
+        handleQuestion(subSectionID: subSectionID, page: currentPage)
+    }
+    
     @objc func scrollNextToCell() {
         currentIndex += 1
         if currentIndex >= questions.count {
@@ -152,11 +199,10 @@ extension StudyQuestionViewController {
         self.currentQuestion.removeAll()
         self.currentQuestion.append(newQuestion)
         if countQuestion == currentIndex {
-            loadmoreQuestion(subSectionID: subSectionID, page: currentPage)
+            loadMoreQuestion(subSectionID: subSectionID, page: currentPage)
         }
         self.collectionView.reloadData()
-        print("Updating current cell with new question at index \(currentIndex)")
-        //        updateCurrentCell(with: newQuestion)
+        print("DEBUG: Updating current cell with new question at index \(currentIndex)")
     }
     
     @objc func scrollToPreviousCell() {
@@ -168,42 +214,23 @@ extension StudyQuestionViewController {
         self.currentQuestion.removeAll()
         self.currentQuestion.append(newQuestion)
         self.collectionView.reloadData()
-        print("Updating current cell with new question at index \(currentIndex)")
-//        updateCurrentCell(with: newQuestion)
+        print("DEBUG: Updating current cell with new question at index \(currentIndex)")
     }
     
-    func updateCurrentCell(with question: StudyQuestion) {
-        //        collectionView.scrollTo  Item(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
-        //        collectionView.reloadData()
-        let indexPath = IndexPath(item: 0, section: 0)
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithTextCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? TextQuestionCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? ListQuestionWithPhotoCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? QuestionPhotoCell {
-            currentCell.configure(with: question)
-            collectionView.reloadItems(at: [indexPath])
-        }
+    func hideTabbar() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func showTabbar() {
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
-//MARK: - API
+// MARK: - Handle API
 extension StudyQuestionViewController {
-    func loadmoreQuestion(subSectionID: Int,page: Int) {
+    func loadMoreQuestion(subSectionID: Int,page: Int) {
         guard page <= totalpage else {
-            print("No more pages to load")
+            print("DEBUG: No more pages to load")
             return
         }
         StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
@@ -218,11 +245,28 @@ extension StudyQuestionViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    print("Failed to fetch sub sections: \(error.localizedDescription)")
+                    Logger.shared.logError(Loggers.StudyMessages.errorLoadmoreQuestion + "\(error)")
                 }
             }
         }
     }
+    
+    func handleQuestion(subSectionID: Int,page: Int) {
+        StudyService.shared.fetchQuestion(for: subSectionID, page: page) { [weak self] result in
+            switch result {
+            case .success(let studyQuestionResponse):
+                if let questions = studyQuestionResponse.result, let paginates = studyQuestionResponse.pagination {
+                    DispatchQueue.main.async {
+                        self?.questions = questions
+                        self?.totalpage = paginates.totalPage
+                        self?.subSectionID = subSectionID
+                        self?.currentPage += 1
+                        self?.collectionView.reloadData()
+                    }
+                }
+            case .failure(let error):
+                Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
+            }
+        }
+    }
 }
-
-
