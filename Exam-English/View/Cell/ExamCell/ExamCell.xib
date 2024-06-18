@@ -12,27 +12,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="KGk-i7-Jjw" customClass="ExamCell" customModule="Exam_English" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="339" height="84"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="KGk-i7-Jjw" customClass="ExamCell" customModule="Exam_English" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="339" height="84"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7Y-iO-8mi" userLabel="Sub View">
-                        <rect key="frame" x="0.0" y="0.0" width="339" height="84"/>
+                        <rect key="frame" x="8" y="8" width="353" height="111"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-fT-cxA" userLabel="Title View">
-                                <rect key="frame" x="16" y="8" width="323" height="28"/>
+                                <rect key="frame" x="16" y="8" width="337" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOEIC Test Examination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJQ-8L-dss" userLabel="Name Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="337" height="22"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="textColor" name="008000"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="zJQ-8L-dss" firstAttribute="leading" secondItem="ivB-fT-cxA" secondAttribute="leading" id="6xj-y5-0RF"/>
                                     <constraint firstItem="zJQ-8L-dss" firstAttribute="top" secondItem="ivB-fT-cxA" secondAttribute="top" id="GRL-Ii-gEm"/>
@@ -40,10 +41,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yey-hy-Vgw" userLabel="Time View">
-                                <rect key="frame" x="16" y="52" width="323" height="24"/>
+                                <rect key="frame" x="16" y="79" width="337" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU9-XG-PgH">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="24"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="128" id="p3l-lV-6rS"/>
                                         </constraints>
@@ -52,13 +54,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/06/2024  - 16:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4N-vb-fj0">
-                                        <rect key="frame" x="132" y="0.0" width="191" height="24"/>
+                                        <rect key="frame" x="132" y="0.0" width="205" height="24"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="3pb-hu-mZL"/>
                                     <constraint firstItem="i4N-vb-fj0" firstAttribute="leading" secondItem="cU9-XG-PgH" secondAttribute="trailing" constant="4" id="5qN-dh-Ihj"/>
@@ -84,19 +87,20 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="C7Y-iO-8mi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BfW-cW-nRT"/>
-                    <constraint firstAttribute="bottom" secondItem="C7Y-iO-8mi" secondAttribute="bottom" id="OlN-6x-KMk"/>
-                    <constraint firstAttribute="trailing" secondItem="C7Y-iO-8mi" secondAttribute="trailing" id="kVN-4u-jHv"/>
-                    <constraint firstItem="C7Y-iO-8mi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rdg-Uk-0iK"/>
+                    <constraint firstItem="C7Y-iO-8mi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="BfW-cW-nRT"/>
+                    <constraint firstAttribute="bottom" secondItem="C7Y-iO-8mi" secondAttribute="bottom" constant="8" id="OlN-6x-KMk"/>
+                    <constraint firstAttribute="trailing" secondItem="C7Y-iO-8mi" secondAttribute="trailing" constant="8" id="kVN-4u-jHv"/>
+                    <constraint firstItem="C7Y-iO-8mi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="rdg-Uk-0iK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="expirationTimeLabel" destination="cU9-XG-PgH" id="XSF-vm-IeZ"/>
                 <outlet property="nameLabel" destination="zJQ-8L-dss" id="2ad-zE-ag9"/>
+                <outlet property="subView" destination="C7Y-iO-8mi" id="Zwl-Tl-BgI"/>
                 <outlet property="timeLabel" destination="i4N-vb-fj0" id="SLv-Ay-INv"/>
             </connections>
-            <point key="canvasLocation" x="57.251908396946561" y="28.87323943661972"/>
+            <point key="canvasLocation" x="80.152671755725194" y="44.014084507042256"/>
         </tableViewCell>
     </objects>
     <resources>

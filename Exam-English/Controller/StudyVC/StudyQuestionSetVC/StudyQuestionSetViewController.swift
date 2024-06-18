@@ -13,10 +13,8 @@ class StudyQuestionSetViewController: UIViewController {
     
     // MARK: - Variable
     var subSections = [StudySubSection]()
-//    var questions = [StudyQuestion]()
     private var subSectionID = 0
-//    private var currentPage = 1
-//    private var totalPage = 1
+    private var cellHeight: CGFloat = 50
     var audioData: Data?
 }
 
@@ -54,7 +52,7 @@ extension StudyQuestionSetViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return cellHeight
     }
 }
 

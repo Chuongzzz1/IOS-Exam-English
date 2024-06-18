@@ -12,7 +12,7 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
 // MARK: - Variable
-    
+    private var cellHeight: CGFloat = 96
 }
 
 // MARK: Life Cycle
@@ -49,14 +49,15 @@ extension ExamViewController {
 // MARK: - Delegate
 extension ExamViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return cellHeight
     }
+    
 }
 
 // MARK: - DataSouce
 extension ExamViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 6 // fake cell
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +68,16 @@ extension ExamViewController: UITableViewDataSource {
            return ExamCell()
        }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navToExamQuestionView()
+    }
 }
 
 // MARK: - Func
-extension ExamViewController {}
+extension ExamViewController {
+    func navToExamQuestionView() {
+        let examQuestionVC = ExamQuestionViewController(nibName: "ExamQuestionViewController", bundle: nil)
+        self.navigationController?.pushViewController(examQuestionVC, animated: true)
+    }
+}

@@ -9,6 +9,7 @@ import UIKit
 
 class ExamCell: UITableViewCell {
 // MARK: - Outlet
+    @IBOutlet weak var subView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var expirationTimeLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -21,6 +22,7 @@ class ExamCell: UITableViewCell {
 extension ExamCell {
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,7 +31,15 @@ extension ExamCell {
 }
 
 // MARK: Setup View
-extension ExamCell {}
+extension ExamCell {
+    func setupView() {
+        customItem()
+    }
+    
+    func customItem() {
+        custom.childRankBackgound(nameBackground: subView)
+    }
+}
 
 // MARK: - Func
 extension ExamCell {}

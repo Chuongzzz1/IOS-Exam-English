@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+// MARK: - Enum
 enum QuestionType {
     case questionPhoto(mainUrl: String?, subUrl: String?)
     case listQuestionWithText(normalContent: String?)
@@ -224,7 +226,7 @@ extension StudyQuestionViewController {
     }
 }
 
-// MARK: - API
+// MARK: - Handle API
 extension StudyQuestionViewController {
     func loadMoreQuestion(subSectionID: Int,page: Int) {
         guard page <= totalpage else {
@@ -259,25 +261,11 @@ extension StudyQuestionViewController {
                         self?.totalpage = paginates.totalPage
                         self?.subSectionID = subSectionID
                         self?.currentPage += 1
-//                        if let firstQuestion = questions.first, let mainQuestionUrl = firstQuestion.mainQuestionUrl {
-//                            self?.handleAudio(mainQuestionURL: mainQuestionUrl)
-//                        }
                         self?.collectionView.reloadData()
                     }
                 }
             case .failure(let error):
                 Logger.shared.logError(Loggers.StudyMessages.errorFetchQuestion + "\(error)")
-            }
-        }
-    }
-    
-    func handleAudio(mainQuestionURL: String) {
-        StudyService.shared.fetchAudio(mainQuestionURL: mainQuestionURL) { [weak self] result in
-            switch result {
-            case .success(let audioData):
-                self?.audioData = audioData
-            case .failure(let error):
-                Logger.shared.logError(Loggers.StudyMessages.errorFetchAudio + "\(error.localizedDescription)")
             }
         }
     }
