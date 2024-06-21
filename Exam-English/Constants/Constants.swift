@@ -51,6 +51,11 @@ struct Constants {
             static func baseAudioURL() -> String {
                 return "\(Constants.API.baseURL)/stream/streamingMainQuestion?mainQuestionId="
             }
+            
+            static func questionExamURL(pageSize: Int, page: Int) -> String {
+                return "\(Constants.API.baseURL)/api/exams/questions?mainSectionId=183&pageNumber=\(page)&pageSize=\(pageSize)"
+            }
+
         }
     }
     
