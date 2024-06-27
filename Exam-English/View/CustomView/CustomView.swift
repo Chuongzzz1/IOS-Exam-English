@@ -140,6 +140,13 @@ class CustomView {
         nameBackgroud.layer.masksToBounds = true
         }
     
+    func circle(nameView: UIView) {
+        nameView.layer.cornerRadius = nameView.frame.size.height / 2
+        nameView.layer.masksToBounds = true
+        nameView.layer.borderWidth = 0.5
+        nameView.layer.borderColor = UIColor.black.cgColor
+    }
+    
     // MARK: - NAV
     func customizeNavigationBar(for navigationController: UINavigationController?) {
         let appearance = UINavigationBarAppearance()

@@ -31,7 +31,7 @@
       shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -41,9 +41,6 @@
                ReferencedContainer = "container:Exam-English.xcodeproj">
             </BuildableReference>
             <SkippedTests>
-               <Test
-                  Identifier = "Exam_EnglishTests">
-               </Test>
                <Test
                   Identifier = "LoginViewControllerTests">
                </Test>

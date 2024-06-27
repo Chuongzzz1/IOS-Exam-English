@@ -51,6 +51,26 @@ struct Constants {
             static func baseAudioURL() -> String {
                 return "\(Constants.API.baseURL)/stream/streamingMainQuestion?mainQuestionId="
             }
+            
+            static func questionExamURL(mainSectionId: Int, pageSize: Int, page: Int) -> String {
+                return "\(Constants.API.baseURL)/api/exams/questions?mainSectionId=\(mainSectionId)&pageNumber=\(page)&pageSize=\(pageSize)"
+            }
+            
+            static func examHomeURL() -> String {
+                return "\(Constants.API.baseURL)/api/examinations/list"
+            }
+            
+            static func submitExamURL() -> String {
+                return "\(Constants.API.baseURL)/api/examinations/submit"
+            }
+            
+            static func userURL() -> String {
+                return "\(Constants.API.baseURL)/api/user"
+            }
+            
+            static func totalCorrectAnswer(mainSectionId: Int, userName: String, examinationID: Int) -> String {
+                return "\(Constants.API.baseURL)/api/examinations/totalCorrectAnswersCombined?mainSectionId=\(mainSectionId)&username=\(userName)&examinationId=\(examinationID)"
+            }
         }
     }
     
@@ -95,6 +115,14 @@ struct Constants {
     
     struct MessageLogin {
         static let loginFailed = "User account or password incorrect"
+    }
+    
+    struct MessageAlert {
+        static let titleConfirm = "CONFIRM"
+        static let messageConfirm = "Do you want to exit the exam?"
+        static let messageSubmit = "Are you sure you submitted the assignment?\nPlease check all answers"
+        static let actionYesConfirm = "YES"
+        static let actionNOConfirm = "NO"
     }
 }
 

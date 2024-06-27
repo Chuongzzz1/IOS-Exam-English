@@ -50,6 +50,16 @@
 		9D4B23B62C212838001FC15C /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23B52C212838001FC15C /* QuestionModel.swift */; };
 		9D4B23B92C2128E1001FC15C /* ExamQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */; };
 		9D4B23BA2C2128E1001FC15C /* ExamQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */; };
+		9D4B23BC2C215F55001FC15C /* TestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23BB2C215F55001FC15C /* TestUI.swift */; };
+		9D4B23C22C23D30F001FC15C /* ExamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23C12C23D30F001FC15C /* ExamService.swift */; };
+		9D4B23C42C291B10001FC15C /* ExamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23C32C291B10001FC15C /* ExamModel.swift */; };
+		9D4B23C72C2A7571001FC15C /* ListQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23C52C2A7571001FC15C /* ListQuestionCell.swift */; };
+		9D4B23C82C2A7571001FC15C /* ListQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23C62C2A7571001FC15C /* ListQuestionCell.xib */; };
+		9D4B23CB2C2A82DB001FC15C /* ListQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */; };
+		9D4B23CC2C2A82DB001FC15C /* ListQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */; };
+		9D4B23CE2C2C217C001FC15C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23CD2C2C217C001FC15C /* UserModel.swift */; };
+		9D4B23D12C2D4735001FC15C /* TotalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23D02C2D4735001FC15C /* TotalViewController.xib */; };
+		9D4B23D22C2D4735001FC15C /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */; };
 		9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF722BCC44F9002B077C /* LoginViewController.xib */; };
 		9D5E8D902BCE60070095441C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E8D8F2BCE60070095441C /* CustomView.swift */; };
 		9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */; };
@@ -137,6 +147,16 @@
 		9D4B23B52C212838001FC15C /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamQuestionViewController.swift; sourceTree = "<group>"; };
 		9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExamQuestionViewController.xib; sourceTree = "<group>"; };
+		9D4B23BB2C215F55001FC15C /* TestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUI.swift; sourceTree = "<group>"; };
+		9D4B23C12C23D30F001FC15C /* ExamService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamService.swift; sourceTree = "<group>"; };
+		9D4B23C32C291B10001FC15C /* ExamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamModel.swift; sourceTree = "<group>"; };
+		9D4B23C52C2A7571001FC15C /* ListQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionCell.swift; sourceTree = "<group>"; };
+		9D4B23C62C2A7571001FC15C /* ListQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionCell.xib; sourceTree = "<group>"; };
+		9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionViewController.swift; sourceTree = "<group>"; };
+		9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionViewController.xib; sourceTree = "<group>"; };
+		9D4B23CD2C2C217C001FC15C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
+		9D4B23D02C2D4735001FC15C /* TotalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalViewController.xib; sourceTree = "<group>"; };
 		9D5E8D8F2BCE60070095441C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextQuestionCell.swift; sourceTree = "<group>"; };
 		9D78B2E72C02F9F500D88DBE /* TextQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextQuestionCell.xib; sourceTree = "<group>"; };
@@ -243,6 +263,8 @@
 				9D8FC33B2BE37D9C00FCEBF6 /* StudyModel.swift */,
 				9DB06F7D2C144A7C00B1A61C /* HomeModel.swift */,
 				9D4B23B52C212838001FC15C /* QuestionModel.swift */,
+				9D4B23C32C291B10001FC15C /* ExamModel.swift */,
+				9D4B23CD2C2C217C001FC15C /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,6 +409,7 @@
 				9D7B4E342BD8C16000DA34A4 /* Authentication.swift */,
 				9D44A3292BEDBFF800D20521 /* StudyService.swift */,
 				9DB06F7F2C144C1200B1A61C /* HomeService.swift */,
+				9D4B23C12C23D30F001FC15C /* ExamService.swift */,
 			);
 			path = NetworkServices;
 			sourceTree = "<group>";
@@ -405,6 +428,8 @@
 			children = (
 				9D4B23A72C202191001FC15C /* ExamCell.swift */,
 				9D4B23A82C202191001FC15C /* ExamCell.xib */,
+				9D4B23C52C2A7571001FC15C /* ListQuestionCell.swift */,
+				9D4B23C62C2A7571001FC15C /* ListQuestionCell.xib */,
 			);
 			path = ExamCell;
 			sourceTree = "<group>";
@@ -414,6 +439,10 @@
 			children = (
 				9D4B23B72C2128E1001FC15C /* ExamQuestionViewController.swift */,
 				9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */,
+				9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */,
+				9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */,
+				9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */,
+				9D4B23D02C2D4735001FC15C /* TotalViewController.xib */,
 			);
 			path = ExamQuestionVC;
 			sourceTree = "<group>";
@@ -561,6 +590,7 @@
 		9DB06F752C11509800B1A61C /* Exam-EnglishTests */ = {
 			isa = PBXGroup;
 			children = (
+				9D4B23BB2C215F55001FC15C /* TestUI.swift */,
 				9D8093912C16AC1800E4A021 /* LoginViewControllerTests.swift */,
 				9DB06F762C11509800B1A61C /* Exam_EnglishTests.swift */,
 			);
@@ -690,13 +720,16 @@
 				9D4B23A52C2019AF001FC15C /* ExamViewController.xib in Resources */,
 				9D0979862C1D71FF006EBF85 /* ActionCell.xib in Resources */,
 				9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */,
+				9D4B23D12C2D4735001FC15C /* TotalViewController.xib in Resources */,
 				9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */,
 				9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */,
 				9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */,
 				9D4A9C672BE8B081007BF06F /* StudyQuestionSetViewController.xib in Resources */,
+				9D4B23CC2C2A82DB001FC15C /* ListQuestionViewController.xib in Resources */,
 				9D2EAF5D2BCC3790002B077C /* LaunchScreen.storyboard in Resources */,
 				9D4B23B92C2128E1001FC15C /* ExamQuestionViewController.xib in Resources */,
 				9D09797E2C1D6A80006EBF85 /* UserCell.xib in Resources */,
+				9D4B23C82C2A7571001FC15C /* ListQuestionCell.xib in Resources */,
 				9D4B23B42C20A0CD001FC15C /* QuestionView.xib in Resources */,
 				9D3AFDEE2C0CC61E00B2891F /* HomeViewController.xib in Resources */,
 				9D3AFDF32C0D6A6100B2891F /* HomeViewCell.xib in Resources */,
@@ -760,20 +793,25 @@
 				9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */,
 				9D09797D2C1D6A80006EBF85 /* UserCell.swift in Sources */,
 				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
+				9D4B23D22C2D4735001FC15C /* TotalViewController.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
 				9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */,
+				9D4B23CE2C2C217C001FC15C /* UserModel.swift in Sources */,
 				9D0979892C1D7A3F006EBF85 /* MenuViewController.swift in Sources */,
 				9D2841F62BF9D34F003D722D /* Constants.swift in Sources */,
 				9D4B23A92C202191001FC15C /* ExamCell.swift in Sources */,
 				9D5E8D902BCE60070095441C /* CustomView.swift in Sources */,
 				9D4B23B22C20A0BA001FC15C /* QuestionView.swift in Sources */,
 				9D8FC3322BE374B400FCEBF6 /* StudyViewController.swift in Sources */,
+				9D4B23CB2C2A82DB001FC15C /* ListQuestionViewController.swift in Sources */,
+				9D4B23C22C23D30F001FC15C /* ExamService.swift in Sources */,
 				9D3AFDEA2C0C681E00B2891F /* HeaderStudySection.swift in Sources */,
 				9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */,
 				9D4A9C662BE8B081007BF06F /* StudyQuestionSetViewController.swift in Sources */,
 				9D8FC33C2BE37D9C00FCEBF6 /* StudyModel.swift in Sources */,
 				9DBC8D302C082AF00091A340 /* ListQuestionWithPhotoCell.swift in Sources */,
 				9D4B23B62C212838001FC15C /* QuestionModel.swift in Sources */,
+				9D4B23C72C2A7571001FC15C /* ListQuestionCell.swift in Sources */,
 				9D4A9C5A2BE86A35007BF06F /* StudyDetailViewController.swift in Sources */,
 				9D09798E2C1F2027006EBF85 /* UserViewController.swift in Sources */,
 				9D7AEE792BF1AAF100DFA97E /* QuestionPhotoCell.swift in Sources */,
@@ -785,6 +823,7 @@
 				9D4B23BA2C2128E1001FC15C /* ExamQuestionViewController.swift in Sources */,
 				9DB06F802C144C1200B1A61C /* HomeService.swift in Sources */,
 				9D3AFDF22C0D6A6100B2891F /* HomeViewCell.swift in Sources */,
+				9D4B23C42C291B10001FC15C /* ExamModel.swift in Sources */,
 				9D8FC3392BE377D400FCEBF6 /* StudyViewCell.swift in Sources */,
 				9D4A9C612BE874F2007BF06F /* StudyDetailCell.swift in Sources */,
 				9D0979812C1D6F9E006EBF85 /* ButtonFuncCell.swift in Sources */,
@@ -799,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D795F002C16D59B00955F35 /* LoginViewControllerTests.swift in Sources */,
+				9D4B23BC2C215F55001FC15C /* TestUI.swift in Sources */,
 				9D8093932C16AD8800E4A021 /* LoginViewController.swift in Sources */,
 				9DB06F772C11509800B1A61C /* Exam_EnglishTests.swift in Sources */,
 			);

@@ -32,7 +32,7 @@ class Logger {
         }
         
         let logFileURL = documentsDirectory.appendingPathComponent(Loggers.nameFile)
-//        print(logFileURL)
+        print(logFileURL)
         
         if !FileManager.default.fileExists(atPath: logFileURL.path) {
             do {

@@ -36,8 +36,27 @@ extension ExamCell {
         customItem()
     }
     
+    func updatesView(listExam: ExamHome) {
+        nameLabel.text = listExam.examinationName
+        timeLabel.text = formattedDate(from: listExam.endTime)
+    }
+    
     func customItem() {
         custom.childRankBackgound(nameBackground: subView)
+    }
+    
+    func formattedDate(from dateString: String) -> String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let date = inputDateFormatter.date(from: dateString) {
+            let outputDateFormatter = DateFormatter()
+            outputDateFormatter.dateFormat = "yyyy-MM-dd - HH:mm:ss"
+            
+            return outputDateFormatter.string(from: date)
+        } else {
+            return dateString
+        }
     }
 }
 
