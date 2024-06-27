@@ -67,6 +67,10 @@ struct Constants {
             static func userURL() -> String {
                 return "\(Constants.API.baseURL)/api/user"
             }
+            
+            static func totalCorrectAnswer(mainSectionId: Int, userName: String, examinationID: Int) -> String {
+                return "\(Constants.API.baseURL)/api/examinations/totalCorrectAnswersCombined?mainSectionId=\(mainSectionId)&username=\(userName)&examinationId=\(examinationID)"
+            }
         }
     }
     

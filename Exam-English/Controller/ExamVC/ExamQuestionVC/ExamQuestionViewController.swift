@@ -49,6 +49,10 @@ class ExamQuestionViewController: UIViewController {
     private var imageCache = NSCache<NSString, NSData>()
     private var audioCache = NSCache<NSString, NSData>()
     private var countdownTimer: Timer?
+    
+    // total
+    private var resultsFromMethod2 = [Total1]()
+    private var resultsFromMethod1 = [Total2]()
 
     // MARK: - Actions
     @IBAction func submitButtonTapped(_ sender: UIButton) {
@@ -207,6 +211,7 @@ extension ExamQuestionViewController {
         
         let yesAction = UIAlertAction(title: Constants.MessageAlert.actionYesConfirm, style: .default) { action in        self.stopAndReleaseAudioPlayer()
             self.submitQuestion()
+//            self.getTotal(mainSectionId: self.mainSectionId, userName: self.userName, examinationID: self.examinationId)
             self.navigationController?.popViewController(animated: true)
         }
         yesAction.setValue(UIColor(named: Constants.Color.mainColor), forKey: "titleTextColor")
@@ -567,8 +572,8 @@ extension ExamQuestionViewController {
             let subQuestionId = question.subQuestionID ?? 0
             
             let answerContent: String?
-            if let selectedIndex = question.selectedAnswerIndex {
-                answerContent = "\(selectedIndex + 1)"
+            if let selectedIndex = question.selectedAnswerIndex, let answers = question.answers, selectedIndex < answers.count {
+                answerContent = answers[selectedIndex].answerContent
             } else {
                 answerContent = nil
             }
@@ -593,6 +598,28 @@ extension ExamQuestionViewController {
                 
             case .failure(let error):
                 print("Error submitting exam: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getTotal(mainSectionId: Int, userName: String, examinationID: Int) {
+        ExamService.shared.getTotalAnswer(mainSectionId: mainSectionId, userName: userName, examinationID: examinationID) { result in
+            switch result {
+            case .success(let totalResponse):
+                if let result = totalResponse.result {
+                    for total in result {
+                        if let method2Results = total.resultsFromMethod2 {
+                            self.resultsFromMethod2 = method2Results
+                        }
+                        if let method1Results = total.resultsFromMethod1 {
+                            self.resultsFromMethod1 = method1Results
+                        }
+                    }
+                }
+                print("Results from Method 2: \(self.resultsFromMethod2)")
+                print("Results from Method 1: \(self.resultsFromMethod1)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
             }
         }
     }

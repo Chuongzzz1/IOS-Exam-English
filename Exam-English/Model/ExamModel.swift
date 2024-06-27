@@ -55,8 +55,6 @@ struct ExamHome {
 }
 
 // MARK: - Submit
-
-
 struct Info: Codable {
     var examinationId: Int
     var mainSectionId: Int
@@ -75,4 +73,80 @@ struct SubmitData: Codable {
     var answer: [AnswerSubmit]
 }
 
+// MARK: - Total
+struct TotalResponse {
+    let code: Int
+    let message: String
+    var result: [Total]?
+    init(dictionary: [String: Any]) {
+        code = dictionary["code"] as? Int ?? 0
+        message = dictionary["message"] as? String ?? ""
+        if let value = dictionary["result"] as? [[String: Any]] {
+            var totals: [Total] = []
+            for totalDict in value {
+                let total = Total(dictionary: totalDict)
+                totals.append(total)
+            }
+            self.result = totals
+        } else {
+            self.result = nil
+        }
+    }
+}
+
+struct Total {
+    let resultsFromMethod2: [Total1]?
+    let resultsFromMethod1: [Total2]?
+    
+    init(dictionary: [String: Any]) {
+        if let resultsFromMethod2Array = dictionary["resultsFromMethod2"] as? [[String: Any]] {
+            var results: [Total1] = []
+            for resultDict in resultsFromMethod2Array {
+                let total1 = Total1(dictionary: resultDict)
+                results.append(total1)
+            }
+            self.resultsFromMethod2 = results
+        } else {
+            self.resultsFromMethod2 = nil
+        }
+        
+        if let resultsFromMethod1Array = dictionary["resultsFromMethod1"] as? [[String: Any]] {
+            var results: [Total2] = []
+            for resultDict in resultsFromMethod1Array {
+                let total2 = Total2(dictionary: resultDict)
+                results.append(total2)
+            }
+            self.resultsFromMethod1 = results
+        } else {
+            self.resultsFromMethod1 = nil
+        }
+    }
+}
+
+struct Total1 {
+    let username: String
+    let examinationId: Int
+    let mainSectionId: Int
+    let totalQuestions: Int
+    let totalCorrectAnswers: Int
+    
+    init(dictionary: [String: Any]) {
+        username = dictionary["username"] as? String ?? ""
+        examinationId = dictionary["examinationId"] as? Int ?? 0
+        mainSectionId = dictionary["mainSectionId"] as? Int ?? 0
+        totalQuestions = dictionary["totalQuestions"] as? Int ?? 0
+        totalCorrectAnswers = dictionary["totalCorrectAnswers"] as? Int ?? 0
+    }
+}
+
+struct Total2 {
+    let part: Int
+    let totalQuestions: Int
+    let totalCorrectAnswers: Int
+    init(dictionary: [String: Any]) {
+         part = dictionary["part"] as? Int ?? 0
+         totalQuestions = dictionary["totalQuestions"] as? Int ?? 0
+         totalCorrectAnswers = dictionary["totalCorrectAnswers"] as? Int ?? 0
+     }
+}
 

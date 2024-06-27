@@ -58,6 +58,8 @@
 		9D4B23CB2C2A82DB001FC15C /* ListQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */; };
 		9D4B23CC2C2A82DB001FC15C /* ListQuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */; };
 		9D4B23CE2C2C217C001FC15C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23CD2C2C217C001FC15C /* UserModel.swift */; };
+		9D4B23D12C2D4735001FC15C /* TotalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B23D02C2D4735001FC15C /* TotalViewController.xib */; };
+		9D4B23D22C2D4735001FC15C /* TotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */; };
 		9D5E8D8D2BCE5F5D0095441C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2EAF722BCC44F9002B077C /* LoginViewController.xib */; };
 		9D5E8D902BCE60070095441C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E8D8F2BCE60070095441C /* CustomView.swift */; };
 		9D78B2E82C02F9F500D88DBE /* TextQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */; };
@@ -153,6 +155,8 @@
 		9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuestionViewController.swift; sourceTree = "<group>"; };
 		9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListQuestionViewController.xib; sourceTree = "<group>"; };
 		9D4B23CD2C2C217C001FC15C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalViewController.swift; sourceTree = "<group>"; };
+		9D4B23D02C2D4735001FC15C /* TotalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalViewController.xib; sourceTree = "<group>"; };
 		9D5E8D8F2BCE60070095441C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		9D78B2E62C02F9F500D88DBE /* TextQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextQuestionCell.swift; sourceTree = "<group>"; };
 		9D78B2E72C02F9F500D88DBE /* TextQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextQuestionCell.xib; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 				9D4B23B82C2128E1001FC15C /* ExamQuestionViewController.xib */,
 				9D4B23C92C2A82DB001FC15C /* ListQuestionViewController.swift */,
 				9D4B23CA2C2A82DB001FC15C /* ListQuestionViewController.xib */,
+				9D4B23CF2C2D4735001FC15C /* TotalViewController.swift */,
+				9D4B23D02C2D4735001FC15C /* TotalViewController.xib */,
 			);
 			path = ExamQuestionVC;
 			sourceTree = "<group>";
@@ -714,6 +720,7 @@
 				9D4B23A52C2019AF001FC15C /* ExamViewController.xib in Resources */,
 				9D0979862C1D71FF006EBF85 /* ActionCell.xib in Resources */,
 				9D4A9C5B2BE86A35007BF06F /* StudyDetailViewController.xib in Resources */,
+				9D4B23D12C2D4735001FC15C /* TotalViewController.xib in Resources */,
 				9D8FC33A2BE377D400FCEBF6 /* StudyViewCell.xib in Resources */,
 				9D4A9C502BE8512E007BF06F /* StudyViewSection.xib in Resources */,
 				9D7AEE7A2BF1AAF100DFA97E /* QuestionPhotoCell.xib in Resources */,
@@ -786,6 +793,7 @@
 				9DB06F6D2C0F00C300B1A61C /* Logger.swift in Sources */,
 				9D09797D2C1D6A80006EBF85 /* UserCell.swift in Sources */,
 				9D7B4E352BD8C16000DA34A4 /* Authentication.swift in Sources */,
+				9D4B23D22C2D4735001FC15C /* TotalViewController.swift in Sources */,
 				9D2EAF712BCC44F8002B077C /* LoginViewController.swift in Sources */,
 				9D7AEE742BF1A6B200DFA97E /* StudyQuestionViewController.swift in Sources */,
 				9D4B23CE2C2C217C001FC15C /* UserModel.swift in Sources */,

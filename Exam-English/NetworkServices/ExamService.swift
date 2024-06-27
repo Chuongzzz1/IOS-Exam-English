@@ -92,7 +92,7 @@ class ExamService {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type") // Set Content-Type header
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = jsonData
 
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -103,11 +103,11 @@ class ExamService {
                 }
 
                 if let httpResponse = response as? HTTPURLResponse {
-                    print("HTTP Response Code: \(httpResponse.statusCode)")
+//                    print("HTTP Response Code: \(httpResponse.statusCode)")
                 }
 
                 if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                    print("Response Data: \(responseString)")
+//                    print("Response Data: \(responseString)")
                     completion(.success(responseString))
                 } else {
                     completion(.failure(NSError(domain: "Response parsing error", code: 0, userInfo: nil)))
@@ -150,6 +150,40 @@ class ExamService {
             }
         }
         task.resume()
-
+    }
+    
+    func getTotalAnswer(mainSectionId: Int, userName: String, examinationID: Int, completion: @escaping (Result<TotalResponse, Error>) -> Void) {
+        guard let url = URL(string: Constants.API.Endpoints.totalCorrectAnswer(mainSectionId: mainSectionId, userName: userName, examinationID: examinationID)), let token = accessToken else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(Constants.Messages.errorOccurred + "\(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                print(Constants.Messages.noData)
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: Constants.Messages.noData])))
+                return
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    let totalResponse = TotalResponse(dictionary: json)
+//                    print(json)
+                    completion(.success(totalResponse))
+                }
+            } catch {
+                print(Constants.Messages.errorResponse)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
     }
 }
